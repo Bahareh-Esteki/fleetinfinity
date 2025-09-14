@@ -15,6 +15,7 @@ export default function Navbar() {
     "/platform-overview",
     "/about",
     "/personal-solutions",
+    "/contact",
   ];
   const hasTransparentNav = transparentNavPaths.includes(pathname);
 

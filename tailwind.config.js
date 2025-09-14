@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
       },
       colors: {
         "brand-dark-blue": "#003366",
@@ -17,23 +17,6 @@ module.exports = {
         "brand-green-dark": "#4aa54e",
         "slate-50": "#f8fafc",
         "slate-600": "#475569",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        ping: {
-          "75%, 100%": { transform: "scale(2)", opacity: "0" },
-        },
-        pulse: {
-          "50%": { opacity: ".5" },
-        },
-      },
-      animation: {
-        float: "float 20s ease-in-out infinite",
-        "ping-custom": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
-        "pulse-custom": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import "../globals.css"; // ensure Tailwind is imported
+import "./globals.css"; // ensure Tailwind is imported
 
 // --- Navbar Component ---
 const Navbar = () => {

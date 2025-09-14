@@ -137,7 +137,7 @@ const PersonalSolutions = () => (
           </div>
           <div>
             <Image
-              src="https://placehold.co/600x400/003366/FFFFFF?text=Vehicle+Security"
+              src="/1000232046.png"
               alt="A car parked safely in a driveway"
               width={600}
               height={400}
@@ -183,7 +183,7 @@ const PersonalSolutions = () => (
           </div>
           <div className="md:order-1">
             <Image
-              src="https://placehold.co/600x400/58C15D/FFFFFF?text=Asset+Tracking"
+              src="/1000232045.png"
               alt="A backpack with a tracker attached"
               width={600}
               height={400}
@@ -231,7 +231,7 @@ const PersonalSolutions = () => (
           </div>
           <div>
             <Image
-              src="https://placehold.co/600x400/A9C0D1/003366?text=Family+Safety"
+              src="/1000232046.png"
               alt="A person smiling while looking at their phone"
               width={600}
               height={400}

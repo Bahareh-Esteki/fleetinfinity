@@ -28,9 +28,7 @@ export default function Navbar() {
   const navTextColor = isTransparent ? "text-white" : "text-gray-800";
   const logoTextColor = isTransparent ? "text-white" : "text-brand-dark-blue";
   const iconColor = isTransparent ? "text-white" : "text-brand-dark-blue";
-  const logoSrc = isTransparent
-    ? "https://i.imgur.com/your-white-logo.png"
-    : "https://i.imgur.com/uN1914k.png";
+  const logoSrc = isTransparent ? "/logo-white.png" : "/logo.png";
   const ctaButtonClass = isTransparent
     ? "bg-white text-brand-dark-blue hover:bg-gray-200"
     : "bg-brand-green text-white hover:bg-brand-green-dark";

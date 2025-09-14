@@ -10,25 +10,27 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Define all paths that should have a transparent navbar at the top
   const transparentNavPaths = [
     "/",
     "/platform-overview",
     "/about",
     "/personal-solutions",
-    "/platform-overview",
   ];
   const hasTransparentNav = transparentNavPaths.includes(pathname);
 
   useEffect(() => {
+    // This function now runs every time the page (pathname) changes.
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
+
+    // Check scroll position immediately on page change
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]); // <-- The key fix: This effect re-runs on every route change.
 
-  // Determine styles based on scroll position, current page, and mobile menu state
   const isTransparent = hasTransparentNav && !scrolled && !isOpen;
 
   const navTextColor = isTransparent ? "text-white" : "text-gray-800";
@@ -39,7 +41,6 @@ export default function Navbar() {
     ? "bg-white text-brand-dark-blue hover:bg-gray-200"
     : "bg-brand-green text-white hover:bg-brand-green-dark";
 
-  // --- CORRECTED AND COMPLETE navLinks ARRAY ---
   const navLinks = [
     { name: "Home", href: "/" },
     {

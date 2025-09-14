@@ -83,7 +83,6 @@ export default function Navbar() {
               height={40}
               priority
             />
-            <span>FleetInfinity</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8 h-full">

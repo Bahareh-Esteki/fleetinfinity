@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // --- Navbar Component ---
-const Navbar = () => {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pathname, setPathname] = useState("");
@@ -172,4 +172,4 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
+}

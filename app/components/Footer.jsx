@@ -14,36 +14,36 @@ export default function Footer() {
             <h4 className="font-bold mb-4">For Business</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/platform-overview"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Platform Overview
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/fleet-solutions"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Fleet Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/industries"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Industries
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/demo"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Request Demo
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -51,20 +51,20 @@ export default function Footer() {
             <h4 className="font-bold mb-4">For Personal Use</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/personal-app"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   How It Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/personal-solutions"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Personal Solutions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -72,20 +72,20 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

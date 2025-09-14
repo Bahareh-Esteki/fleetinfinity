@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-// import Image from 'next/image'; // Replaced with <img> for compatibility
-// import Link from 'next/link'; // Replaced with <a> for compatibility
+import Image from "next/image";
+import Link from "next/link";
 import {
   Scan,
   Smartphone,
@@ -136,7 +136,7 @@ const PersonalSolutions = () => (
             </ul>
           </div>
           <div>
-            <img
+            <Image
               src="https://placehold.co/600x400/003366/FFFFFF?text=Vehicle+Security"
               alt="A car parked safely in a driveway"
               width={600}
@@ -182,7 +182,7 @@ const PersonalSolutions = () => (
             </ul>
           </div>
           <div className="md:order-1">
-            <img
+            <Image
               src="https://placehold.co/600x400/58C15D/FFFFFF?text=Asset+Tracking"
               alt="A backpack with a tracker attached"
               width={600}
@@ -230,7 +230,7 @@ const PersonalSolutions = () => (
             </ul>
           </div>
           <div>
-            <img
+            <Image
               src="https://placehold.co/600x400/A9C0D1/003366?text=Family+Safety"
               alt="A person smiling while looking at their phone"
               width={600}
@@ -253,12 +253,12 @@ const CtaSection = () => (
           Find the perfect tracker and plan for your needs. Get started today
           and experience true peace of mind.
         </p>
-        <a
+        <Link
           href="/pricing"
           className="bg-brand-green text-white font-semibold px-8 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
         >
           Explore Plans & Trackers
-        </a>
+        </Link>
       </div>
     </div>
   </div>

@@ -87,23 +87,23 @@ export default function ContactPage() {
                 <p className="font-semibold text-brand-dark-blue">
                   Or contact our sales team directly:
                 </p>
-                <a
+                <Link
                   href="mailto:sales@fleetinfinity.com"
                   className="flex items-center gap-2 mt-2 text-slate-600 hover:text-brand-green"
                 >
                   <Mail className="w-5 h-5" /> sales@fleetinfinity.com
-                </a>
+                </Link>
               </div>
             </div>
             <div className="flex justify-center items-center gap-4">
-              <img
+              <Image
                 src="https://placehold.co/150x150/003366/FFFFFF?text=Expert"
                 alt="Sales Expert 1"
                 width={150}
                 height={150}
                 className="rounded-full shadow-lg"
               />
-              <img
+              <Image
                 src="https://placehold.co/150x150/58C15D/FFFFFF?text=Expert"
                 alt="Sales Expert 2"
                 width={150}
@@ -131,23 +131,23 @@ export default function ContactPage() {
                 Find answers to common questions about trackers, the mobile app,
                 and billing.
               </p>
-              <a
+              <Link
                 href="/help-center"
                 className="text-brand-green font-semibold inline-flex items-center gap-2"
               >
                 Visit Help Center <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
             <div className="mt-8 pt-6 border-t border-slate-200">
               <p className="font-semibold text-brand-dark-blue">
                 Contact support directly:
               </p>
-              <a
+              <Link
                 href="mailto:support@fleetinfinity.com"
                 className="flex items-center gap-2 mt-2 text-slate-600 hover:text-brand-green"
               >
                 <Mail className="w-5 h-5" /> support@fleetinfinity.com
-              </a>
+              </Link>
             </div>
           </div>
         );
@@ -212,14 +212,14 @@ export default function ContactPage() {
             <div className="mt-6 text-center">
               <p className="text-slate-600">
                 Or email us at:{" "}
-                <a
+                <Link
                   href={`mailto:${
                     activeSection === "partner" ? "partners" : "info"
                   }@fleetinfinity.com`}
                   className="text-brand-green font-semibold"
                 >{`${
                   activeSection === "partner" ? "partners" : "info"
-                }@fleetinfinity.com`}</a>
+                }@fleetinfinity.com`}</Link>
               </p>
             </div>
           </div>

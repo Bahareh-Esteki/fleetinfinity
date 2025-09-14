@@ -71,18 +71,18 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <a
+          <Link
             href="/"
             className={`flex items-center gap-2 text-2xl font-bold transition-colors ${logoTextColor}`}
           >
-            <img
+            <Image
               src={logoSrc}
               alt="FleetInfinity Logo"
               width="40"
               height="40"
               className="h-10 w-auto"
             />
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
@@ -96,32 +96,32 @@ const Navbar = () => {
                   </button>
                   <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity invisible group-hover:visible pt-2 pb-2">
                     {link.dropdown.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-green"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               ) : (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className={`font-medium ${navTextColor} hover:text-brand-green transition-colors`}
                 >
                   {link.name}
-                </a>
+                </Link>
               )
             )}
-            <a
+            <Link
               href="/demo"
               className={`${ctaButtonClass} font-semibold px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg`}
             >
               Request Demo
-            </a>
+            </Link>
           </div>
 
           <div className="lg:hidden">
@@ -147,34 +147,34 @@ const Navbar = () => {
                     </h3>
                     <div className="flex flex-col pl-4 gap-2">
                       {link.dropdown.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className="text-gray-600 hover:text-brand-green"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <a
+                  <Link
                     href={link.href}
                     className="font-bold text-gray-800 hover:text-brand-green"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
-            <a
+            <Link
               href="/demo"
               className="mt-4 text-center bg-brand-green text-white font-semibold px-6 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300"
             >
               Request Demo
-            </a>
+            </Link>
           </div>
         </div>
       )}
@@ -198,36 +198,36 @@ const Footer = () => {
             <h4 className="font-bold mb-4">For Business</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/platform-overview"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Platform Overview
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/fleet-solutions"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Fleet Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/industries"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Industries
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/demo"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Request Demo
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -235,20 +235,20 @@ const Footer = () => {
             <h4 className="font-bold mb-4">For Personal Use</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/personal-app"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   How It Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/personal-solutions"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Personal Solutions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -256,20 +256,20 @@ const Footer = () => {
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

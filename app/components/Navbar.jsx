@@ -75,18 +75,18 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {" "}
           {/* Set a fixed height */}
-          <a
+          <Link
             href="/"
             className={`flex items-center gap-2 text-2xl font-bold transition-colors ${logoTextColor}`}
           >
-            <img
+            <Image
               src={logoSrc}
               alt="FleetInfinity Logo"
               width="40"
               height="40"
             />
             <span>FleetInfinity</span>
-          </a>
+          </Link>
           <div className="hidden lg:flex items-center gap-8 h-full">
             {navLinks.map((link) =>
               link.dropdown ? (
@@ -104,34 +104,34 @@ export default function Navbar() {
                   <div className="absolute top-full left-0 pt-5 w-56 opacity-0 group-hover:opacity-100 transition-all duration-300 invisible group-hover:visible">
                     <div className="bg-white rounded-lg shadow-lg py-2">
                       {link.dropdown.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className="block px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-brand-green"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </div>
               ) : (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className={`font-medium ${navTextColor} hover:text-brand-green transition-colors flex items-center h-full px-2`}
                 >
                   {link.name}
-                </a>
+                </Link>
               )
             )}
             <div className="flex items-center h-full ml-4">
-              <a
+              <Link
                 href="/demo"
                 className={`${ctaButtonClass} font-semibold px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg`}
               >
                 Request Demo
-              </a>
+              </Link>
             </div>
           </div>
           <div className="lg:hidden">
@@ -158,34 +158,34 @@ export default function Navbar() {
                     </h3>
                     <div className="flex flex-col pl-4 gap-2">
                       {link.dropdown.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className="text-gray-600 hover:text-brand-green"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <a
+                  <Link
                     href={link.href}
                     className="font-bold text-gray-800 hover:text-brand-green"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
-            <a
+            <Link
               href="/demo"
               className="mt-4 text-center bg-brand-green text-white font-semibold px-6 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300"
             >
               Request Demo
-            </a>
+            </Link>
           </div>
         </div>
       )}

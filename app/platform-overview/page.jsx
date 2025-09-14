@@ -1,7 +1,8 @@
 "use client"; // This component uses client-side interactivity (useState)
 
 import React, { useState } from "react";
-// Note: 'next/image' and 'next/link' are replaced with standard HTML tags for environment compatibility.
+import Image from "next/image";
+import Link from "next/link";
 import {
   LayoutDashboard,
   BarChart3,
@@ -152,7 +153,7 @@ export default function PlatformOverviewPage() {
 
       <div className="container mx-auto px-4 -mt-24 relative z-10">
         <div className="max-w-4xl mx-auto rounded-xl shadow-2xl overflow-hidden">
-          <img
+          <Image
             src="\Screenshot 2025-07-31 114917.png"
             alt="FleetInfinity Dashboard Mockup"
             width="900"
@@ -212,7 +213,7 @@ export default function PlatformOverviewPage() {
                   ))}
                 </ul>
                 <div className="rounded-lg shadow-lg overflow-hidden">
-                  <img
+                  <Image
                     src={featureContent[activeTab].image}
                     alt={featureContent[activeTab].title}
                     width="600"
@@ -235,12 +236,12 @@ export default function PlatformOverviewPage() {
             Schedule a personalized, no-obligation demo with one of our fleet
             experts today.
           </p>
-          <a
+          <Link
             href="/demo"
             className="bg-brand-green text-white font-semibold px-8 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
           >
             Request a Free Demo
-          </a>
+          </Link>
         </div>
       </div>
     </>

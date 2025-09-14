@@ -91,7 +91,7 @@ const TimelineSection = () => {
             </div>
             <div className="relative md:pl-12">
               <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-dark-blue rounded-full hidden md:block"></div>
-              <img
+              <Image
                 src="oldway.png"
                 alt="Old, cluttered technology interface"
                 width={600}
@@ -121,7 +121,7 @@ const TimelineSection = () => {
             </div>
             <div className="relative md:order-1 md:pr-12 md:text-right">
               <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-dark-blue rounded-full hidden md:block"></div>
-              <img
+              <Image
                 src="newway.png"
                 alt="A spark of an idea"
                 width={600}
@@ -152,7 +152,7 @@ const TimelineSection = () => {
             </div>
             <div className="relative md:pl-12">
               <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-green rounded-full ring-4 ring-white hidden md:block"></div>
-              <img
+              <Image
                 src="Screenshot 2025-07-31 114917.png"
                 alt="Clean and modern FleetInfinity UI"
                 width={600}

@@ -1,0 +1,61 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="background-color: #f8fafc; border-radius: 8px;">
+    <!-- 
+      This SVG illustrates the concept of a cluttered, rigid legacy system.
+      - The light blue core is the original platform.
+      - The dark gray blocks are the clunky patches and features added over time.
+      - The tangled lines represent data overload and a confusing interface.
+      - The overall tilt suggests instability and rigidity.
+    -->
+    <defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+            <feOffset dx="2" dy="4" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.2"/>
+            </feComponentTransfer>
+            <feMerge> 
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/> 
+            </feMerge>
+        </filter>
+    </defs>
+
+    <g transform="translate(10, 20) skewY(-2)" filter="url(#shadow)">
+        
+        <!-- Data Overload Lines (background) -->
+        <g stroke="#475569" stroke-width="1.5" opacity="0.5">
+            <line x1="280" y1="200" x2="50" y2="50" />
+            <line x1="290" y1="180" x2="450" y2="20" />
+            <line x1="300" y1="210" x2="550" y2="250" />
+            <line x1="320" y1="220" x2="500" y2="350" />
+            <line x1="250" y1="230" x2="50" y2="300" />
+            <line x1="230" y1="210" x2="100" y2="350" />
+        </g>
+        
+        <!-- Main Structure -->
+        <g transform="translate(150, 125)">
+            <!-- Core System -->
+            <rect fill="#A9C0D1" stroke="#475569" stroke-width="2" x="0" y="0" width="300" height="150" rx="3"/>
+
+            <!-- Patches and Features -->
+            <g fill="#475569" stroke="#1a202c" stroke-width="1">
+                <rect x="-60" y="15" width="60" height="80" rx="2" transform="rotate(-5, -60, 15)"/>
+                <rect x="300" y="45" width="70" height="50" rx="2" transform="rotate(3, 300, 45)"/>
+                <rect x="60" y="150" width="180" height="35" rx="2" transform="rotate(2, 60, 150)"/>
+                <rect x="230" y="-45" width="90" height="45" rx="2" transform="rotate(5, 230, -45)"/>
+                <rect x="-25" y="100" width="80" height="70" rx="2" transform="rotate(-3, -25, 100)"/>
+                <rect x="-10" y="-30" width="120" height="30" rx="2" />
+                <rect x="280" y="110" width="50" height="60" rx="2" transform="rotate(8, 280, 110)"/>
+            </g>
+        </g>
+
+         <!-- Data Overload Lines (foreground) -->
+        <g stroke="#475569" stroke-width="1.5" opacity="0.7">
+             <line x1="240" y1="180" x2="20" y2="150" />
+             <line x1="350" y1="170" x2="580" y2="100" />
+             <line x1="360" y1="200" x2="550" y2="200" />
+        </g>
+
+    </g>
+</svg>
+

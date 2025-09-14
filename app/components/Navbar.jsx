@@ -1,28 +1,34 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
 
-// --- Navbar Component ---
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [pathname, setPathname] = useState("");
+  const pathname = usePathname();
+
+  // Define all paths that should have a transparent navbar at the top
+  const transparentNavPaths = [
+    "/",
+    "/platform-overview",
+    "/about",
+    "/personal-solutions",
+    "/platform-overview",
+  ];
+  const hasTransparentNav = transparentNavPaths.includes(pathname);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setPathname(window.location.pathname);
-    }
-
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const transparentNavPaths = ["/", "/platform-overview", "/about"];
-  const hasTransparentNav = transparentNavPaths.includes(pathname);
+  // Determine styles based on scroll position, current page, and mobile menu state
   const isTransparent = hasTransparentNav && !scrolled && !isOpen;
 
   const navTextColor = isTransparent ? "text-white" : "text-gray-800";
@@ -33,6 +39,7 @@ export default function Navbar() {
     ? "bg-white text-brand-dark-blue hover:bg-gray-200"
     : "bg-brand-green text-white hover:bg-brand-green-dark";
 
+  // --- CORRECTED AND COMPLETE navLinks ARRAY ---
   const navLinks = [
     { name: "Home", href: "/" },
     {
@@ -40,6 +47,14 @@ export default function Navbar() {
       dropdown: [
         { name: "Platform Overview", href: "/platform-overview" },
         { name: "Fleet Solutions", href: "/fleet-solutions" },
+        { name: "Industries", href: "/industries" },
+      ],
+    },
+    {
+      name: "For Personal Use",
+      dropdown: [
+        { name: "How It Works", href: "/personal-app" },
+        { name: "Personal Solutions", href: "/personal-solutions" },
       ],
     },
     { name: "About Us", href: "/about" },
@@ -65,10 +80,11 @@ export default function Navbar() {
               alt="FleetInfinity Logo"
               width={40}
               height={40}
-              className="h-10 w-auto"
+              priority
             />
             <span>FleetInfinity</span>
           </Link>
+
           <div className="hidden lg:flex items-center gap-8 h-full">
             {navLinks.map((link) =>
               link.dropdown ? (
@@ -115,6 +131,7 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
+
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -125,6 +142,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
       {isOpen && (
         <div className="lg:hidden bg-white pb-8 absolute top-full left-0 w-full shadow-lg">
           <div className="container mx-auto px-4 flex flex-col gap-4 pt-4">

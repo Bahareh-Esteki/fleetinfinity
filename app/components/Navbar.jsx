@@ -79,7 +79,7 @@ export default function Navbar() {
             <Image
               src={logoSrc}
               alt="FleetInfinity Logo"
-              width={40}
+              width={80}
               height={40}
               priority
             />

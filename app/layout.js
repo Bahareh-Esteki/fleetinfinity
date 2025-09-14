@@ -1,26 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-
 import { ChevronDown, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
-
-// --- Components defined within the same file to resolve import errors ---
-
+import Image from "next/image";
+import Link from "next/link";
+// --- Navbar Component (Inlined for compatibility) ---
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isHomePage, setIsHomePage] = useState(false);
-  const pathname = usePathname();
-
-  const transparentNavPaths = ["/", "/platform-overview", "/about", "/contact"];
-
-  const hasTransparentNav = transparentNavPaths.includes(pathname);
+  const [pathname, setPathname] = useState("");
 
   useEffect(() => {
-    // In a non-Next.js environment, we use the window object to determine the path.
-    setIsHomePage(window.location.pathname === "/");
+    // Determine the current path on the client side for styling
+    if (typeof window !== "undefined") {
+      setPathname(window.location.pathname);
+    }
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -29,16 +23,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Determine styles based on scroll position, page, and mobile menu state
-  const isTransparentOnHome = hasTransparentNav && !scrolled && !isOpen;
+  const transparentNavPaths = ["/", "/platform-overview", "/about"];
+  const hasTransparentNav = transparentNavPaths.includes(pathname);
+  const isTransparent = hasTransparentNav && !scrolled && !isOpen;
 
-  const navTextColor = isTransparentOnHome ? "text-white" : "text-gray-800";
-  const logoTextColor = isTransparentOnHome
-    ? "text-white"
-    : "text-brand-dark-blue";
-  const iconColor = isTransparentOnHome ? "text-white" : "text-brand-dark-blue";
-  const logoSrc = isTransparentOnHome ? "logo-white.png" : "logo.png"; // Placeholder for white logo
-  const ctaButtonClass = isTransparentOnHome
+  const navTextColor = isTransparent ? "text-white" : "text-gray-800";
+  const logoTextColor = isTransparent ? "text-white" : "text-brand-dark-blue";
+  const iconColor = isTransparent ? "text-white" : "text-brand-dark-blue";
+  const logoSrc = isTransparent
+    ? "https://i.imgur.com/your-white-logo.png"
+    : "https://i.imgur.com/uN1914k.png"; // Using URLs for preview
+  const ctaButtonClass = isTransparent
     ? "bg-white text-brand-dark-blue hover:bg-gray-200"
     : "bg-brand-green text-white hover:bg-brand-green-dark";
 
@@ -49,14 +44,6 @@ const Navbar = () => {
       dropdown: [
         { name: "Platform Overview", href: "/platform-overview" },
         { name: "Fleet Solutions", href: "/fleet-solutions" },
-        { name: "Industries", href: "/industries" },
-      ],
-    },
-    {
-      name: "For Personal Use",
-      dropdown: [
-        { name: "How It Works", href: "/personal-app" },
-        { name: "Personal Solutions", href: "/personal-solutions" },
       ],
     },
     { name: "About Us", href: "/about" },
@@ -72,7 +59,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center h-20">
           <Link
             href="/"
             className={`flex items-center gap-2 text-2xl font-bold transition-colors ${logoTextColor}`}
@@ -84,48 +71,54 @@ const Navbar = () => {
               height="40"
               className="h-10 w-auto"
             />
+            <span>FleetInfinity</span>
           </Link>
-
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8 h-full">
             {navLinks.map((link) =>
               link.dropdown ? (
-                <div key={link.name} className="group relative">
+                <div
+                  key={link.name}
+                  className="group relative h-full flex items-center"
+                >
                   <button
-                    className={`flex items-center gap-1 font-medium ${navTextColor} hover:text-brand-green transition-colors`}
+                    className={`flex items-center gap-1 font-medium ${navTextColor} hover:text-brand-green transition-colors h-full px-2`}
                   >
                     {link.name}
                     <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                   </button>
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity invisible group-hover:visible pt-2 pb-2">
-                    {link.dropdown.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-brand-green"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 pt-5 w-56 opacity-0 group-hover:opacity-100 transition-all duration-300 invisible group-hover:visible">
+                    <div className="bg-white rounded-lg shadow-lg py-2">
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-brand-green"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ) : (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`font-medium ${navTextColor} hover:text-brand-green transition-colors`}
+                  className={`font-medium ${navTextColor} hover:text-brand-green transition-colors flex items-center h-full px-2`}
                 >
                   {link.name}
                 </Link>
               )
             )}
-            <Link
-              href="/demo"
-              className={`${ctaButtonClass} font-semibold px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg`}
-            >
-              Request Demo
-            </Link>
+            <div className="flex items-center h-full ml-4">
+              <Link
+                href="/demo"
+                className={`${ctaButtonClass} font-semibold px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg`}
+              >
+                Request Demo
+              </Link>
+            </div>
           </div>
-
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -136,7 +129,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {isOpen && (
         <div className="lg:hidden bg-white pb-8 absolute top-full left-0 w-full shadow-lg">
           <div className="container mx-auto px-4 flex flex-col gap-4 pt-4">
@@ -166,7 +158,7 @@ const Navbar = () => {
                     className="font-bold text-gray-800 hover:text-brand-green"
                     onClick={() => setIsOpen(false)}
                   >
-                    {link.name}
+                    {item.name}
                   </Link>
                 )}
               </div>
@@ -184,6 +176,7 @@ const Navbar = () => {
   );
 };
 
+// --- Footer Component (Inlined for compatibility) ---
 const Footer = () => {
   return (
     <footer className="bg-brand-dark-blue text-white">
@@ -192,8 +185,7 @@ const Footer = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <h4 className="text-xl font-bold mb-4">FleetInfinity</h4>
             <p className="text-brand-light-blue text-sm">
-              Global tracking solutions powered by Dubai innovation. Serving
-              businesses and individuals worldwide.
+              Global tracking solutions powered by Dubai innovation.
             </p>
           </div>
           <div>
@@ -213,43 +205,6 @@ const Footer = () => {
                   className="text-brand-light-blue hover:text-brand-green transition-colors"
                 >
                   Fleet Solutions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/industries"
-                  className="text-brand-light-blue hover:text-brand-green transition-colors"
-                >
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/demo"
-                  className="text-brand-light-blue hover:text-brand-green transition-colors"
-                >
-                  Request Demo
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">For Personal Use</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/personal-app"
-                  className="text-brand-light-blue hover:text-brand-green transition-colors"
-                >
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/personal-solutions"
-                  className="text-brand-light-blue hover:text-brand-green transition-colors"
-                >
-                  Personal Solutions
                 </Link>
               </li>
             </ul>
@@ -281,7 +236,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6 text-center text-sm text-brand-light-blue">
           <p>
             &copy; {new Date().getFullYear()} FleetInfinity DMCC. All rights
-            reserved. Dubai, UAE.
+            reserved.
           </p>
         </div>
       </div>
@@ -289,7 +244,7 @@ const Footer = () => {
   );
 };
 
-// Main Root Layout Component
+// Main Root Layout Component for Preview
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -299,10 +254,6 @@ export default function RootLayout({ children }) {
         <title>
           FleetInfinity - Total Visibility. Global Control. One Platform.
         </title>
-        <meta
-          name="description"
-          content="Intelligent tracking solutions for your business fleet and the things you value most."
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -316,35 +267,26 @@ export default function RootLayout({ children }) {
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
           {`
-                tailwind.config = {
-                  theme: {
-                    extend: {
-                      fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                      },
-                      colors: {
-                        'brand-dark-blue': '#003366',
-                        'brand-light-blue': '#A9C0D1',
-                        'brand-green': '#58C15D',
-                        'brand-green-dark': '#4aa54e',
-                      }
-                    }
+            tailwind.config = {
+              theme: {
+                extend: {
+                  fontFamily: { sans: ['Inter', 'sans-serif'] },
+                  colors: {
+                    'brand-dark-blue': '#003366',
+                    'brand-light-blue': '#A9C0D1',
+                    'brand-green': '#58C15D',
+                    'brand-green-dark': '#4aa54e',
                   }
                 }
-              `}
+              }
+            }
+          `}
         </script>
         <style>
           {`
-                body { font-family: 'Inter', sans-serif; }
-                .animate-float { animation: float 20s ease-in-out infinite; }
-                @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-                
-                .animate-ping-custom { animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
-                @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
-                
-                .animate-pulse-custom { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-                @keyframes pulse { 50% { opacity: .5; } }
-              `}
+            body { font-family: 'Inter', sans-serif; }
+            .container { max-width: 1200px; }
+          `}
         </style>
       </head>
       <body>

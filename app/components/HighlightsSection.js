@@ -69,7 +69,7 @@ const HighlightsSection = () => {
           </div>
           <div className="h-64 lg:h-full w-full">
             <Image
-              src="/images/industry-leader-graphic.jpg"
+              src="/images/industry-leader-graphic.png"
               alt="Industry leadership graphic"
               width={600}
               height={500}

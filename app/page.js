@@ -22,6 +22,8 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adjust path if needed
 import FaqSection from "./components/FaqSection";
+import HighlightsSection from "@/components/HighlightsSection";
+
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -95,7 +97,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- Logo Cloud / Trusted By Section --- */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
@@ -113,7 +114,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- EXPANDED Core Solutions Sections --- */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
@@ -230,7 +230,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- NEW: How It Works Section --- */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
@@ -281,7 +280,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- NEW: Solutions by Industry Section --- */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
@@ -311,7 +309,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- NEW: Customer Story Section --- */}
+      {/* ---Highlights Section--- */}
+      <HighlightsSection />
+
+      {/* ---  Customer Story Section --- */}
       <section className="relative py-28 bg-gray-800 text-white">
         <div className="absolute inset-0">
           <Image
@@ -346,7 +347,6 @@ export default function HomePage() {
           </blockquote>
         </div>
       </section>
-
       {/* --- Stats Section --- */}
       <section className="py-20 bg-brand-dark-blue">
         <div className="container mx-auto px-4">
@@ -357,7 +357,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- NEW: Latest Insights Section --- */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -383,10 +382,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/*  FAQ SECTION HERE */}
       <FaqSection />
-
       {/* --- Final CTA Section --- */}
       <section className="py-24 bg-slate-50 text-center">
         <div className="container mx-auto px-4">
@@ -405,7 +402,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
       {/* --- Footer --- */}
       <footer className="bg-brand-dark-blue text-white">
         <div className="container mx-auto px-4 py-16">

@@ -384,6 +384,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/*  FAQ SECTION HERE */}
+      <FaqSection />
+
       {/* --- Final CTA Section --- */}
       <section className="py-24 bg-slate-50 text-center">
         <div className="container mx-auto px-4">

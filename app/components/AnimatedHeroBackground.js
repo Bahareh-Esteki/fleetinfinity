@@ -112,3 +112,4 @@ const AnimatedHeroBackground = () => (
     </svg>
   </>
 );
+export default AnimatedHeroBackground;

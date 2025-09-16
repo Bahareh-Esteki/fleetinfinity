@@ -153,7 +153,7 @@ export default function HomePage() {
             </div>
             <div className="flex justify-center">
               <Image
-                src="/images/feature-optimization.jpg"
+                src="/images/feature-optimization.png"
                 alt="Fleet Optimization Graphic"
                 width={500}
                 height={400}
@@ -166,7 +166,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
             <div className="flex justify-center lg:order-2">
               <Image
-                src="/images/feature-safety.jpg"
+                src="/images/feature-safety.png"
                 alt="Driver Safety Graphic"
                 width={500}
                 height={400}
@@ -220,7 +220,7 @@ export default function HomePage() {
             </div>
             <div className="flex justify-center">
               <Image
-                src="/images/feature-sustainability.jpg"
+                src="/images/feature-sustainability.png"
                 alt="Fleet Sustainability Graphic"
                 width={500}
                 height={400}
@@ -315,7 +315,7 @@ export default function HomePage() {
       <section className="relative py-28 bg-gray-800 text-white">
         <div className="absolute inset-0">
           <Image
-            src="/images/customer-background.jpg"
+            src="/images/customer-background.png"
             alt="Customer background"
             layout="fill"
             objectFit="cover"
@@ -366,17 +366,17 @@ export default function HomePage() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <InsightCard
-              imageUrl="/images/blog-1.jpg"
+              imageUrl="/images/blog-1.png"
               title="The 2025 Guide to Fleet Electrification"
               excerpt="Is your fleet ready for an electric future? Our comprehensive guide covers everything from TCO..."
             />
             <InsightCard
-              imageUrl="/images/blog-2.jpg"
+              imageUrl="/images/blog-2.png"
               title="How AI is Revolutionizing Driver Safety"
               excerpt="Learn how artificial intelligence and machine vision are creating a new paradigm in fleet safety..."
             />
             <InsightCard
-              imageUrl="/images/blog-3.jpg"
+              imageUrl="/images/blog-3.png"
               title="Data-Driven Maintenance: Predicting Downtime"
               excerpt="Move from reactive repairs to proactive maintenance with predictive analytics. Here’s how to get started..."
             />

@@ -21,7 +21,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adjust path if needed
-
+import FaqSection from "./components/FaqSection";
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">

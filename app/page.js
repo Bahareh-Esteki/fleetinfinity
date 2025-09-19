@@ -71,79 +71,46 @@ export default function HomePage() {
   return (
     <main className="bg-gray-50 text-gray-800">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-dark-blue via-slate-800 to-brand-dark-blue text-white overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark-blue/30 to-brand-light-blue/10"></div>
+      <section className="relative bg-brand-dark-blue text-white overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3e%3cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='rgba(169,192,209,0.3)' stroke-width='0.5'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100' height='100' fill='url(%23grid)'/%3e%3c/svg%3e\")",
+          }}
+        ></div>
 
-          {/* Animated Grid Pattern */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3cpattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'%3e%3cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(169,192,209,0.4)' stroke-width='1'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100' height='100' fill='url(%23grid)'/%3e%3c/svg%3e\")",
-            }}
-          ></div>
+        <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left Column: Clean Content */}
+            <div className="space-y-8 max-w-2xl">
+              {/* Simple Badge */}
+              <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green">
+                Fleet Management Platform
+              </div>
 
-          {/* Floating Particles */}
-          <div className="absolute top-20 left-10 w-2 h-2 bg-brand-light-blue rounded-full animate-pulse-custom"></div>
-          <div className="absolute top-40 right-20 w-1 h-1 bg-brand-green rounded-full animate-ping-custom"></div>
-          <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-brand-light-blue rounded-full animate-float"></div>
-        </div>
-
-        <div className="relative z-10 container mx-auto px-4 py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column: Content */}
-            <div className="space-y-8">
-              {/* Main Headline */}
+              {/* Clean Headlines */}
               <div className="space-y-6">
-                <h1 className="text-5xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white to-brand-light-blue bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   Intelligent Fleet
                   <span className="block text-brand-green">Operations</span>
                 </h1>
-                <p className="text-xl lg:text-2xl text-brand-light-blue leading-relaxed max-w-xl">
-                  Transform your fleet with AI-powered insights, real-time
-                  tracking, and predictive analytics.
+                <p className="text-xl text-brand-light-blue leading-relaxed">
+                  Transform your fleet with real-time tracking, AI-powered
+                  insights, and automated operations.
                   <span className="text-brand-green font-semibold">
                     {" "}
-                    Reduce costs by up to 30%
-                  </span>{" "}
-                  while maximizing efficiency.
+                    Reduce costs by 30%.
+                  </span>
                 </p>
               </div>
 
-              {/* Key Features */}
-              <div className="grid grid-cols-2 gap-4 py-6">
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-brand-green/20 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-brand-green" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Real-time GPS</p>
-                    <p className="text-sm text-brand-light-blue">
-                      Live vehicle tracking
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-brand-light-blue/20 rounded-lg flex items-center justify-center">
-                    <BarChart3 className="w-5 h-5 text-brand-light-blue" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">AI Analytics</p>
-                    <p className="text-sm text-brand-light-blue">
-                      Predictive insights
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* Simple CTAs */}
+              <div className="flex gap-4 pt-4">
                 <Link
                   href="/demo"
-                  className="group inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-green-dark text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand-green/25"
+                  className="group inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-dark text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg"
                 >
                   <span>Start Free Trial</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -151,41 +118,58 @@ export default function HomePage() {
 
                 <Link
                   href="/demo-video"
-                  className="group inline-flex items-center justify-center gap-2 bg-brand-dark-blue/50 hover:bg-brand-dark-blue/70 border border-brand-light-blue/30 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 backdrop-blur-sm"
+                  className="inline-flex items-center gap-2 text-brand-light-blue hover:text-white font-semibold px-8 py-4 rounded-xl border border-brand-light-blue/30 hover:border-brand-light-blue transition-all duration-300"
                 >
                   <Play className="w-5 h-5" />
                   <span>Watch Demo</span>
                 </Link>
               </div>
 
-            {/* Right Column: Software Screenshot */}
-            <div className="relative animate-float">
-              {/* Main Screenshot Container */}
+              {/* Minimal Social Proof */}
+              <div className="flex items-center gap-8 pt-8 border-t border-brand-light-blue/20">
+                <div className="text-brand-light-blue">
+                  <span className="font-bold text-white text-2xl">10,000+</span>
+                  <div className="text-sm">vehicles managed</div>
+                </div>
+                <div className="text-brand-light-blue">
+                  <span className="font-bold text-white text-2xl">500+</span>
+                  <div className="text-sm">companies</div>
+                </div>
+                <div className="text-brand-light-blue">
+                  <span className="font-bold text-white text-2xl">99.9%</span>
+                  <div className="text-sm">uptime</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Clean Screenshot */}
+            <div className="relative">
+              {/* Simple Screenshot Container */}
               <div className="relative group">
-                {/* Glow Effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-brand-green/20 to-brand-light-blue/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                {/* Subtle Glow */}
+                <div className="absolute -inset-6 bg-gradient-to-r from-brand-green/10 to-brand-light-blue/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
 
                 {/* Screenshot Frame */}
-                <div className="relative bg-brand-dark-blue/50 backdrop-blur-sm border border-brand-light-blue/30 rounded-2xl p-4 shadow-2xl">
-                  {/* Browser Bar */}
-                  <div className="flex items-center gap-2 mb-4 pb-3 border-b border-brand-light-blue/20">
+                <div className="relative bg-white/5 backdrop-blur-sm border border-brand-light-blue/20 rounded-2xl p-3 shadow-2xl">
+                  {/* Minimal Browser Bar */}
+                  <div className="flex items-center gap-2 mb-4 pb-3 border-b border-brand-light-blue/10">
                     <div className="flex gap-1.5">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                       <div className="w-3 h-3 bg-brand-green rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                     </div>
-                    <div className="flex-1 bg-brand-dark-blue/70 rounded-md px-3 py-1 ml-4">
-                      <span className="text-xs text-brand-light-blue">
-                        app.fleetinfinity.com/dashboard
+                    <div className="flex-1 bg-brand-dark-blue/50 rounded-lg px-3 py-1.5 ml-4">
+                      <span className="text-xs text-brand-light-blue/70">
+                        app.fleetinfinity.com
                       </span>
                     </div>
                   </div>
 
-                  {/* Screenshot Placeholder - Replace with actual screenshot */}
-                  <div className="aspect-[4/3] bg-gradient-to-br from-brand-dark-blue to-slate-800 rounded-lg overflow-hidden">
-                    {/* Replace this div with your actual screenshot */}
+                  {/* Screenshot Content */}
+                  <div className="aspect-[4/3] bg-gradient-to-br from-slate-900 to-brand-dark-blue rounded-xl overflow-hidden">
+                    {/* Replace with actual screenshot */}
                     <Image
-                      src="/dashboard-screenshot.png" // Add your actual screenshot here
+                      src="/dashboard-screenshot.png"
                       alt="FleetInfinity Dashboard"
                       width={800}
                       height={600}
@@ -193,18 +177,18 @@ export default function HomePage() {
                       priority
                     />
 
-                    {/* Fallback if no screenshot available yet */}
-                    <div className="w-full h-full flex items-center justify-center text-brand-light-blue">
-                      <div className="text-center space-y-4">
-                        <div className="w-16 h-16 bg-brand-green/20 rounded-lg mx-auto flex items-center justify-center">
-                          <BarChart3 className="w-8 h-8 text-brand-green" />
+                    {/* Elegant Fallback */}
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="text-center space-y-6">
+                        <div className="w-20 h-20 bg-brand-green/20 rounded-2xl mx-auto flex items-center justify-center">
+                          <div className="w-10 h-10 bg-brand-green rounded-lg"></div>
                         </div>
-                        <div>
-                          <p className="font-medium text-white">
+                        <div className="space-y-2">
+                          <p className="font-semibold text-white text-lg">
                             Fleet Dashboard
                           </p>
-                          <p className="text-sm text-brand-light-blue">
-                            Real-time fleet monitoring
+                          <p className="text-brand-light-blue">
+                            Real-time fleet monitoring and analytics
                           </p>
                         </div>
                       </div>
@@ -212,17 +196,9 @@ export default function HomePage() {
                   </div>
                 </div>
 
-               
-
-              {/* Stats Cards */}
-              <div className="absolute -bottom-8 left-8 right-8 grid grid-cols-2 gap-4">
-                <div className="bg-brand-dark-blue/80 backdrop-blur-sm border border-brand-light-blue/30 rounded-lg p-3 text-center">
-                  <p className="text-2xl font-bold text-brand-green">99.9%</p>
-                  <p className="text-xs text-brand-light-blue">Uptime</p>
-                </div>
-                <div className="bg-brand-dark-blue/80 backdrop-blur-sm border border-brand-light-blue/30 rounded-lg p-3 text-center">
-                  <p className="text-2xl font-bold text-brand-green">24/7</p>
-                  <p className="text-xs text-brand-light-blue">Support</p>
+                {/* Single Floating Badge */}
+                <div className="absolute -top-4 -right-4 bg-brand-green text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                  Live Data
                 </div>
               </div>
             </div>

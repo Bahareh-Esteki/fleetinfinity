@@ -49,7 +49,7 @@ export default function Navbar() {
       dropdown: [
         { name: "Platform Overview", href: "/platform-overview" },
         { name: "Fleet Solutions", href: "/fleet-solutions" },
-        { name: "Industries", href: "/industries" },
+        { name: "Price Claculator", href: "/price-calculator" },
       ],
     },
     {

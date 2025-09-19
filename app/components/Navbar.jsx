@@ -16,6 +16,7 @@ export default function Navbar() {
     "/about",
     "/personal-solutions",
     "/contact",
+    "/price-calculator",
   ];
   const hasTransparentNav = transparentNavPaths.includes(pathname);
 

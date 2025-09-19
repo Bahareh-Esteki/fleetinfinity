@@ -96,12 +96,6 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column: Content */}
             <div className="space-y-8">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green">
-                <Shield className="w-4 h-4" />
-                Enterprise Fleet Management Platform
-              </div>
-
               {/* Main Headline */}
               <div className="space-y-6">
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white to-brand-light-blue bg-clip-text text-transparent">
@@ -164,22 +158,6 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              {/* Social Proof */}
-              <div className="flex items-center gap-6 pt-8 border-t border-brand-light-blue/20">
-                <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-brand-green" />
-                  <span className="text-brand-light-blue">
-                    <span className="font-bold text-white">10,000+</span>{" "}
-                    vehicles managed
-                  </span>
-                </div>
-                <div className="text-brand-light-blue">
-                  <span className="font-bold text-white">500+</span> companies
-                  trust us
-                </div>
-              </div>
-            </div>
-
             {/* Right Column: Software Screenshot */}
             <div className="relative animate-float">
               {/* Main Screenshot Container */}
@@ -234,15 +212,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Floating UI Elements */}
-                <div className="absolute -top-4 -right-4 bg-brand-green text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg animate-pulse-custom">
-                  Live Data
-                </div>
-
-                <div className="absolute -bottom-4 -left-4 bg-brand-light-blue text-brand-dark-blue px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                  AI Powered
-                </div>
-              </div>
+               
 
               {/* Stats Cards */}
               <div className="absolute -bottom-8 left-8 right-8 grid grid-cols-2 gap-4">

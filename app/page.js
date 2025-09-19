@@ -112,16 +112,16 @@ export default function HomePage() {
                   href="/demo"
                   className="group inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-dark text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg"
                 >
-                  <span>Start Free Trial</span>
+                  <span>Request Demo</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <Link
-                  href="/demo-video"
+                  href="/platform-overview"
                   className="inline-flex items-center gap-2 text-brand-light-blue hover:text-white font-semibold px-8 py-4 rounded-xl border border-brand-light-blue/30 hover:border-brand-light-blue transition-all duration-300"
                 >
                   <Play className="w-5 h-5" />
-                  <span>Watch Demo</span>
+                  <span>Platform Overview</span>
                 </Link>
               </div>
 

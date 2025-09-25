@@ -1,4 +1,6 @@
 // utils/iconMapping.js
+import React from "react";
+
 import {
   Globe,
   Car,

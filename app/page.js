@@ -311,101 +311,104 @@ export default function HomePage() {
 
             {/* Right: Quick Stats */}
             <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
-              {/* Background Image with Low Opacity */}
+              {/* Background Image with Lower Opacity */}
               <div
-                className="absolute inset-0 opacity-100 bg-cover bg-center bg-no-repeat rounded-2xl"
+                className="absolute inset-0 opacity-20 bg-cover bg-center bg-no-repeat rounded-2xl"
                 style={{
                   backgroundImage: "url('/images/bg-1.jpg')",
                 }}
               ></div>
-              <h3 className="text-2xl font-bold text-white mb-8 text-center">
-                Why Modern Matters
-              </h3>
 
-              <div className="space-y-6">
-                <div className="flex items-center justify-between py-4 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-brand-green" />
+              {/* Content Container - WRAP ALL CONTENT IN THIS */}
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-brand-dark-blue mb-8 text-center">
+                  Why Modern Matters
+                </h3>
+
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-green/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                        <Clock className="w-5 h-5 text-brand-green" />
+                      </div>
+                      <span className="font-medium text-gray-800">
+                        Implementation Time
+                      </span>
                     </div>
-                    <span className="font-medium text-white-700">
-                      Implementation Time
-                    </span>
+                    <div className="text-right">
+                      <div className="font-bold text-2xl text-brand-green">
+                        48hrs
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        vs 2-6 weeks industry avg
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-bold text-2xl text-brand-green">
-                      {" "}
-                      48hrs
+
+                  <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-green/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                        <Smartphone className="w-5 h-5 text-brand-green" />
+                      </div>
+                      <span className="font-medium text-gray-800">
+                        Mobile Experience
+                      </span>
                     </div>
-                    <div className="text-sm text-white-500">
-                      vs 2-6 weeks industry avg
+                    <div className="text-right">
+                      <div className="font-bold text-2xl text-brand-green">
+                        Native
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        iOS & Android apps
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-green/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                        <DollarSign className="w-5 h-5 text-brand-green" />
+                      </div>
+                      <span className="font-medium text-gray-800">
+                        Cost Advantage
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-2xl text-brand-green">
+                        40%
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        less than legacy providers
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-green/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                        <Brain className="w-5 h-5 text-brand-green" />
+                      </div>
+                      <span className="font-medium text-gray-800">
+                        AI Features
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-2xl text-brand-green">
+                        Built-in
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        not an expensive add-on
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between py-4 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                      <Smartphone className="w-5 h-5 text-brand-green" />
-                    </div>
-                    <span className="font-medium text-white-700">
-                      Mobile Experience
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-2xl text-brand-green">
-                      Native
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      iOS & Android apps
-                    </div>
-                  </div>
+                <div className="mt-8 p-4 bg-brand-green/10 rounded-lg backdrop-blur-sm">
+                  <p className="text-sm text-brand-green text-center font-medium">
+                    <Shield className="w-4 h-4 inline mr-2" />
+                    Enterprise security from day one
+                  </p>
                 </div>
-
-                <div className="flex items-center justify-between py-4 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                      <DollarSign className="w-5 h-5 text-brand-green" />
-                    </div>
-                    <span className="font-medium text-gray-700">
-                      Cost Advantage
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-2xl text-brand-green">
-                      40%
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      less than legacy providers
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                      <Brain className="w-5 h-5 text-brand-green" />
-                    </div>
-                    <span className="font-medium text-gray-700">
-                      AI Features
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-2xl text-brand-green">
-                      Built-in
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      not an expensive add-on
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 p-4 bg-brand-green/5 rounded-lg">
-                <p className="text-sm text-brand-green text-center font-medium">
-                  <Shield className="w-4 h-4 inline mr-2" />
-                  Enterprise security from day one
-                </p>
               </div>
             </div>
           </div>

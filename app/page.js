@@ -310,13 +310,13 @@ export default function HomePage() {
             </div>
 
             {/* Right: Quick Stats */}
-            <div className="relative">
+            <div className="relative rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
               {/* Background using Image component */}
               <Image
                 src="/images/bg-1.png"
                 alt=""
                 fill
-                className="object-cover opacity-10"
+                className="object-cover opacity-30"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
 

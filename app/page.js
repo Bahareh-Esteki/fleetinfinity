@@ -224,131 +224,175 @@ export default function HomePage() {
       </section>
 
       {/* --- Trust Builder / Innovation Advantage Section --- */}
-<section className="py-16 bg-gradient-to-r from-slate-50 to-white">
-  <div className="container mx-auto px-4">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      
-      {/* Left: Innovation Message */}
-      <div className="space-y-6">
-        <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green">
-          <Zap className="w-4 h-4" />
-          Built for 2025 and Beyond
-        </div>
-        
-        <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-blue">
-          Fresh Innovation Without Legacy Limitations
-        </h2>
-        
-        <p className="text-lg text-gray-600 leading-relaxed">
-          While established players are constrained by decades-old architecture, FleetInfinity was built from the ground up with today's technology. 
-          <span className="text-brand-green font-semibold"> Cloud-native, AI-first, mobile-ready</span> — designed for the way businesses actually work in 2025.
-        </p>
-        
-        {/* Key Differentiators */}
-        <div className="space-y-4">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
-              <CheckCircle className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-brand-dark-blue">Modern Architecture</h4>
-              <p className="text-gray-600">Built with cloud-native microservices for 99.9% uptime and instant global scaling</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
-              <CheckCircle className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-brand-dark-blue">AI-Native Platform</h4>
-              <p className="text-gray-600">Machine learning integrated into every feature — not bolted on as an afterthought</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
-              <CheckCircle className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <h4 className="font-bold text-brand-dark-blue">Competitive Pricing</h4>
-              <p className="text-gray-600">No legacy infrastructure costs means enterprise features at startup-friendly prices</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Right: Quick Stats */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-        <h3 className="text-2xl font-bold text-brand-dark-blue mb-8 text-center">
-          Why Modern Matters
-        </h3>
-        
-        <div className="space-y-6">
-          <div className="flex items-center justify-between py-4 border-b border-gray-100">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                <Clock className="w-5 h-5 text-brand-green" />
+      <section className="py-16 bg-gradient-to-r from-slate-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Innovation Message */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green">
+                <Zap className="w-4 h-4" />
+                Built for 2025 and Beyond
               </div>
-              <span className="font-medium text-gray-700">Implementation Time</span>
-            </div>
-            <div className="text-right">
-              <div className="font-bold text-2xl text-brand-green">< 48hrs</div>
-              <div className="text-sm text-gray-500">vs 2-6 weeks industry avg</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between py-4 border-b border-gray-100">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                <Smartphone className="w-5 h-5 text-brand-green" />
-              </div>
-              <span className="font-medium text-gray-700">Mobile Experience</span>
-            </div>
-            <div className="text-right">
-              <div className="font-bold text-2xl text-brand-green">Native</div>
-              <div className="text-sm text-gray-500">iOS & Android apps</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between py-4 border-b border-gray-100">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-5 h-5 text-brand-green" />
-              </div>
-              <span className="font-medium text-gray-700">Cost Advantage</span>
-            </div>
-            <div className="text-right">
-              <div className="font-bold text-2xl text-brand-green">40%</div>
-              <div className="text-sm text-gray-500">less than legacy providers</div>
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-brand-green" />
-              </div>
-              <span className="font-medium text-gray-700">AI Features</span>
-            </div>
-            <div className="text-right">
-              <div className="font-bold text-2xl text-brand-green">Built-in</div>
-              <div className="text-sm text-gray-500">not an expensive add-on</div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="mt-8 p-4 bg-brand-green/5 rounded-lg">
-          <p className="text-sm text-brand-green text-center font-medium">
-            <Shield className="w-4 h-4 inline mr-2" />
-            Enterprise security from day one
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+              <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-blue">
+                Fresh Innovation Without Legacy Limitations
+              </h2>
+
+              <p className="text-lg text-gray-600 leading-relaxed">
+                While established players are constrained by decades-old
+                architecture, FleetInfinity was built from the ground up with
+                today's technology.
+                <span className="text-brand-green font-semibold">
+                  {" "}
+                  Cloud-native, AI-first, mobile-ready
+                </span>{" "}
+                — designed for the way businesses actually work in 2025.
+              </p>
+
+              {/* Key Differentiators */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-dark-blue">
+                      Modern Architecture
+                    </h4>
+                    <p className="text-gray-600">
+                      Built with cloud-native microservices for 99.9% uptime and
+                      instant global scaling
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-dark-blue">
+                      AI-Native Platform
+                    </h4>
+                    <p className="text-gray-600">
+                      Machine learning integrated into every feature — not
+                      bolted on as an afterthought
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-brand-green rounded-full flex items-center justify-center mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-dark-blue">
+                      Competitive Pricing
+                    </h4>
+                    <p className="text-gray-600">
+                      No legacy infrastructure costs means enterprise features
+                      at startup-friendly prices
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Quick Stats */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h3 className="text-2xl font-bold text-brand-dark-blue mb-8 text-center">
+                Why Modern Matters
+              </h3>
+
+              <div className="space-y-6">
+                <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-brand-green" />
+                    </div>
+                    <span className="font-medium text-gray-700">
+                      Implementation Time
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-2xl text-brand-green">
+                      {" "}
+                      48hrs
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      vs 2-6 weeks industry avg
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
+                      <Smartphone className="w-5 h-5 text-brand-green" />
+                    </div>
+                    <span className="font-medium text-gray-700">
+                      Mobile Experience
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-2xl text-brand-green">
+                      Native
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      iOS & Android apps
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
+                      <DollarSign className="w-5 h-5 text-brand-green" />
+                    </div>
+                    <span className="font-medium text-gray-700">
+                      Cost Advantage
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-2xl text-brand-green">
+                      40%
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      less than legacy providers
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between py-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
+                      <Brain className="w-5 h-5 text-brand-green" />
+                    </div>
+                    <span className="font-medium text-gray-700">
+                      AI Features
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-2xl text-brand-green">
+                      Built-in
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      not an expensive add-on
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 p-4 bg-brand-green/5 rounded-lg">
+                <p className="text-sm text-brand-green text-center font-medium">
+                  <Shield className="w-4 h-4 inline mr-2" />
+                  Enterprise security from day one
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* --- EXPANDED Core Solutions Sections --- */}
       <section className="py-24 bg-slate-50">

@@ -84,14 +84,21 @@ const AnimatedStatsPanel = () => {
     >
       {/* Background Image */}
       <motion.div
-        className="absolute inset-0 opacity-20 bg-cover bg-center bg-no-repeat rounded-2xl"
-        style={{
-          backgroundImage: "url('/images/bg-1.jpg')",
-        }}
+        className="absolute inset-0 rounded-2xl overflow-hidden"
         initial={{ scale: 1.1, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 0.2 } : {}}
         transition={{ duration: 1.2, ease: "easeOut" }}
-      />
+      >
+        <Image
+          src="/images/bg-1.png"
+          alt="Background pattern"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={75}
+          priority={false}
+        />
+      </motion.div>
 
       <div className="relative z-10">
         {/* Title */}

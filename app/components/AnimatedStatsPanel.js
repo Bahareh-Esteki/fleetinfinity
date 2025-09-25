@@ -276,7 +276,7 @@ const AnimatedStatsPanel = () => {
           }}
         >
           <motion.p
-            className="text-sm text-brand-green text-center font-medium"
+            className="text-sm text-brand-dark-blue text-center font-medium"
             whileHover={{ scale: 1.05 }}
           >
             <motion.span

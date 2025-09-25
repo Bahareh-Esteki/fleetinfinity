@@ -38,6 +38,7 @@ import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adj
 import FaqSection from "./components/FaqSection";
 import HighlightsSection from "./components/HighlightsSection";
 import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
+import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -314,7 +315,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      <MorphingPlatformShowcase />
       {/* --- EXPANDED Core Solutions Sections --- */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">

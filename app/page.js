@@ -333,7 +333,7 @@ export default function HomePage() {
                         <Clock className="w-5 h-5 text-brand-green" />
                       </div>
                       <span className="font-medium text-gray-800">
-                        Implementation Time
+                        prise security from d Implementation Time
                       </span>
                     </div>
                     <div className="text-right">
@@ -404,7 +404,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-4 bg-brand-green/10 rounded-lg backdrop-blur-sm">
+                <div className="mt-8 p-4 bg-brand-green/20 rounded-lg backdrop-blur-sm">
                   <p className="text-sm text-brand-green text-center font-medium">
                     <Shield className="w-4 h-4 inline mr-2" />
                     Enterprise security from day one

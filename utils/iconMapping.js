@@ -53,5 +53,5 @@ export const iconMap = {
 
 export const getIcon = (iconName, props = {}) => {
   const IconComponent = iconMap[iconName];
-  return IconComponent ? <IconComponent {...props} /> : null;
+  return IconComponent ? React.createElement(IconComponent, props) : null;
 };

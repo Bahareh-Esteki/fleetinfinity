@@ -19,6 +19,17 @@ import {
   MapPin,
   Tractor,
   Newspaper,
+  // Add these new imports:
+  Zap,
+  Clock,
+  Smartphone,
+  DollarSign,
+  Brain,
+  Heart,
+  Car,
+  PawPrint,
+  Briefcase,
+  Camera,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

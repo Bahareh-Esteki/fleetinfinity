@@ -39,6 +39,9 @@ import FaqSection from "./components/FaqSection";
 import HighlightsSection from "./components/HighlightsSection";
 import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
+
+import DeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
+
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -316,6 +319,7 @@ export default function HomePage() {
         </div>
       </section>
       <MorphingPlatformShowcase />
+      <DeviceCompatibilityShowcase />
       {/* --- EXPANDED Core Solutions Sections --- */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">

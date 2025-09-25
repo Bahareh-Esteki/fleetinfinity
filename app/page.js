@@ -310,14 +310,15 @@ export default function HomePage() {
             </div>
 
             {/* Right: Quick Stats */}
-            <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
-              {/* Background Image with Lower Opacity */}
-              <div
-                className="absolute inset-0 opacity-20 bg-cover bg-center bg-no-repeat rounded-2xl"
-                style={{
-                  backgroundImage: "url('/images/bg-1.png')",
-                }}
-              ></div>
+            <div className="relative">
+              {/* Background using Image component */}
+              <Image
+                src="/images/bg-1.png"
+                alt=""
+                fill
+                className="object-cover opacity-10"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
 
               {/* Content Container - WRAP ALL CONTENT IN THIS */}
               <div className="relative z-10">

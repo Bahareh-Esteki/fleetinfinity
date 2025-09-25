@@ -315,7 +315,7 @@ export default function HomePage() {
               <div
                 className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat rounded-2xl"
                 style={{
-                  backgroundImage: "url('/images/fleet-dashboard-bg.jpg')",
+                  backgroundImage: "url('/images/bg-1.jpg')",
                 }}
               ></div>
               <h3 className="text-2xl font-bold text-brand-dark-blue mb-8 text-center">

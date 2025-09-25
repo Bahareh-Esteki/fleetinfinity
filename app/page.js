@@ -313,7 +313,7 @@ export default function HomePage() {
             <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
               {/* Background Image with Low Opacity */}
               <div
-                className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat rounded-2xl"
+                className="absolute inset-0 opacity-50 bg-cover bg-center bg-no-repeat rounded-2xl"
                 style={{
                   backgroundImage: "url('/images/bg-1.jpg')",
                 }}

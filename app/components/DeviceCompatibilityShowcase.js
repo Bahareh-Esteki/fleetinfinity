@@ -21,8 +21,8 @@ import {
 } from "lucide-react";
 
 // Import the device database
-import { deviceCategories, realDevices } from "./data/deviceDatabase";
-import { getIcon } from "./utils/iconMapping";
+import { deviceCategories, realDevices } from "../data/deviceDatabase";
+import { getIcon } from "../utils/iconMapping";
 
 const RealDeviceCompatibilityShowcase = () => {
   const [activeCategory, setActiveCategory] = useState("all");

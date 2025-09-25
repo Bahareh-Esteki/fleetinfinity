@@ -311,16 +311,13 @@ export default function HomePage() {
 
             {/* Right: Quick Stats */}
             <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
-            {/* Background Image with Low Opacity */}
-            <div 
-              className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat rounded-2xl"
-              style={{
-                backgroundImage: "url('/images/bg-1.jpg')"
-              }}
-            ></div>
-            
-            {/* Content (stays on top) */}
-            <div className="relative z-10">
+              {/* Background Image with Low Opacity */}
+              <div
+                className="absolute inset-0 opacity-10 bg-cover bg-center bg-no-repeat rounded-2xl"
+                style={{
+                  backgroundImage: "url('/images/fleet-dashboard-bg.jpg')",
+                }}
+              ></div>
               <h3 className="text-2xl font-bold text-brand-dark-blue mb-8 text-center">
                 Why Modern Matters
               </h3>

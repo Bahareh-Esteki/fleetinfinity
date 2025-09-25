@@ -316,7 +316,7 @@ export default function HomePage() {
                 src="/images/bg-1.png"
                 alt=""
                 fill
-                className="object-cover opacity-30"
+                className="object-cover opacity-15"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
 

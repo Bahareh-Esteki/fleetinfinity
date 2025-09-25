@@ -313,7 +313,7 @@ export default function HomePage() {
             <div className="relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100 overflow-hidden">
               {/* Background Image with Low Opacity */}
               <div
-                className="absolute inset-0 opacity-80 bg-cover bg-center bg-no-repeat rounded-2xl"
+                className="absolute inset-0 opacity-100 bg-cover bg-center bg-no-repeat rounded-2xl"
                 style={{
                   backgroundImage: "url('/images/bg-1.jpg')",
                 }}
@@ -328,7 +328,7 @@ export default function HomePage() {
                     <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
                       <Clock className="w-5 h-5 text-brand-green" />
                     </div>
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-white-700">
                       Implementation Time
                     </span>
                   </div>
@@ -337,7 +337,7 @@ export default function HomePage() {
                       {" "}
                       48hrs
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-white-500">
                       vs 2-6 weeks industry avg
                     </div>
                   </div>
@@ -348,7 +348,7 @@ export default function HomePage() {
                     <div className="w-10 h-10 bg-brand-green/10 rounded-lg flex items-center justify-center">
                       <Smartphone className="w-5 h-5 text-brand-green" />
                     </div>
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-white-700">
                       Mobile Experience
                     </span>
                   </div>

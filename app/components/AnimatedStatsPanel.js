@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Clock, Smartphone, DollarSign, Brain, Shield } from "lucide-react";
+import Image from "next/image";
 
 const AnimatedStatsPanel = () => {
   const ref = useRef(null);

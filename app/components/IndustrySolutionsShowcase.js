@@ -631,12 +631,13 @@ const IndustryCapabilitiesShowcase = () => {
                   ))}
                 </div>
                 {/* Mobile: carousel */}
-                <div className="md:hidden overflow-x-auto whitespace-nowrap -mx-2 px-2">
+                {/* Mobile: Capabilities as horizontal scrollable cards */}
+                <div className="md:hidden flex flex-nowrap gap-3 px-1 overflow-x-auto pb-2 snap-x snap-mandatory">
                   {current.capabilities.map((cap, idx) => (
                     <div
                       key={idx}
-                      className="inline-block align-top w-[18rem] mr-3 bg-white rounded-xl p-4 border border-gray-100"
-                      style={{ minWidth: "16rem", maxWidth: "20rem" }}
+                      className="flex-none w-72 bg-white rounded-xl p-4 border border-gray-100 snap-center"
+                      style={{ minWidth: "16rem", maxWidth: "18rem" }}
                     >
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -649,7 +650,7 @@ const IndustryCapabilitiesShowcase = () => {
                           <p className="text-sm text-gray-600 mt-1">
                             {cap.description}
                           </p>
-                          <p className="text-[11px] text-gray-500 italic mt-1">
+                          <p className="text-xs text-gray-500 italic mt-1">
                             Technical: {cap.technical}
                           </p>
                         </div>

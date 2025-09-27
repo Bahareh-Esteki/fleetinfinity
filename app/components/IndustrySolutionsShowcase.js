@@ -631,13 +631,11 @@ const IndustryCapabilitiesShowcase = () => {
                   ))}
                 </div>
                 {/* Mobile: carousel */}
-                {/* Mobile: Capabilities as horizontal scrollable cards */}
-                <div className="md:hidden flex flex-nowrap gap-3 px-1 overflow-x-auto pb-2 snap-x snap-mandatory">
+                <div className="md:hidden flex flex-col gap-3 mt-2">
                   {current.capabilities.map((cap, idx) => (
                     <div
                       key={idx}
-                      className="flex-none w-72 bg-white rounded-xl p-4 border border-gray-100 snap-center"
-                      style={{ minWidth: "16rem", maxWidth: "18rem" }}
+                      className="bg-white rounded-xl p-4 border border-gray-100"
                     >
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">

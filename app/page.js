@@ -40,7 +40,7 @@ import HighlightsSection from "./components/HighlightsSection";
 import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
-
+import IndustrySolutionsShowcase from "./components/IndustrySolutionsShowcase";
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -486,6 +486,9 @@ export default function HomePage() {
         </div>
       </section>
       {/* --- NEW: Solutions by Industry Section --- */}
+      <IndustrySolutionsShowcase />
+      {/* --- NEW: Solutions by Industry Section --- */}
+
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">

@@ -1,4 +1,4 @@
-// components/IndustrySolutionsShowcase.js
+// components/IndustryCapabilitiesShowcase.js
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -24,14 +24,20 @@ import {
   Smartphone,
   Camera,
   Thermometer,
+  Code,
+  Database,
+  Globe,
+  Wifi,
+  Lock,
+  TrendingUp,
 } from "lucide-react";
 
-const IndustrySolutionsShowcase = () => {
+const IndustryCapabilitiesShowcase = () => {
   const [activeIndustry, setActiveIndustry] = useState("logistics");
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [autoRotate, setAutoRotate] = useState(true);
 
-  // Industry data with real solutions
+  // Real industry solutions based on your platform capabilities
   const industries = {
     logistics: {
       id: "logistics",
@@ -42,52 +48,51 @@ const IndustrySolutionsShowcase = () => {
       iconBg: "bg-blue-100",
       iconColor: "text-blue-600",
       description:
-        "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with real-time fleet visibility.",
+        "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with comprehensive fleet visibility.",
       challenges: [
         "Route optimization for fuel efficiency",
-        "Real-time delivery tracking",
-        "Driver behavior monitoring",
+        "Real-time delivery tracking and ETAs",
+        "Driver behavior monitoring and safety",
         "Cargo security and temperature control",
+        "Fleet maintenance scheduling",
+        "Fuel consumption management",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <MapPin className="w-5 h-5" />,
-          title: "Smart Route Optimization",
-          description: "AI-powered routing reduces fuel costs by up to 25%",
-          benefit: "25% fuel savings",
+          title: "Advanced Route Planning",
+          description:
+            "Multi-stop optimization with traffic and road condition analysis",
+          technical: "Real-time traffic integration, dynamic re-routing",
         },
         {
           icon: <Clock className="w-5 h-5" />,
-          title: "Real-Time ETA Updates",
-          description: "Automatic customer notifications and delivery tracking",
-          benefit: "40% fewer calls",
+          title: "Live Tracking & ETAs",
+          description:
+            "Precise location tracking with automated customer notifications",
+          technical: "GPS accuracy ±3m, automatic ETA updates",
         },
         {
           icon: <Shield className="w-5 h-5" />,
-          title: "Cargo Security",
-          description: "Door sensors and geo-fence alerts for theft prevention",
-          benefit: "90% theft reduction",
+          title: "Comprehensive Security",
+          description: "Geo-fence alerts, door sensors, and anti-theft systems",
+          technical: "Real-time alerts, recovery assistance",
         },
         {
           icon: <Thermometer className="w-5 h-5" />,
           title: "Cold Chain Monitoring",
-          description:
-            "Temperature tracking for pharmaceutical and food delivery",
-          benefit: "100% compliance",
+          description: "Temperature logging with compliance reporting",
+          technical: "Multiple sensor support, automated alerts",
         },
       ],
-      stats: [
-        { value: "2,500+", label: "Logistics Companies" },
-        { value: "45%", label: "Cost Reduction" },
-        { value: "98%", label: "On-time Delivery" },
+      readyFeatures: [
+        "Multi-device compatibility (151+ supported devices)",
+        "Real-time GPS tracking with 30-second updates",
+        "Advanced reporting and analytics",
+        "Mobile app for drivers and dispatchers",
+        "API integration capabilities",
+        "Multi-language interface support",
       ],
-      testimonial: {
-        quote:
-          "FleetInfinity helped us reduce delivery costs by 30% while improving customer satisfaction.",
-        author: "Sarah Chen",
-        position: "Operations Director",
-        company: "Express Logistics",
-      },
     },
     construction: {
       id: "construction",
@@ -98,106 +103,107 @@ const IndustrySolutionsShowcase = () => {
       iconBg: "bg-orange-100",
       iconColor: "text-orange-600",
       description:
-        "Track heavy machinery, monitor equipment usage, and prevent theft with rugged GPS solutions.",
+        "Protect valuable assets, monitor equipment usage, and optimize construction operations.",
       challenges: [
-        "Equipment theft prevention",
-        "Usage hours tracking",
-        "Maintenance scheduling",
+        "Equipment theft prevention and recovery",
+        "Usage hours tracking and billing",
+        "Maintenance scheduling optimization",
         "Job site security monitoring",
+        "Equipment utilization analysis",
+        "Operator behavior monitoring",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <Shield className="w-5 h-5" />,
-          title: "Asset Protection",
-          description: "Advanced theft alerts and recovery systems",
-          benefit: "95% recovery rate",
+          title: "Asset Protection System",
+          description:
+            "Advanced theft prevention with immediate recovery alerts",
+          technical: "Motion detection, geo-fence violations, recovery mode",
         },
         {
           icon: <BarChart3 className="w-5 h-5" />,
           title: "Usage Analytics",
-          description: "Track equipment hours and productivity metrics",
-          benefit: "30% efficiency gain",
+          description:
+            "Detailed equipment utilization and productivity reports",
+          technical: "Engine hours tracking, idle time analysis",
         },
         {
           icon: <Wrench className="w-5 h-5" />,
-          title: "Predictive Maintenance",
-          description: "Automated maintenance scheduling based on usage",
-          benefit: "50% less downtime",
+          title: "Maintenance Management",
+          description:
+            "Automated scheduling based on usage hours and conditions",
+          technical: "Customizable maintenance intervals, alert system",
         },
         {
           icon: <MapPin className="w-5 h-5" />,
-          title: "Job Site Monitoring",
-          description: "Geo-fence alerts and equipment location tracking",
-          benefit: "24/7 security",
+          title: "Site Monitoring",
+          description:
+            "Complete job site visibility with equipment location tracking",
+          technical: "Real-time location, historical movement data",
         },
       ],
-      stats: [
-        { value: "800+", label: "Construction Companies" },
-        { value: "$2M+", label: "Equipment Protected" },
-        { value: "95%", label: "Theft Prevention" },
+      readyFeatures: [
+        "Heavy-duty device compatibility",
+        "Rugged hardware support (-40°C to +85°C)",
+        "CAN bus integration for equipment data",
+        "Customizable maintenance alerts",
+        "Multi-site management dashboard",
+        "Equipment sharing and allocation tools",
       ],
-      testimonial: {
-        quote:
-          "We've eliminated equipment theft and reduced maintenance costs by 40% since implementing FleetInfinity.",
-        author: "Mike Rodriguez",
-        position: "Fleet Manager",
-        company: "BuildTech Construction",
-      },
     },
     healthcare: {
       id: "healthcare",
-      name: "Healthcare & Emergency",
+      name: "Healthcare & Emergency Services",
       icon: <Heart className="w-6 h-6" />,
       color: "red",
       bgGradient: "from-red-500/10 to-red-600/5",
       iconBg: "bg-red-100",
       iconColor: "text-red-600",
       description:
-        "Ensure critical medical deliveries and emergency response with reliable tracking solutions.",
+        "Ensure critical medical deliveries and emergency response with reliable, compliant tracking.",
       challenges: [
-        "Emergency response optimization",
-        "Medical supply chain tracking",
-        "Patient transport safety",
-        "Compliance monitoring",
+        "Emergency response time optimization",
+        "Medical supply chain compliance",
+        "Patient transport safety monitoring",
+        "Regulatory compliance reporting",
+        "Critical delivery tracking",
+        "Staff and vehicle safety",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <Zap className="w-5 h-5" />,
-          title: "Emergency Dispatch",
-          description: "Fastest route calculation for emergency response",
-          benefit: "3min faster response",
+          title: "Emergency Response",
+          description:
+            "Fastest route calculation with priority dispatch support",
+          technical: "Sub-second route calculation, emergency mode",
         },
         {
           icon: <Thermometer className="w-5 h-5" />,
           title: "Medical Cold Chain",
-          description: "Temperature monitoring for vaccines and medicines",
-          benefit: "100% FDA compliance",
+          description: "Continuous temperature monitoring for pharmaceuticals",
+          technical: "Multiple sensor support, compliance logging",
         },
         {
           icon: <Shield className="w-5 h-5" />,
           title: "Patient Safety",
-          description: "Driver behavior monitoring for patient transport",
-          benefit: "60% safer driving",
+          description: "Driver behavior monitoring for safe patient transport",
+          technical: "Smooth driving analysis, safety scoring",
         },
         {
           icon: <Clock className="w-5 h-5" />,
-          title: "Real-Time Tracking",
-          description: "Live location sharing for families and staff",
-          benefit: "Peace of mind",
+          title: "Family Communication",
+          description: "Secure location sharing with family members",
+          technical: "Privacy-protected sharing, real-time updates",
         },
       ],
-      stats: [
-        { value: "150+", label: "Healthcare Providers" },
-        { value: "2min", label: "Faster Response" },
-        { value: "99.9%", label: "Uptime SLA" },
+      readyFeatures: [
+        "HIPAA-compliant data handling",
+        "Emergency alert systems",
+        "Sensor integration for medical equipment",
+        "Secure communication channels",
+        "Compliance reporting tools",
+        "99.9% uptime SLA ready",
       ],
-      testimonial: {
-        quote:
-          "FleetInfinity's reliable tracking gives our patients' families peace of mind during emergency transports.",
-        author: "Dr. Amanda Williams",
-        position: "Operations Chief",
-        company: "City Medical Center",
-      },
     },
     agriculture: {
       id: "agriculture",
@@ -208,51 +214,49 @@ const IndustrySolutionsShowcase = () => {
       iconBg: "bg-green-100",
       iconColor: "text-green-600",
       description:
-        "Monitor farm equipment, track harvest progress, and optimize agricultural operations.",
+        "Monitor farm equipment across vast areas, optimize operations, and protect valuable machinery.",
       challenges: [
-        "Equipment location across large farms",
+        "Equipment tracking across large farms",
         "Harvest progress monitoring",
         "Fuel consumption optimization",
-        "Theft prevention in remote areas",
+        "Remote area connectivity",
+        "Equipment sharing coordination",
+        "Weather-resistant monitoring",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <MapPin className="w-5 h-5" />,
-          title: "Field Mapping",
-          description: "Track equipment across large agricultural areas",
-          benefit: "Complete visibility",
+          title: "Large Area Coverage",
+          description: "Reliable tracking across thousands of acres",
+          technical: "Satellite communication support, long-range connectivity",
         },
         {
           icon: <BarChart3 className="w-5 h-5" />,
           title: "Harvest Analytics",
-          description: "Monitor crop yields and equipment efficiency",
-          benefit: "20% yield increase",
+          description: "Field coverage analysis and productivity monitoring",
+          technical: "GPS trail mapping, area calculation tools",
         },
         {
           icon: <Zap className="w-5 h-5" />,
           title: "Fuel Management",
-          description: "Optimize fuel consumption for farm equipment",
-          benefit: "25% fuel savings",
+          description: "Consumption tracking and optimization recommendations",
+          technical: "Fuel sensor integration, efficiency reporting",
         },
         {
           icon: <Shield className="w-5 h-5" />,
           title: "Remote Security",
-          description: "Theft protection for equipment in remote locations",
-          benefit: "24/7 monitoring",
+          description: "Equipment protection in isolated farming areas",
+          technical: "Battery-powered trackers, satellite alerts",
         },
       ],
-      stats: [
-        { value: "500+", label: "Farms Protected" },
-        { value: "15%", label: "Productivity Gain" },
-        { value: "30%", label: "Cost Reduction" },
+      readyFeatures: [
+        "Long-life battery tracker support (5-7 years)",
+        "Weather-resistant device compatibility",
+        "Offline data synchronization",
+        "Large-scale mapping capabilities",
+        "Equipment sharing management",
+        "Agricultural sensor integration",
       ],
-      testimonial: {
-        quote:
-          "FleetInfinity transformed our farm operations. We can now track every piece of equipment across 5,000 acres.",
-        author: "John Martinez",
-        position: "Farm Owner",
-        company: "Martinez Family Farms",
-      },
     },
     transportation: {
       id: "transportation",
@@ -263,51 +267,49 @@ const IndustrySolutionsShowcase = () => {
       iconBg: "bg-purple-100",
       iconColor: "text-purple-600",
       description:
-        "Enhance passenger safety, optimize routes, and improve service reliability for public transit.",
+        "Enhance passenger experience, improve safety, and optimize public transit operations.",
       challenges: [
-        "Real-time passenger information",
-        "Driver safety monitoring",
-        "Route optimization",
-        "Maintenance scheduling",
+        "Real-time passenger information systems",
+        "Driver safety and behavior monitoring",
+        "Route efficiency optimization",
+        "Predictive maintenance scheduling",
+        "Passenger safety and security",
+        "Service reliability improvement",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <Clock className="w-5 h-5" />,
-          title: "Real-Time Arrivals",
-          description: "Accurate ETAs for passengers at bus stops",
-          benefit: "95% accuracy",
+          title: "Passenger Information",
+          description: "Accurate real-time arrival predictions for stops",
+          technical: "Machine learning ETA calculation, API integration",
         },
         {
           icon: <Camera className="w-5 h-5" />,
-          title: "Driver Safety Systems",
-          description: "AI-powered driver monitoring and alerts",
-          benefit: "70% fewer incidents",
+          title: "Safety Systems",
+          description: "AI-powered driver monitoring and incident detection",
+          technical: "Dash cam integration, behavior analysis",
         },
         {
           icon: <MapPin className="w-5 h-5" />,
           title: "Route Optimization",
-          description: "Dynamic routing based on traffic and demand",
-          benefit: "20% faster trips",
+          description: "Dynamic routing based on traffic and demand patterns",
+          technical: "Traffic integration, passenger load analysis",
         },
         {
           icon: <Wrench className="w-5 h-5" />,
           title: "Fleet Maintenance",
-          description: "Predictive maintenance for public vehicles",
-          benefit: "40% less downtime",
+          description: "Predictive maintenance for public transit vehicles",
+          technical: "Engine diagnostics, maintenance scheduling",
         },
       ],
-      stats: [
-        { value: "50+", label: "Transit Agencies" },
-        { value: "1M+", label: "Daily Passengers" },
-        { value: "25%", label: "Improved On-Time" },
+      readyFeatures: [
+        "Public API for passenger apps",
+        "Multi-route management dashboard",
+        "Driver performance analytics",
+        "Passenger capacity monitoring",
+        "Service disruption alerts",
+        "Accessibility compliance tools",
       ],
-      testimonial: {
-        quote:
-          "Our passengers love the real-time updates, and we've reduced maintenance costs significantly.",
-        author: "Lisa Thompson",
-        position: "Transit Director",
-        company: "Metro City Transit",
-      },
     },
     aviation: {
       id: "aviation",
@@ -318,51 +320,50 @@ const IndustrySolutionsShowcase = () => {
       iconBg: "bg-indigo-100",
       iconColor: "text-indigo-600",
       description:
-        "Track aircraft ground support equipment and marine vessels with specialized GPS solutions.",
+        "Specialized tracking for ground support equipment and marine vessels with global connectivity.",
       challenges: [
-        "Ground support equipment tracking",
-        "Vessel monitoring in remote waters",
+        "Ground support equipment coordination",
+        "Global vessel tracking requirements",
         "Cargo handling optimization",
-        "Safety compliance",
+        "International compliance standards",
+        "Remote area connectivity",
+        "High-value asset protection",
       ],
-      solutions: [
+      capabilities: [
         {
           icon: <Plane className="w-5 h-5" />,
-          title: "Ground Equipment",
-          description: "Track tugs, baggage carts, and support vehicles",
-          benefit: "50% faster turnaround",
+          title: "Airport Operations",
+          description: "Ground support equipment tracking and coordination",
+          technical: "Aircraft turnaround optimization, equipment allocation",
         },
         {
           icon: <Ship className="w-5 h-5" />,
-          title: "Marine Tracking",
-          description: "Satellite tracking for vessels in international waters",
-          benefit: "Global coverage",
+          title: "Maritime Tracking",
+          description: "Global vessel monitoring with satellite connectivity",
+          technical: "Iridium satellite support, international waters coverage",
         },
         {
           icon: <Shield className="w-5 h-5" />,
-          title: "Safety Compliance",
-          description: "Automated compliance reporting for regulations",
-          benefit: "100% compliance",
+          title: "Compliance Ready",
+          description: "International aviation and maritime regulation support",
+          technical: "Automated compliance reporting, audit trails",
         },
         {
           icon: <BarChart3 className="w-5 h-5" />,
           title: "Operations Analytics",
-          description: "Optimize cargo handling and equipment usage",
-          benefit: "30% efficiency gain",
+          description:
+            "Cargo handling efficiency and asset utilization analysis",
+          technical: "Turnaround time analysis, capacity optimization",
         },
       ],
-      stats: [
-        { value: "25+", label: "Airports & Ports" },
-        { value: "99.9%", label: "Satellite Coverage" },
-        { value: "35%", label: "Efficiency Increase" },
+      readyFeatures: [
+        "Satellite communication device support",
+        "International compliance reporting",
+        "Maritime-grade hardware compatibility",
+        "Airport security integration ready",
+        "Global timezone handling",
+        "Multi-currency cost tracking",
       ],
-      testimonial: {
-        quote:
-          "FleetInfinity's satellite tracking keeps our vessels connected even in the most remote waters.",
-        author: "Captain James Wilson",
-        position: "Fleet Operations",
-        company: "Global Shipping Lines",
-      },
     },
   };
 
@@ -376,7 +377,7 @@ const IndustrySolutionsShowcase = () => {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % industryKeys.length;
       setActiveIndustry(industryKeys[currentIndex]);
-    }, 5000); // Change every 5 seconds
+    }, 12000);
 
     return () => clearInterval(interval);
   }, [activeIndustry, autoRotate]);
@@ -402,7 +403,7 @@ const IndustrySolutionsShowcase = () => {
         >
           <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green mb-6">
             <Target className="w-4 h-4" />
-            Industry-Specific Solutions
+            Industry-Ready Solutions
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-6">
@@ -412,8 +413,8 @@ const IndustrySolutionsShowcase = () => {
 
           <p className="text-xl text-gray-600 leading-relaxed">
             We understand that every industry has unique challenges. Our
-            platform is flexible and powerful enough to meet the specific needs
-            of your business.
+            platform is built with the flexibility and power to meet the
+            specific needs of your business from day one.
           </p>
         </motion.div>
 
@@ -433,7 +434,7 @@ const IndustrySolutionsShowcase = () => {
                 key={key}
                 onClick={() => {
                   setActiveIndustry(key);
-                  setAutoRotate(false); // Stop auto-rotate when user interacts
+                  setAutoRotate(false);
                 }}
                 className={`flex items-center gap-3 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   isActive
@@ -482,13 +483,13 @@ const IndustrySolutionsShowcase = () => {
               </p>
             </div>
 
-            {/* Solutions Grid */}
+            {/* Content Grid */}
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
-              {/* Challenges & Solutions */}
+              {/* Industry Challenges */}
               <div>
                 <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                   <Settings className="w-5 h-5 text-orange-600" />
-                  Industry Challenges
+                  Industry Challenges We Address
                 </h4>
                 <div className="space-y-3 mb-8">
                   {currentIndustry.challenges.map((challenge, idx) => (
@@ -505,52 +506,36 @@ const IndustrySolutionsShowcase = () => {
                   ))}
                 </div>
 
-                {/* Customer Testimonial */}
+                {/* Platform Readiness */}
                 <motion.div
                   className="bg-white/80 rounded-xl p-6 border border-white/60"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-r from-gray-300 to-gray-400 rounded-full flex items-center justify-center">
-                        <span className="text-white font-semibold text-sm">
-                          {currentIndustry.testimonial.author
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </span>
+                  <h5 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    Platform Ready Features
+                  </h5>
+                  <div className="space-y-2">
+                    {currentIndustry.readyFeatures.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-gray-600">{feature}</span>
                       </div>
-                    </div>
-                    <div>
-                      <p className="text-gray-700 italic mb-3">
-                        "{currentIndustry.testimonial.quote}"
-                      </p>
-                      <div>
-                        <div className="font-semibold text-gray-800">
-                          {currentIndustry.testimonial.author}
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          {currentIndustry.testimonial.position}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {currentIndustry.testimonial.company}
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </motion.div>
               </div>
 
-              {/* Our Solutions */}
+              {/* Our Capabilities */}
               <div>
                 <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  Our Solutions
+                  <Zap className="w-5 h-5 text-green-600" />
+                  Our Platform Capabilities
                 </h4>
                 <div className="space-y-4">
-                  {currentIndustry.solutions.map((solution, idx) => (
+                  {currentIndustry.capabilities.map((capability, idx) => (
                     <motion.div
                       key={idx}
                       className="bg-white/70 rounded-xl p-4 border border-white/40 hover:bg-white/90 transition-all duration-200 cursor-pointer"
@@ -558,7 +543,7 @@ const IndustrySolutionsShowcase = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 + 0.4 }}
                       whileHover={{ scale: 1.02, y: -2 }}
-                      onMouseEnter={() => setHoveredFeature(solution.title)}
+                      onMouseEnter={() => setHoveredFeature(capability.title)}
                       onMouseLeave={() => setHoveredFeature(null)}
                     >
                       <div className="flex items-start gap-4">
@@ -566,22 +551,18 @@ const IndustrySolutionsShowcase = () => {
                           className={`w-10 h-10 ${currentIndustry.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}
                         >
                           <span className={currentIndustry.iconColor}>
-                            {solution.icon}
+                            {capability.icon}
                           </span>
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-center justify-between mb-2">
-                            <h5 className="font-semibold text-gray-800">
-                              {solution.title}
-                            </h5>
-                            <span
-                              className={`text-xs px-2 py-1 rounded-full bg-${currentIndustry.color}-100 text-${currentIndustry.color}-700 font-medium`}
-                            >
-                              {solution.benefit}
-                            </span>
-                          </div>
-                          <p className="text-sm text-gray-600">
-                            {solution.description}
+                          <h5 className="font-semibold text-gray-800 mb-2">
+                            {capability.title}
+                          </h5>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {capability.description}
+                          </p>
+                          <p className="text-xs text-gray-500 italic">
+                            Technical: {capability.technical}
                           </p>
                         </div>
                       </div>
@@ -591,61 +572,64 @@ const IndustrySolutionsShowcase = () => {
               </div>
             </div>
 
-            {/* Industry Stats */}
-            <motion.div
-              className="grid md:grid-cols-3 gap-6 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              {currentIndustry.stats.map((stat, idx) => (
-                <div
-                  key={idx}
-                  className="text-center bg-white/60 rounded-xl p-6 border border-white/40"
-                >
-                  <div
-                    className={`text-3xl font-bold text-${currentIndustry.color}-600 mb-2`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* CTA Button */}
-            <div className="text-center">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.button
-                className={`bg-${currentIndustry.color}-600 hover:bg-${currentIndustry.color}-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center gap-3 mx-auto group transition-all duration-300`}
+                className={`bg-${currentIndustry.color}-600 hover:bg-${currentIndustry.color}-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center gap-3 group transition-all duration-300`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Get Industry-Specific Demo
+                Schedule Platform Demo
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+
+              <motion.button
+                className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold px-8 py-4 rounded-xl flex items-center gap-3 group transition-all duration-300 bg-white/60"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View Technical Specs
+                <Database className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               </motion.button>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Bottom Trust Indicators */}
+        {/* Bottom Platform Highlights */}
         <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.6 }}
         >
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-green-500" />
-              <span>Industry certified solutions</span>
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Database className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">151+ Devices</div>
+              <div className="text-sm text-gray-600">
+                Verified compatible hardware
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-green-500" />
-              <span>Compliance ready</span>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Globe className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">Global Ready</div>
+              <div className="text-sm text-gray-600">
+                Multi-region deployment
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
-              <span>24/7 industry support</span>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Lock className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">
+                Enterprise Security
+              </div>
+              <div className="text-sm text-gray-600">Bank-grade encryption</div>
+            </div>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Code className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">API First</div>
+              <div className="text-sm text-gray-600">
+                Full integration support
+              </div>
             </div>
           </div>
         </motion.div>
@@ -654,4 +638,4 @@ const IndustrySolutionsShowcase = () => {
   );
 };
 
-export default IndustrySolutionsShowcase;
+export default IndustryCapabilitiesShowcase;

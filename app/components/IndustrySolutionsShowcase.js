@@ -82,7 +82,9 @@ const IndustryCapabilitiesShowcase = () => {
   const [activeIndustry, setActiveIndustry] = useState("logistics");
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [autoRotate, setAutoRotate] = useState(true);
-
+  const [showMoreMobileChallenges, setShowMoreMobileChallenges] =
+    useState(false);
+  const [showMoreMobileFeatures, setShowMoreMobileFeatures] = useState(false);
   // Industry content (no testimonials, purely capabilities + readiness)
   const industries = useMemo(
     () => ({
@@ -365,7 +367,6 @@ const IndustryCapabilitiesShowcase = () => {
     []
   );
 
-  // Auto-rotate through industries
   useEffect(() => {
     if (!autoRotate) return;
     const keys = Object.keys(industries);
@@ -380,13 +381,16 @@ const IndustryCapabilitiesShowcase = () => {
   const keys = Object.keys(industries);
   const current = industries[activeIndustry];
   const bg = industryBackgrounds[activeIndustry];
+  // Thresholds for how many lines to show before "Show More"
+  const previewChallenges = 2;
+  const previewFeatures = 2;
 
   return (
     <section className="relative w-full">
-      {/* Background image per industry */}
+      {/* Background image */}
       <div className="relative w-full min-h-[70vh]">
         <Image
-          src={bg?.src || "/images/backgrounds/logistics_hub_bg.png"}
+          src={bg?.src || "/images/backgrounds/logistics_hub_bg.jpg"}
           alt=""
           fill
           priority
@@ -401,36 +405,34 @@ const IndustryCapabilitiesShowcase = () => {
       </div>
 
       {/* Foreground content */}
-      <div className="container mx-auto px-4 -mt-[55vh] pb-16 relative z-10">
-        {/* Header */}
+      <div className="container mx-auto px-4 -mt-[55vh] pb-10 relative z-10">
+        {/* HEADER */}
         <motion.div
-          className="text-center max-w-4xl mx-auto mb-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center max-w-4xl mx-auto mb-8"
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white mb-5">
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white mb-4">
             <Target className="w-4 h-4" />
             Industry-Ready Solutions
           </div>
-
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">
             Solutions Tailored for{" "}
             <span className="text-emerald-300">Your Industry</span>
           </h2>
-
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-            Built with the flexibility and power to meet the specific needs of
-            modern operations from day one.
+          <p className="text-base md:text-xl text-white/90 leading-relaxed">
+            Built to meet the specific demands of modern operations from day
+            one.
           </p>
         </motion.div>
 
-        {/* Tabs */}
+        {/* TABS */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-8"
-          initial={{ opacity: 0, y: 12 }}
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-7"
+          initial={{ opacity: 0, y: 9 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.4 }}
+          transition={{ delay: 0.12, duration: 0.2 }}
         >
           {keys.map((k) => {
             const isActive = k === activeIndustry;
@@ -439,9 +441,11 @@ const IndustryCapabilitiesShowcase = () => {
                 key={k}
                 onClick={() => {
                   setActiveIndustry(k);
+                  setShowMoreMobileChallenges(false);
+                  setShowMoreMobileFeatures(false);
                   setAutoRotate(false);
                 }}
-                className={`flex items-center gap-3 px-5 py-2.5 rounded-full font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-emerald-500 text-white shadow-lg"
                     : "bg-white/90 text-gray-700 border border-white/70 hover:bg-white"
@@ -461,97 +465,160 @@ const IndustryCapabilitiesShowcase = () => {
           })}
         </motion.div>
 
-        {/* Panel */}
+        {/* MAIN PANEL (Responsive) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndustry}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.45 }}
-            className="rounded-3xl p-6 md:p-10 bg-white/90 backdrop-blur shadow-2xl border border-white"
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4 }}
+            className="rounded-3xl p-4 md:p-10 bg-white/90 backdrop-blur shadow-2xl border border-white"
           >
             {/* Intro */}
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-50 rounded-2xl mb-4">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-50 rounded-2xl mb-2">
                 <IndustryIcon id={activeIndustry} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-2">
                 {current.name}
               </h3>
-              <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
                 {current.description}
               </p>
             </div>
 
-            {/* Content grid */}
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Challenges + Ready features */}
+            {/* GRID: Desktop side-by-side, Mobile stacked/summarized */}
+            <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
+              {/* Challenges (Summary/Expand) */}
               <div>
-                <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <Settings className="w-5 h-5 text-orange-600" />
                   Industry Challenges We Address
                 </h4>
-                <div className="space-y-2 mb-6">
+                {/* PC: Full list, Mobile: Collapsed toggle */}
+                <div className="hidden md:block space-y-2 mb-6">
                   {current.challenges.map((c, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
-                      className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-100"
-                      initial={{ opacity: 0, x: -16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.06 + 0.1 }}
+                      className="flex items-start gap-2 p-2 bg-white rounded-lg border border-gray-100"
                     >
                       <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm md:text-base">
-                        {c}
-                      </span>
-                    </motion.div>
+                      <span className="text-gray-700 text-base">{c}</span>
+                    </div>
                   ))}
                 </div>
+                <div className="block md:hidden space-y-2 mb-2">
+                  {current.challenges
+                    .slice(0, previewChallenges)
+                    .map((c, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-2 p-2 bg-white rounded-lg border border-gray-100"
+                      >
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-gray-700 text-sm">{c}</span>
+                      </div>
+                    ))}
+                  {current.challenges.length > previewChallenges &&
+                    !showMoreMobileChallenges && (
+                      <button
+                        onClick={() => setShowMoreMobileChallenges(true)}
+                        className="px-2 py-1 text-emerald-600 text-sm font-medium underline"
+                      >
+                        Show {current.challenges.length - previewChallenges}{" "}
+                        more...
+                      </button>
+                    )}
+                  {showMoreMobileChallenges &&
+                    current.challenges
+                      .slice(previewChallenges)
+                      .map((c, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2 p-2 bg-white rounded-lg border border-gray-100"
+                        >
+                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                          <span className="text-gray-700 text-sm">{c}</span>
+                        </div>
+                      ))}
+                </div>
 
-                <div className="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
-                  <h5 className="font-bold text-emerald-900 mb-3 flex items-center gap-2">
+                {/* Ready Features */}
+                {/* Desktop: grid; Mobile: summary/expand */}
+                <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-100 mt-3">
+                  <h5 className="font-bold text-emerald-900 mb-2 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-emerald-600" />
                     Platform Ready Features
                   </h5>
-                  <div className="grid sm:grid-cols-2 gap-2">
+                  <div className="hidden md:grid md:grid-cols-2 gap-2">
                     {current.readyFeatures.map((f, idx) => (
                       <div key={idx} className="flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
-                        <span className="text-emerald-900/90 text-sm">{f}</span>
+                        <span className="text-emerald-900/90 text-base">
+                          {f}
+                        </span>
                       </div>
                     ))}
+                  </div>
+                  {/* Mobile: Show two, toggle rest */}
+                  <div className="md:hidden space-y-1">
+                    {current.readyFeatures
+                      .slice(0, previewFeatures)
+                      .map((f, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
+                          <span className="text-emerald-900/90 text-sm">
+                            {f}
+                          </span>
+                        </div>
+                      ))}
+                    {current.readyFeatures.length > previewFeatures &&
+                      !showMoreMobileFeatures && (
+                        <button
+                          onClick={() => setShowMoreMobileFeatures(true)}
+                          className="px-2 py-1 text-emerald-600 text-sm font-medium underline"
+                        >
+                          Show {current.readyFeatures.length - previewFeatures}{" "}
+                          more...
+                        </button>
+                      )}
+                    {showMoreMobileFeatures &&
+                      current.readyFeatures
+                        .slice(previewFeatures)
+                        .map((f, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
+                            <span className="text-emerald-900/90 text-sm">
+                              {f}
+                            </span>
+                          </div>
+                        ))}
                   </div>
                 </div>
               </div>
 
               {/* Capabilities */}
               <div>
-                <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
                   <Zap className="w-5 h-5 text-emerald-600" />
                   Our Platform Capabilities
                 </h4>
-                <div className="space-y-4">
+                {/* Desktop: vertical list; Mobile: horizontal swipe */}
+                <div className="hidden md:block space-y-4">
                   {current.capabilities.map((cap, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
                       className="bg-white rounded-xl p-4 border border-gray-100 hover:border-emerald-200 transition-all duration-200 cursor-default"
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.08 + 0.15 }}
-                      onMouseEnter={() => setHoveredFeature(cap.title)}
-                      onMouseLeave={() => setHoveredFeature(null)}
                     >
                       <div className="flex items-start gap-4">
                         <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-emerald-700">{cap.icon}</span>
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <h5 className="font-semibold text-gray-900">
-                              {cap.title}
-                            </h5>
-                          </div>
+                          <h5 className="font-semibold text-gray-900">
+                            {cap.title}
+                          </h5>
                           <p className="text-sm text-gray-600 mt-1">
                             {cap.description}
                           </p>
@@ -560,14 +627,41 @@ const IndustryCapabilitiesShowcase = () => {
                           </p>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
+                  ))}
+                </div>
+                {/* Mobile: carousel */}
+                <div className="md:hidden overflow-x-auto whitespace-nowrap -mx-2 px-2">
+                  {current.capabilities.map((cap, idx) => (
+                    <div
+                      key={idx}
+                      className="inline-block align-top w-[18rem] mr-3 bg-white rounded-xl p-4 border border-gray-100"
+                      style={{ minWidth: "16rem", maxWidth: "20rem" }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <span className="text-emerald-700">{cap.icon}</span>
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-gray-900">
+                            {cap.title}
+                          </h5>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {cap.description}
+                          </p>
+                          <p className="text-[11px] text-gray-500 italic mt-1">
+                            Technical: {cap.technical}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Bottom highlights */}
-            <div className="grid md:grid-cols-4 gap-4 mt-10">
+            {/* Bottom highlights: PC grid, mobile summary */}
+            <div className="hidden md:grid md:grid-cols-4 gap-4 mt-10">
               <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
                 <Database className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
                 <div className="font-semibold text-gray-900">151+ Devices</div>
@@ -595,9 +689,28 @@ const IndustryCapabilitiesShowcase = () => {
                 <div className="text-xs text-gray-600">REST + webhooks</div>
               </div>
             </div>
+            {/* Mobile: compact row */}
+            <div className="md:hidden flex justify-between mt-6 gap-2 text-xs">
+              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mr-1">
+                <Database className="w-6 h-6 text-emerald-600 mb-1" />
+                151+ Devices
+              </div>
+              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mx-1">
+                <Globe className="w-6 h-6 text-emerald-600 mb-1" />
+                Global Ready
+              </div>
+              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mx-1">
+                <Lock className="w-6 h-6 text-emerald-600 mb-1" />
+                Security
+              </div>
+              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg ml-1">
+                <Code className="w-6 h-6 text-emerald-600 mb-1" />
+                API-First
+              </div>
+            </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+            {/* CTAs (same style both views, stacked on mobile) */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-8">
               <motion.button
                 className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl shadow-md flex items-center gap-3 group transition-all duration-200"
                 whileHover={{ scale: 1.03, y: -2 }}
@@ -606,7 +719,6 @@ const IndustryCapabilitiesShowcase = () => {
                 Schedule Platform Demo
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-
               <motion.button
                 className="border-2 border-gray-200 hover:border-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-xl flex items-center gap-3 group transition-all duration-200 bg-white"
                 whileHover={{ scale: 1.03, y: -2 }}

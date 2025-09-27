@@ -1,736 +1,636 @@
-// app/components/DeviceCompatibilityShowcase.js - ENHANCED COMPACT VERSION
-import React, { useState, useMemo } from "react";
+// components/IndustryCapabilitiesShowcase.js
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search,
-  Filter,
+  Truck,
+  Building,
+  Plane,
+  Ship,
+  Tractor,
+  Zap,
+  Users,
+  Shield,
+  BarChart3,
+  Clock,
+  MapPin,
+  Settings,
+  ArrowRight,
   CheckCircle,
   Star,
-  ArrowRight,
-  Zap,
-  Shield,
-  Cpu,
-  Battery,
-  Wrench,
-  Settings,
-  Grid,
-  List,
-  Eye,
-  Download,
-  ExternalLink,
   Award,
-  ChevronDown,
-  ChevronUp,
+  Target,
+  Wrench,
+  Heart,
+  Smartphone,
+  Camera,
+  Thermometer,
+  Code,
+  Database,
+  Globe,
+  Wifi,
+  Lock,
+  TrendingUp,
 } from "lucide-react";
 
-// Import the device database
-import { deviceCategories, realDevices } from "../../data/deviceDatabase";
-import { getIcon } from "../../utils/iconMapping";
+const IndustryCapabilitiesShowcase = () => {
+  const [activeIndustry, setActiveIndustry] = useState("logistics");
+  const [hoveredFeature, setHoveredFeature] = useState(null);
+  const [autoRotate, setAutoRotate] = useState(true);
 
-const RealDeviceCompatibilityShowcase = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState("grid");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [devicesPerPage] = useState(15);
-  const [sortBy, setSortBy] = useState("verified");
-  const [showResults, setShowResults] = useState(false); // NEW: Control results visibility
-  const [expandedCards, setExpandedCards] = useState(new Set()); // NEW: Track expanded cards
-
-  // Use imported device data with icons
-  const categories = deviceCategories.map((cat) => ({
-    ...cat,
-    icon: getIcon(cat.icon, { className: "w-5 h-5" }), // Increased icon size
-  }));
-
-  // Filter and sort devices
-  const filteredDevices = useMemo(() => {
-    let filtered = realDevices.filter((device) => {
-      const matchesCategory =
-        activeCategory === "all" || device.category === activeCategory;
-      const matchesSearch =
-        searchQuery === "" ||
-        device.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        device.manufacturer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        device.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        device.features.some((feature) =>
-          feature.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      return matchesCategory && matchesSearch;
-    });
-
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case "verified":
-          if (a.verified && !b.verified) return -1;
-          if (!a.verified && b.verified) return 1;
-          if (a.popular && !b.popular) return -1;
-          if (!a.popular && b.popular) return 1;
-          return (b.marketRating || 0) - (a.marketRating || 0);
-        case "name":
-          return a.name.localeCompare(b.name);
-        case "rating":
-          return (b.marketRating || 0) - (a.marketRating || 0);
-        case "newest":
-          return (b.releaseYear || 0) - (a.releaseYear || 0);
-        default:
-          return 0;
-      }
-    });
-
-    return filtered;
-  }, [activeCategory, searchQuery, sortBy]);
-
-  // Pagination logic
-  const totalPages = Math.ceil(filteredDevices.length / devicesPerPage);
-  const currentDevices = filteredDevices.slice(
-    (currentPage - 1) * devicesPerPage,
-    currentPage * devicesPerPage
-  );
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  // Real industry solutions based on your platform capabilities
+  const industries = {
+    logistics: {
+      id: "logistics",
+      name: "Logistics & Transportation",
+      icon: <Truck className="w-6 h-6" />,
+      color: "blue",
+      bgGradient: "from-blue-500/10 to-blue-600/5",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
+      description:
+        "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with comprehensive fleet visibility.",
+      challenges: [
+        "Route optimization for fuel efficiency",
+        "Real-time delivery tracking and ETAs",
+        "Driver behavior monitoring and safety",
+        "Cargo security and temperature control",
+        "Fleet maintenance scheduling",
+        "Fuel consumption management",
+      ],
+      capabilities: [
+        {
+          icon: <MapPin className="w-5 h-5" />,
+          title: "Advanced Route Planning",
+          description:
+            "Multi-stop optimization with traffic and road condition analysis",
+          technical: "Real-time traffic integration, dynamic re-routing",
+        },
+        {
+          icon: <Clock className="w-5 h-5" />,
+          title: "Live Tracking & ETAs",
+          description:
+            "Precise location tracking with automated customer notifications",
+          technical: "GPS accuracy ±3m, automatic ETA updates",
+        },
+        {
+          icon: <Shield className="w-5 h-5" />,
+          title: "Comprehensive Security",
+          description: "Geo-fence alerts, door sensors, and anti-theft systems",
+          technical: "Real-time alerts, recovery assistance",
+        },
+        {
+          icon: <Thermometer className="w-5 h-5" />,
+          title: "Cold Chain Monitoring",
+          description: "Temperature logging with compliance reporting",
+          technical: "Multiple sensor support, automated alerts",
+        },
+      ],
+      readyFeatures: [
+        "Multi-device compatibility (151+ supported devices)",
+        "Real-time GPS tracking with 30-second updates",
+        "Advanced reporting and analytics",
+        "Mobile app for drivers and dispatchers",
+        "API integration capabilities",
+        "Multi-language interface support",
+      ],
+    },
+    construction: {
+      id: "construction",
+      name: "Construction & Heavy Equipment",
+      icon: <Building className="w-6 h-6" />,
+      color: "orange",
+      bgGradient: "from-orange-500/10 to-orange-600/5",
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
+      description:
+        "Protect valuable assets, monitor equipment usage, and optimize construction operations.",
+      challenges: [
+        "Equipment theft prevention and recovery",
+        "Usage hours tracking and billing",
+        "Maintenance scheduling optimization",
+        "Job site security monitoring",
+        "Equipment utilization analysis",
+        "Operator behavior monitoring",
+      ],
+      capabilities: [
+        {
+          icon: <Shield className="w-5 h-5" />,
+          title: "Asset Protection System",
+          description:
+            "Advanced theft prevention with immediate recovery alerts",
+          technical: "Motion detection, geo-fence violations, recovery mode",
+        },
+        {
+          icon: <BarChart3 className="w-5 h-5" />,
+          title: "Usage Analytics",
+          description:
+            "Detailed equipment utilization and productivity reports",
+          technical: "Engine hours tracking, idle time analysis",
+        },
+        {
+          icon: <Wrench className="w-5 h-5" />,
+          title: "Maintenance Management",
+          description:
+            "Automated scheduling based on usage hours and conditions",
+          technical: "Customizable maintenance intervals, alert system",
+        },
+        {
+          icon: <MapPin className="w-5 h-5" />,
+          title: "Site Monitoring",
+          description:
+            "Complete job site visibility with equipment location tracking",
+          technical: "Real-time location, historical movement data",
+        },
+      ],
+      readyFeatures: [
+        "Heavy-duty device compatibility",
+        "Rugged hardware support (-40°C to +85°C)",
+        "CAN bus integration for equipment data",
+        "Customizable maintenance alerts",
+        "Multi-site management dashboard",
+        "Equipment sharing and allocation tools",
+      ],
+    },
+    healthcare: {
+      id: "healthcare",
+      name: "Healthcare & Emergency Services",
+      icon: <Heart className="w-6 h-6" />,
+      color: "red",
+      bgGradient: "from-red-500/10 to-red-600/5",
+      iconBg: "bg-red-100",
+      iconColor: "text-red-600",
+      description:
+        "Ensure critical medical deliveries and emergency response with reliable, compliant tracking.",
+      challenges: [
+        "Emergency response time optimization",
+        "Medical supply chain compliance",
+        "Patient transport safety monitoring",
+        "Regulatory compliance reporting",
+        "Critical delivery tracking",
+        "Staff and vehicle safety",
+      ],
+      capabilities: [
+        {
+          icon: <Zap className="w-5 h-5" />,
+          title: "Emergency Response",
+          description:
+            "Fastest route calculation with priority dispatch support",
+          technical: "Sub-second route calculation, emergency mode",
+        },
+        {
+          icon: <Thermometer className="w-5 h-5" />,
+          title: "Medical Cold Chain",
+          description: "Continuous temperature monitoring for pharmaceuticals",
+          technical: "Multiple sensor support, compliance logging",
+        },
+        {
+          icon: <Shield className="w-5 h-5" />,
+          title: "Patient Safety",
+          description: "Driver behavior monitoring for safe patient transport",
+          technical: "Smooth driving analysis, safety scoring",
+        },
+        {
+          icon: <Clock className="w-5 h-5" />,
+          title: "Family Communication",
+          description: "Secure location sharing with family members",
+          technical: "Privacy-protected sharing, real-time updates",
+        },
+      ],
+      readyFeatures: [
+        "HIPAA-compliant data handling",
+        "Emergency alert systems",
+        "Sensor integration for medical equipment",
+        "Secure communication channels",
+        "Compliance reporting tools",
+        "99.9% uptime SLA ready",
+      ],
+    },
+    agriculture: {
+      id: "agriculture",
+      name: "Agriculture & Farming",
+      icon: <Tractor className="w-6 h-6" />,
+      color: "green",
+      bgGradient: "from-green-500/10 to-green-600/5",
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
+      description:
+        "Monitor farm equipment across vast areas, optimize operations, and protect valuable machinery.",
+      challenges: [
+        "Equipment tracking across large farms",
+        "Harvest progress monitoring",
+        "Fuel consumption optimization",
+        "Remote area connectivity",
+        "Equipment sharing coordination",
+        "Weather-resistant monitoring",
+      ],
+      capabilities: [
+        {
+          icon: <MapPin className="w-5 h-5" />,
+          title: "Large Area Coverage",
+          description: "Reliable tracking across thousands of acres",
+          technical: "Satellite communication support, long-range connectivity",
+        },
+        {
+          icon: <BarChart3 className="w-5 h-5" />,
+          title: "Harvest Analytics",
+          description: "Field coverage analysis and productivity monitoring",
+          technical: "GPS trail mapping, area calculation tools",
+        },
+        {
+          icon: <Zap className="w-5 h-5" />,
+          title: "Fuel Management",
+          description: "Consumption tracking and optimization recommendations",
+          technical: "Fuel sensor integration, efficiency reporting",
+        },
+        {
+          icon: <Shield className="w-5 h-5" />,
+          title: "Remote Security",
+          description: "Equipment protection in isolated farming areas",
+          technical: "Battery-powered trackers, satellite alerts",
+        },
+      ],
+      readyFeatures: [
+        "Long-life battery tracker support (5-7 years)",
+        "Weather-resistant device compatibility",
+        "Offline data synchronization",
+        "Large-scale mapping capabilities",
+        "Equipment sharing management",
+        "Agricultural sensor integration",
+      ],
+    },
+    transportation: {
+      id: "transportation",
+      name: "Public Transportation",
+      icon: <Users className="w-6 h-6" />,
+      color: "purple",
+      bgGradient: "from-purple-500/10 to-purple-600/5",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+      description:
+        "Enhance passenger experience, improve safety, and optimize public transit operations.",
+      challenges: [
+        "Real-time passenger information systems",
+        "Driver safety and behavior monitoring",
+        "Route efficiency optimization",
+        "Predictive maintenance scheduling",
+        "Passenger safety and security",
+        "Service reliability improvement",
+      ],
+      capabilities: [
+        {
+          icon: <Clock className="w-5 h-5" />,
+          title: "Passenger Information",
+          description: "Accurate real-time arrival predictions for stops",
+          technical: "Machine learning ETA calculation, API integration",
+        },
+        {
+          icon: <Camera className="w-5 h-5" />,
+          title: "Safety Systems",
+          description: "AI-powered driver monitoring and incident detection",
+          technical: "Dash cam integration, behavior analysis",
+        },
+        {
+          icon: <MapPin className="w-5 h-5" />,
+          title: "Route Optimization",
+          description: "Dynamic routing based on traffic and demand patterns",
+          technical: "Traffic integration, passenger load analysis",
+        },
+        {
+          icon: <Wrench className="w-5 h-5" />,
+          title: "Fleet Maintenance",
+          description: "Predictive maintenance for public transit vehicles",
+          technical: "Engine diagnostics, maintenance scheduling",
+        },
+      ],
+      readyFeatures: [
+        "Public API for passenger apps",
+        "Multi-route management dashboard",
+        "Driver performance analytics",
+        "Passenger capacity monitoring",
+        "Service disruption alerts",
+        "Accessibility compliance tools",
+      ],
+    },
+    aviation: {
+      id: "aviation",
+      name: "Aviation & Maritime",
+      icon: <Plane className="w-6 h-6" />,
+      color: "indigo",
+      bgGradient: "from-indigo-500/10 to-indigo-600/5",
+      iconBg: "bg-indigo-100",
+      iconColor: "text-indigo-600",
+      description:
+        "Specialized tracking for ground support equipment and marine vessels with global connectivity.",
+      challenges: [
+        "Ground support equipment coordination",
+        "Global vessel tracking requirements",
+        "Cargo handling optimization",
+        "International compliance standards",
+        "Remote area connectivity",
+        "High-value asset protection",
+      ],
+      capabilities: [
+        {
+          icon: <Plane className="w-5 h-5" />,
+          title: "Airport Operations",
+          description: "Ground support equipment tracking and coordination",
+          technical: "Aircraft turnaround optimization, equipment allocation",
+        },
+        {
+          icon: <Ship className="w-5 h-5" />,
+          title: "Maritime Tracking",
+          description: "Global vessel monitoring with satellite connectivity",
+          technical: "Iridium satellite support, international waters coverage",
+        },
+        {
+          icon: <Shield className="w-5 h-5" />,
+          title: "Compliance Ready",
+          description: "International aviation and maritime regulation support",
+          technical: "Automated compliance reporting, audit trails",
+        },
+        {
+          icon: <BarChart3 className="w-5 h-5" />,
+          title: "Operations Analytics",
+          description:
+            "Cargo handling efficiency and asset utilization analysis",
+          technical: "Turnaround time analysis, capacity optimization",
+        },
+      ],
+      readyFeatures: [
+        "Satellite communication device support",
+        "International compliance reporting",
+        "Maritime-grade hardware compatibility",
+        "Airport security integration ready",
+        "Global timezone handling",
+        "Multi-currency cost tracking",
+      ],
+    },
   };
 
-  // NEW: Handle search button click
-  const handleSearchClick = () => {
-    setShowResults(true);
-    setCurrentPage(1);
-  };
+  // Auto-rotate through industries
+  useEffect(() => {
+    if (!autoRotate) return;
 
-  // NEW: Handle search input enter key
-  const handleSearchKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSearchClick();
-    }
-  };
+    const industryKeys = Object.keys(industries);
+    let currentIndex = industryKeys.indexOf(activeIndustry);
 
-  // NEW: Toggle card expansion
-  const toggleCardExpansion = (deviceId) => {
-    const newExpanded = new Set(expandedCards);
-    if (newExpanded.has(deviceId)) {
-      newExpanded.delete(deviceId);
-    } else {
-      newExpanded.add(deviceId);
-    }
-    setExpandedCards(newExpanded);
-  };
+    const interval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % industryKeys.length;
+      setActiveIndustry(industryKeys[currentIndex]);
+    }, 6000);
 
-  const getInstallationIcon = (installation) => {
-    if (installation.includes("plug"))
-      return <Zap className="w-4 h-4 text-green-500" />;
-    if (installation.includes("Professional"))
-      return <Wrench className="w-4 h-4 text-orange-500" />;
-    if (installation.includes("recommended"))
-      return <Settings className="w-4 h-4 text-blue-500" />;
-    return <CheckCircle className="w-4 h-4 text-green-500" />;
-  };
+    return () => clearInterval(interval);
+  }, [activeIndustry, autoRotate]);
+
+  const currentIndustry = industries[activeIndustry];
+  const industryKeys = Object.keys(industries);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
-      {" "}
-      {/* Increased padding */}
-      <div className="container mx-auto px-4">
-        {/* Enhanced Header with larger fonts */}
+    <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500 to-blue-500 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
         <motion.div
-          className="text-center max-w-4xl mx-auto mb-16" // Increased margin
+          className="text-center max-w-4xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green mb-6">
-            <Shield className="w-4 h-4" />
-            Hardware Compatibility Database
+            <Target className="w-4 h-4" />
+            Industry-Ready Solutions
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-6">
-            {" "}
-            {/* Increased font size */}
-            {realDevices.length}+ Compatible Devices
+            Solutions Tailored for{" "}
+            <span className="text-brand-green">Your Industry</span>
           </h2>
 
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            {" "}
-            {/* Increased font size */}
-            Comprehensive database of tested and verified GPS trackers, dash
-            cameras, and sensors. All specifications verified by our technical
-            team.
+          <p className="text-xl text-gray-600 leading-relaxed">
+            We understand that every industry has unique challenges. Our
+            platform is built with the flexibility and power to meet the
+            specific needs of your business from day one.
           </p>
-
-          {/* Enhanced Stats with larger fonts */}
-          <div className="grid md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-brand-green">15+</div>{" "}
-              {/* Increased font size */}
-              <div className="text-sm text-gray-600">Manufacturers</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-brand-green">
-                {realDevices.length}+
-              </div>
-              <div className="text-sm text-gray-600">Devices</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-brand-green">100%</div>
-              <div className="text-sm text-gray-600">Verified</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-brand-green">24/7</div>
-              <div className="text-sm text-gray-600">Support</div>
-            </div>
-          </div>
         </motion.div>
 
-        {/* Enhanced Search Interface */}
+        {/* Interactive Industry Selector */}
         <motion.div
-          className="max-w-5xl mx-auto mb-12"
+          className="flex flex-wrap justify-center gap-3 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
         >
-          {/* Enhanced Search Bar */}
-          <div className="relative mb-6">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search devices, manufacturers, or features..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={handleSearchKeyPress}
-              className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-transparent text-base" // Increased font size and padding
-            />
-            <button
-              onClick={handleSearchClick}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-green text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-green-dark transition-colors text-sm"
-            >
-              Search
-            </button>
-          </div>
+          {industryKeys.map((key) => {
+            const industry = industries[key];
+            const isActive = key === activeIndustry;
 
-          {/* Show search prompt when no results are displayed */}
-          {!showResults && (
-            <div className="text-center py-12 bg-white rounded-xl border border-gray-200">
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                Search Our Device Database
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Enter a search term or click search to browse all{" "}
-                {realDevices.length}+ compatible devices
-              </p>
-            </div>
-          )}
-
-          {/* Show filters only when results are visible */}
-          {showResults && (
-            <>
-              {/* Enhanced Category Filters */}
-              <div className="flex flex-wrap gap-3 justify-center mb-6">
-                {categories.map((category) => (
-                  <motion.button
-                    key={category.id}
-                    onClick={() => {
-                      setActiveCategory(category.id);
-                      setCurrentPage(1);
-                    }}
-                    className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${
-                      activeCategory === category.id
-                        ? "bg-brand-green text-white shadow-md"
-                        : "bg-white text-gray-600 border border-gray-200 hover:border-brand-green hover:text-brand-green"
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span
-                      className={
-                        activeCategory === category.id
-                          ? "text-white"
-                          : category.color
-                      }
-                    >
-                      {category.icon}
-                    </span>
-                    {category.name}
-                    <span className="text-xs opacity-75">
-                      ({category.count})
-                    </span>
-                  </motion.button>
-                ))}
-              </div>
-
-              {/* Enhanced Controls */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white rounded-lg p-4 border border-gray-200">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-medium text-gray-600">
-                    Sort:
-                  </span>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="border border-gray-200 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-brand-green focus:border-transparent"
-                  >
-                    <option value="verified">Popular & Verified</option>
-                    <option value="name">Name A-Z</option>
-                    <option value="rating">Highest Rated</option>
-                    <option value="newest">Newest</option>
-                  </select>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-medium text-gray-600">
-                    View:
-                  </span>
-                  <div className="flex border border-gray-200 rounded-md overflow-hidden">
-                    <button
-                      onClick={() => setViewMode("grid")}
-                      className={`p-2 ${
-                        viewMode === "grid"
-                          ? "bg-brand-green text-white"
-                          : "text-gray-600 hover:bg-gray-50"
-                      }`}
-                    >
-                      <Grid className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setViewMode("list")}
-                      className={`p-2 ${
-                        viewMode === "list"
-                          ? "bg-brand-green text-white"
-                          : "text-gray-600 hover:bg-gray-50"
-                      }`}
-                    >
-                      <List className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+            return (
+              <motion.button
+                key={key}
+                onClick={() => {
+                  setActiveIndustry(key);
+                  setAutoRotate(false);
+                }}
+                className={`flex items-center gap-3 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  isActive
+                    ? `bg-${industry.color}-500 text-white shadow-lg transform scale-105`
+                    : `bg-white text-gray-600 border border-gray-200 hover:border-${industry.color}-300 hover:text-${industry.color}-600`
+                }`}
+                whileHover={{ scale: isActive ? 1.05 : 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onMouseEnter={() => setAutoRotate(false)}
+                onMouseLeave={() => setAutoRotate(true)}
+              >
+                <span className={isActive ? "text-white" : industry.iconColor}>
+                  {industry.icon}
+                </span>
+                <span className="hidden sm:inline">{industry.name}</span>
+                <span className="sm:hidden">{industry.name.split(" ")[0]}</span>
+              </motion.button>
+            );
+          })}
         </motion.div>
 
-        {/* Results Summary - only show when results are visible */}
-        {showResults && (
-          <div className="max-w-5xl mx-auto mb-6">
-            <div className="flex items-center justify-between text-sm">
-              <p className="text-gray-600">
-                <span className="font-medium">
-                  {(currentPage - 1) * devicesPerPage + 1}-
-                  {Math.min(
-                    currentPage * devicesPerPage,
-                    filteredDevices.length
-                  )}
-                </span>{" "}
-                of <span className="font-medium">{filteredDevices.length}</span>{" "}
-                devices
-              </p>
-              <div className="flex items-center gap-4">
-                <button className="text-brand-green hover:text-brand-green-dark flex items-center gap-1 text-sm">
-                  <Download className="w-4 h-4" />
-                  Export
-                </button>
-                <button
-                  onClick={() => setShowResults(false)}
-                  className="text-gray-500 hover:text-gray-700 text-sm"
-                >
-                  Hide Results
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ENHANCED DEVICE CARDS - only show when results are visible */}
-        {showResults && (
-          <div className="max-w-5xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${activeCategory}-${searchQuery}-${currentPage}-${viewMode}`}
-                className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" // Increased gap
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
+        {/* Main Content Area */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndustry}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className={`rounded-3xl p-8 md:p-12 bg-gradient-to-br ${currentIndustry.bgGradient} border border-white/50 shadow-xl backdrop-blur-sm`}
+          >
+            {/* Industry Header */}
+            <div className="text-center mb-12">
+              <div
+                className={`inline-flex items-center justify-center w-16 h-16 ${currentIndustry.iconBg} rounded-2xl mb-4`}
               >
-                {currentDevices.map((device, index) => {
-                  const isExpanded = expandedCards.has(device.id);
+                <span className={currentIndustry.iconColor}>
+                  {currentIndustry.icon}
+                </span>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                {currentIndustry.name}
+              </h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                {currentIndustry.description}
+              </p>
+            </div>
 
-                  return (
+            {/* Content Grid */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-12">
+              {/* Industry Challenges */}
+              <div>
+                <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                  <Settings className="w-5 h-5 text-orange-600" />
+                  Industry Challenges We Address
+                </h4>
+                <div className="space-y-3 mb-8">
+                  {currentIndustry.challenges.map((challenge, idx) => (
                     <motion.div
-                      key={device.id}
-                      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300"
+                      key={idx}
+                      className="flex items-start gap-3 p-3 bg-white/60 rounded-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 + 0.3 }}
+                    >
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="text-gray-700">{challenge}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Platform Readiness */}
+                <motion.div
+                  className="bg-white/80 rounded-xl p-6 border border-white/60"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <h5 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    Platform Ready Features
+                  </h5>
+                  <div className="space-y-2">
+                    {currentIndustry.readyFeatures.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-gray-600">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Our Capabilities */}
+              <div>
+                <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-green-600" />
+                  Our Platform Capabilities
+                </h4>
+                <div className="space-y-4">
+                  {currentIndustry.capabilities.map((capability, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="bg-white/70 rounded-xl p-4 border border-white/40 hover:bg-white/90 transition-all duration-200 cursor-pointer"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.03, duration: 0.3 }}
-                      whileHover={{ y: -3, scale: 1.02 }}
-                      layout // Enable layout animations for expansion
+                      transition={{ delay: idx * 0.1 + 0.4 }}
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      onMouseEnter={() => setHoveredFeature(capability.title)}
+                      onMouseLeave={() => setHoveredFeature(null)}
                     >
-                      {/* Enhanced Header */}
-                      <div className="p-4 border-b border-gray-50">
-                        <div className="flex items-start justify-between mb-2">
-                          <div className="min-w-0 flex-1">
-                            <h3 className="font-semibold text-base text-gray-800 truncate">
-                              {device.name}
-                            </h3>{" "}
-                            {/* Increased font size */}
-                            <p className="text-gray-500 text-sm truncate">
-                              {device.manufacturer}
-                            </p>
-                          </div>
-                          <div className="flex gap-1 ml-2 flex-shrink-0">
-                            {device.verified && (
-                              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                                <Shield className="w-3 h-3 inline" />
-                              </span>
-                            )}
-                            {device.popular && (
-                              <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
-                                <Star className="w-3 h-3 fill-current inline" />
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Enhanced Rating & Info */}
-                        <div className="flex items-center justify-between text-sm">
-                          <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            <span className="font-medium">
-                              {device.marketRating}
-                            </span>
-                            <span className="text-gray-400">
-                              ({device.releaseYear})
-                            </span>
-                          </div>
-                          {device.port && (
-                            <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">
-                              Port: {device.port}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Enhanced Content */}
-                      <div className="p-4">
-                        {/* Device Type */}
-                        <div className="mb-3">
-                          <span className="text-sm text-gray-500 bg-gray-50 px-2 py-1 rounded">
-                            {device.type}
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={`w-10 h-10 ${currentIndustry.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}
+                        >
+                          <span className={currentIndustry.iconColor}>
+                            {capability.icon}
                           </span>
                         </div>
-
-                        {/* Features - Show 2 by default, more when expanded */}
-                        <div className="space-y-2 mb-4">
-                          {device.features
-                            .slice(0, isExpanded ? device.features.length : 2)
-                            .map((feature, idx) => (
-                              <div key={idx} className="flex items-start gap-2">
-                                <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0 mt-0.5" />
-                                <span className="text-sm text-gray-600 leading-tight">
-                                  {feature}
-                                </span>
-                              </div>
-                            ))}
-                          {!isExpanded && device.features.length > 2 && (
-                            <div className="text-sm text-blue-600 ml-5">
-                              +{device.features.length - 2} more features
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Compact Technical Info - Show more when expanded */}
-                        <div
-                          className={`space-y-2 mb-4 text-sm ${
-                            isExpanded ? "" : "space-y-1"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-500">Installation:</span>
-                            <div className="flex items-center gap-1">
-                              {getInstallationIcon(device.installation)}
-                              <span className="text-gray-700 text-sm">
-                                {device.installation.includes("Professional")
-                                  ? "Pro Install"
-                                  : device.installation.includes("plug")
-                                  ? "Plug & Play"
-                                  : "Easy"}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-500">Power:</span>
-                            <span className="text-gray-700 text-sm">
-                              {device.powerSupply.includes("battery")
-                                ? "Battery"
-                                : device.powerSupply.includes("12V")
-                                ? "12V"
-                                : "Vehicle"}
-                            </span>
-                          </div>
-
-                          {/* Show additional details when expanded */}
-                          {isExpanded && (
-                            <>
-                              {device.operatingTemp && (
-                                <div className="flex items-center justify-between">
-                                  <span className="text-gray-500">
-                                    Operating Temp:
-                                  </span>
-                                  <span className="text-gray-700 text-sm">
-                                    {device.operatingTemp}
-                                  </span>
-                                </div>
-                              )}
-                              {device.certifications && (
-                                <div className="flex items-center justify-between">
-                                  <span className="text-gray-500">
-                                    Certifications:
-                                  </span>
-                                  <span className="text-gray-700 text-sm">
-                                    {device.certifications
-                                      .slice(0, 2)
-                                      .join(", ")}
-                                  </span>
-                                </div>
-                              )}
-                            </>
-                          )}
-                        </div>
-
-                        {/* Connectivity Tags */}
-                        <div className="mb-4">
-                          <div className="flex flex-wrap gap-1">
-                            {device.connectivity
-                              .slice(
-                                0,
-                                isExpanded ? device.connectivity.length : 2
-                              )
-                              .map((conn, idx) => (
-                                <span
-                                  key={idx}
-                                  className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded"
-                                >
-                                  {conn}
-                                </span>
-                              ))}
-                            {!isExpanded && device.connectivity.length > 2 && (
-                              <span className="text-xs text-gray-400">
-                                +{device.connectivity.length - 2}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Industries */}
-                        <div className="mb-4">
-                          <div className="flex flex-wrap gap-1">
-                            {device.industries
-                              .slice(
-                                0,
-                                isExpanded ? device.industries.length : 2
-                              )
-                              .map((industry, idx) => (
-                                <span
-                                  key={idx}
-                                  className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
-                                >
-                                  {industry}
-                                </span>
-                              ))}
-                            {!isExpanded && device.industries.length > 2 && (
-                              <span className="text-xs text-gray-400">
-                                +{device.industries.length - 2}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Show pros/cons when expanded */}
-                        {isExpanded && device.pros && (
-                          <div className="grid grid-cols-1 gap-3 mb-4">
-                            <div>
-                              <h5 className="font-medium text-green-700 mb-2 flex items-center gap-1 text-sm">
-                                <CheckCircle className="w-4 h-4" />
-                                Advantages
-                              </h5>
-                              <ul className="space-y-1">
-                                {device.pros.map((pro, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="text-sm text-gray-600"
-                                  >
-                                    • {pro}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            {device.considerations && (
-                              <div>
-                                <h5 className="font-medium text-orange-700 mb-2 flex items-center gap-1 text-sm">
-                                  <Settings className="w-4 h-4" />
-                                  Considerations
-                                </h5>
-                                <ul className="space-y-1">
-                                  {device.considerations.map(
-                                    (consideration, idx) => (
-                                      <li
-                                        key={idx}
-                                        className="text-sm text-gray-600"
-                                      >
-                                        • {consideration}
-                                      </li>
-                                    )
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Enhanced Actions */}
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => toggleCardExpansion(device.id)}
-                            className="flex-1 bg-gray-50 hover:bg-brand-green hover:text-white text-gray-600 font-medium py-2.5 px-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group text-sm"
-                          >
-                            {isExpanded ? (
-                              <>
-                                Show Less
-                                <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
-                              </>
-                            ) : (
-                              <>
-                                See Details
-                                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                              </>
-                            )}
-                          </button>
-                          {device.documentationUrl && (
-                            <button className="px-3 py-2.5 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition-colors">
-                              <ExternalLink className="w-4 h-4" />
-                            </button>
-                          )}
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-gray-800 mb-2">
+                            {capability.title}
+                          </h5>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {capability.description}
+                          </p>
+                          <p className="text-xs text-gray-500 italic">
+                            Technical: {capability.technical}
+                          </p>
                         </div>
                       </div>
                     </motion.div>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-            {/* No Results */}
-            {filteredDevices.length === 0 && (
-              <motion.div
-                className="text-center py-16"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.button
+                className={`bg-${currentIndustry.color}-600 hover:bg-${currentIndustry.color}-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center gap-3 group transition-all duration-300`}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="text-5xl mb-4">🔍</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  No devices found
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Try adjusting your search terms or category filter
-                </p>
-                <button
-                  onClick={() => {
-                    setSearchQuery("");
-                    setActiveCategory("all");
-                    setCurrentPage(1);
-                  }}
-                  className="bg-brand-green text-white px-6 py-3 rounded-lg text-sm hover:bg-brand-green-dark transition-colors"
-                >
-                  Clear Filters
-                </button>
-              </motion.div>
-            )}
+                Schedule Platform Demo
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
 
-            {/* Enhanced Pagination */}
-            {totalPages > 1 && (
-              <motion.div
-                className="flex justify-center items-center gap-2 mt-12"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
+              <motion.button
+                className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold px-8 py-4 rounded-xl flex items-center gap-3 group transition-all duration-300 bg-white/60"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <button
-                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 border border-gray-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-sm"
-                >
-                  Previous
-                </button>
+                View Technical Specs
+                <Database className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              </motion.button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
-                {/* Simplified Page Numbers */}
-                {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
-                  const pageNum =
-                    Math.max(
-                      1,
-                      Math.min(totalPages - 6, Math.max(1, currentPage - 3))
-                    ) + i;
-                  if (pageNum > totalPages) return null;
-
-                  return (
-                    <button
-                      key={pageNum}
-                      onClick={() => handlePageChange(pageNum)}
-                      className={`px-4 py-2 rounded-md transition-colors text-sm ${
-                        currentPage === pageNum
-                          ? "bg-brand-green text-white"
-                          : "border border-gray-200 hover:bg-gray-50"
-                      }`}
-                    >
-                      {pageNum}
-                    </button>
-                  );
-                })}
-
-                <button
-                  onClick={() =>
-                    handlePageChange(Math.min(totalPages, currentPage + 1))
-                  }
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 border border-gray-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-sm"
-                >
-                  Next
-                </button>
-              </motion.div>
-            )}
-          </div>
-        )}
-
-        {/* Enhanced CTA */}
+        {/* Bottom Platform Highlights */}
         <motion.div
-          className="text-center mt-16 p-8 bg-gradient-to-r from-brand-green/10 to-blue-500/10 rounded-xl border border-gray-200"
+          className="text-center mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 1, duration: 0.6 }}
         >
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Award className="w-6 h-6 text-brand-green" />
-            <h3 className="text-2xl font-bold text-gray-800">
-              {" "}
-              {/* Increased font size */}
-              Need Device Support?
-            </h3>
-          </div>
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto text-base">
-            {" "}
-            {/* Increased font size */}
-            Can't find your device? Our technical team can help you integrate
-            almost any GPS tracker or sensor.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-brand-green text-white px-8 py-3 rounded-lg font-medium hover:bg-brand-green-dark transition-colors flex items-center gap-2 group text-base">
-              {" "}
-              {/* Increased font size */}
-              Request Integration
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border border-brand-green text-brand-green px-8 py-3 rounded-lg font-medium hover:bg-brand-green hover:text-white transition-colors text-base">
-              Technical Support
-            </button>
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Database className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">151+ Devices</div>
+              <div className="text-sm text-gray-600">
+                Verified compatible hardware
+              </div>
+            </div>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Globe className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">Global Ready</div>
+              <div className="text-sm text-gray-600">
+                Multi-region deployment
+              </div>
+            </div>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Lock className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">
+                Enterprise Security
+              </div>
+              <div className="text-sm text-gray-600">Bank-grade encryption</div>
+            </div>
+            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
+              <Code className="w-8 h-8 text-brand-green mx-auto mb-3" />
+              <div className="font-bold text-gray-800 mb-2">API First</div>
+              <div className="text-sm text-gray-600">
+                Full integration support
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -738,4 +638,4 @@ const RealDeviceCompatibilityShowcase = () => {
   );
 };
 
-export default RealDeviceCompatibilityShowcase;
+export default IndustryCapabilitiesShowcase;

@@ -487,35 +487,6 @@ export default function HomePage() {
       </section>
       {/* --- NEW: Solutions by Industry Section --- */}
       <IndustryCapabilitiesShowcase />
-      {/* --- NEW: Solutions by Industry Section --- */}
-
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-brand-dark-blue mb-4">
-              Solutions Tailored for Your Industry
-            </h2>
-            <p className="text-lg text-gray-600">
-              We understand that every industry has unique challenges. Our
-              platform is flexible and powerful enough to meet the specific
-              needs of your business.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <IndustryCard icon={<Truck />} title="Long-Haul Trucking" />
-            <IndustryCard
-              icon={<Building />}
-              title="Construction & Heavy Eq."
-            />
-            <IndustryCard icon={<Wrench />} title="Field Services" />
-            <IndustryCard icon={<Bus />} title="Government & Public Transit" />
-            <IndustryCard icon={<Tractor />} title="Agriculture" />
-            <IndustryCard icon={<Users />} title="Passenger Fleets" />
-            <IndustryCard icon={<Shield />} title="Emergency Services" />
-            <IndustryCard icon={<Leaf />} title="Waste Management" />
-          </div>
-        </div>
-      </section>
 
       {/* ---Highlights Section--- */}
       <HighlightsSection />

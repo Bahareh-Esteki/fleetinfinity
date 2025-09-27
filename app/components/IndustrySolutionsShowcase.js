@@ -1,5 +1,8 @@
-// components/IndustryCapabilitiesShowcase.js
-import React, { useState, useEffect } from "react";
+// app/components/IndustryCapabilitiesShowcase.js
+"use client";
+
+import React, { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Truck,
@@ -7,8 +10,8 @@ import {
   Plane,
   Ship,
   Tractor,
-  Zap,
   Users,
+  Zap,
   Shield,
   BarChart3,
   Clock,
@@ -16,553 +19,544 @@ import {
   Settings,
   ArrowRight,
   CheckCircle,
-  Star,
-  Award,
-  Target,
-  Wrench,
-  Heart,
-  Smartphone,
-  Camera,
-  Thermometer,
-  Code,
   Database,
+  Target,
+  Camera,
+  Wrench,
+  Thermometer,
   Globe,
-  Wifi,
   Lock,
-  TrendingUp,
+  Code,
 } from "lucide-react";
+
+// Background config (place files in public/images/backgrounds/)
+const industryBackgrounds = {
+  logistics: {
+    src: "/images/backgrounds/logistics_hub_bg.png",
+    overlay: "from-slate-900/70 via-slate-900/45 to-slate-900/25",
+  },
+  construction: {
+    src: "/images/backgrounds/construction_bg.png",
+    overlay: "from-amber-950/65 via-amber-950/40 to-amber-950/20",
+  },
+  healthcare: {
+    src: "/images/backgrounds/healthcare_bg.png",
+    overlay: "from-rose-950/65 via-rose-950/40 to-rose-950/20",
+  },
+  agriculture: {
+    src: "/images/backgrounds/agriculture_bg.png",
+    overlay: "from-emerald-950/65 via-emerald-950/40 to-emerald-950/20",
+  },
+  transportation: {
+    src: "/images/backgrounds/transport_bg.png",
+    overlay: "from-violet-950/65 via-violet-950/40 to-violet-950/20",
+  },
+  aviation: {
+    src: "/images/backgrounds/aviation_bg.png",
+    overlay: "from-indigo-950/65 via-indigo-950/40 to-indigo-950/20",
+  },
+};
+
+// Icon helper for tabs
+const IndustryIcon = ({ id }) => {
+  const base = "w-6 h-6";
+  switch (id) {
+    case "logistics":
+      return <Truck className={base} />;
+    case "construction":
+      return <Building className={base} />;
+    case "healthcare":
+      return <Thermometer className={base} />;
+    case "agriculture":
+      return <Tractor className={base} />;
+    case "transportation":
+      return <Users className={base} />;
+    case "aviation":
+      return <Plane className={base} />;
+    default:
+      return <Target className={base} />;
+  }
+};
 
 const IndustryCapabilitiesShowcase = () => {
   const [activeIndustry, setActiveIndustry] = useState("logistics");
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [autoRotate, setAutoRotate] = useState(true);
 
-  // Real industry solutions based on your platform capabilities
-  const industries = {
-    logistics: {
-      id: "logistics",
-      name: "Logistics & Transportation",
-      icon: <Truck className="w-6 h-6" />,
-      color: "blue",
-      bgGradient: "from-blue-500/10 to-blue-600/5",
-      iconBg: "bg-blue-100",
-      iconColor: "text-blue-600",
-      description:
-        "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with comprehensive fleet visibility.",
-      challenges: [
-        "Route optimization for fuel efficiency",
-        "Real-time delivery tracking and ETAs",
-        "Driver behavior monitoring and safety",
-        "Cargo security and temperature control",
-        "Fleet maintenance scheduling",
-        "Fuel consumption management",
-      ],
-      capabilities: [
-        {
-          icon: <MapPin className="w-5 h-5" />,
-          title: "Advanced Route Planning",
-          description:
-            "Multi-stop optimization with traffic and road condition analysis",
-          technical: "Real-time traffic integration, dynamic re-routing",
-        },
-        {
-          icon: <Clock className="w-5 h-5" />,
-          title: "Live Tracking & ETAs",
-          description:
-            "Precise location tracking with automated customer notifications",
-          technical: "GPS accuracy ±3m, automatic ETA updates",
-        },
-        {
-          icon: <Shield className="w-5 h-5" />,
-          title: "Comprehensive Security",
-          description: "Geo-fence alerts, door sensors, and anti-theft systems",
-          technical: "Real-time alerts, recovery assistance",
-        },
-        {
-          icon: <Thermometer className="w-5 h-5" />,
-          title: "Cold Chain Monitoring",
-          description: "Temperature logging with compliance reporting",
-          technical: "Multiple sensor support, automated alerts",
-        },
-      ],
-      readyFeatures: [
-        "Multi-device compatibility (151+ supported devices)",
-        "Real-time GPS tracking with 30-second updates",
-        "Advanced reporting and analytics",
-        "Mobile app for drivers and dispatchers",
-        "API integration capabilities",
-        "Multi-language interface support",
-      ],
-    },
-    construction: {
-      id: "construction",
-      name: "Construction & Heavy Equipment",
-      icon: <Building className="w-6 h-6" />,
-      color: "orange",
-      bgGradient: "from-orange-500/10 to-orange-600/5",
-      iconBg: "bg-orange-100",
-      iconColor: "text-orange-600",
-      description:
-        "Protect valuable assets, monitor equipment usage, and optimize construction operations.",
-      challenges: [
-        "Equipment theft prevention and recovery",
-        "Usage hours tracking and billing",
-        "Maintenance scheduling optimization",
-        "Job site security monitoring",
-        "Equipment utilization analysis",
-        "Operator behavior monitoring",
-      ],
-      capabilities: [
-        {
-          icon: <Shield className="w-5 h-5" />,
-          title: "Asset Protection System",
-          description:
-            "Advanced theft prevention with immediate recovery alerts",
-          technical: "Motion detection, geo-fence violations, recovery mode",
-        },
-        {
-          icon: <BarChart3 className="w-5 h-5" />,
-          title: "Usage Analytics",
-          description:
-            "Detailed equipment utilization and productivity reports",
-          technical: "Engine hours tracking, idle time analysis",
-        },
-        {
-          icon: <Wrench className="w-5 h-5" />,
-          title: "Maintenance Management",
-          description:
-            "Automated scheduling based on usage hours and conditions",
-          technical: "Customizable maintenance intervals, alert system",
-        },
-        {
-          icon: <MapPin className="w-5 h-5" />,
-          title: "Site Monitoring",
-          description:
-            "Complete job site visibility with equipment location tracking",
-          technical: "Real-time location, historical movement data",
-        },
-      ],
-      readyFeatures: [
-        "Heavy-duty device compatibility",
-        "Rugged hardware support (-40°C to +85°C)",
-        "CAN bus integration for equipment data",
-        "Customizable maintenance alerts",
-        "Multi-site management dashboard",
-        "Equipment sharing and allocation tools",
-      ],
-    },
-    healthcare: {
-      id: "healthcare",
-      name: "Healthcare & Emergency Services",
-      icon: <Heart className="w-6 h-6" />,
-      color: "red",
-      bgGradient: "from-red-500/10 to-red-600/5",
-      iconBg: "bg-red-100",
-      iconColor: "text-red-600",
-      description:
-        "Ensure critical medical deliveries and emergency response with reliable, compliant tracking.",
-      challenges: [
-        "Emergency response time optimization",
-        "Medical supply chain compliance",
-        "Patient transport safety monitoring",
-        "Regulatory compliance reporting",
-        "Critical delivery tracking",
-        "Staff and vehicle safety",
-      ],
-      capabilities: [
-        {
-          icon: <Zap className="w-5 h-5" />,
-          title: "Emergency Response",
-          description:
-            "Fastest route calculation with priority dispatch support",
-          technical: "Sub-second route calculation, emergency mode",
-        },
-        {
-          icon: <Thermometer className="w-5 h-5" />,
-          title: "Medical Cold Chain",
-          description: "Continuous temperature monitoring for pharmaceuticals",
-          technical: "Multiple sensor support, compliance logging",
-        },
-        {
-          icon: <Shield className="w-5 h-5" />,
-          title: "Patient Safety",
-          description: "Driver behavior monitoring for safe patient transport",
-          technical: "Smooth driving analysis, safety scoring",
-        },
-        {
-          icon: <Clock className="w-5 h-5" />,
-          title: "Family Communication",
-          description: "Secure location sharing with family members",
-          technical: "Privacy-protected sharing, real-time updates",
-        },
-      ],
-      readyFeatures: [
-        "HIPAA-compliant data handling",
-        "Emergency alert systems",
-        "Sensor integration for medical equipment",
-        "Secure communication channels",
-        "Compliance reporting tools",
-        "99.9% uptime SLA ready",
-      ],
-    },
-    agriculture: {
-      id: "agriculture",
-      name: "Agriculture & Farming",
-      icon: <Tractor className="w-6 h-6" />,
-      color: "green",
-      bgGradient: "from-green-500/10 to-green-600/5",
-      iconBg: "bg-green-100",
-      iconColor: "text-green-600",
-      description:
-        "Monitor farm equipment across vast areas, optimize operations, and protect valuable machinery.",
-      challenges: [
-        "Equipment tracking across large farms",
-        "Harvest progress monitoring",
-        "Fuel consumption optimization",
-        "Remote area connectivity",
-        "Equipment sharing coordination",
-        "Weather-resistant monitoring",
-      ],
-      capabilities: [
-        {
-          icon: <MapPin className="w-5 h-5" />,
-          title: "Large Area Coverage",
-          description: "Reliable tracking across thousands of acres",
-          technical: "Satellite communication support, long-range connectivity",
-        },
-        {
-          icon: <BarChart3 className="w-5 h-5" />,
-          title: "Harvest Analytics",
-          description: "Field coverage analysis and productivity monitoring",
-          technical: "GPS trail mapping, area calculation tools",
-        },
-        {
-          icon: <Zap className="w-5 h-5" />,
-          title: "Fuel Management",
-          description: "Consumption tracking and optimization recommendations",
-          technical: "Fuel sensor integration, efficiency reporting",
-        },
-        {
-          icon: <Shield className="w-5 h-5" />,
-          title: "Remote Security",
-          description: "Equipment protection in isolated farming areas",
-          technical: "Battery-powered trackers, satellite alerts",
-        },
-      ],
-      readyFeatures: [
-        "Long-life battery tracker support (5-7 years)",
-        "Weather-resistant device compatibility",
-        "Offline data synchronization",
-        "Large-scale mapping capabilities",
-        "Equipment sharing management",
-        "Agricultural sensor integration",
-      ],
-    },
-    transportation: {
-      id: "transportation",
-      name: "Public Transportation",
-      icon: <Users className="w-6 h-6" />,
-      color: "purple",
-      bgGradient: "from-purple-500/10 to-purple-600/5",
-      iconBg: "bg-purple-100",
-      iconColor: "text-purple-600",
-      description:
-        "Enhance passenger experience, improve safety, and optimize public transit operations.",
-      challenges: [
-        "Real-time passenger information systems",
-        "Driver safety and behavior monitoring",
-        "Route efficiency optimization",
-        "Predictive maintenance scheduling",
-        "Passenger safety and security",
-        "Service reliability improvement",
-      ],
-      capabilities: [
-        {
-          icon: <Clock className="w-5 h-5" />,
-          title: "Passenger Information",
-          description: "Accurate real-time arrival predictions for stops",
-          technical: "Machine learning ETA calculation, API integration",
-        },
-        {
-          icon: <Camera className="w-5 h-5" />,
-          title: "Safety Systems",
-          description: "AI-powered driver monitoring and incident detection",
-          technical: "Dash cam integration, behavior analysis",
-        },
-        {
-          icon: <MapPin className="w-5 h-5" />,
-          title: "Route Optimization",
-          description: "Dynamic routing based on traffic and demand patterns",
-          technical: "Traffic integration, passenger load analysis",
-        },
-        {
-          icon: <Wrench className="w-5 h-5" />,
-          title: "Fleet Maintenance",
-          description: "Predictive maintenance for public transit vehicles",
-          technical: "Engine diagnostics, maintenance scheduling",
-        },
-      ],
-      readyFeatures: [
-        "Public API for passenger apps",
-        "Multi-route management dashboard",
-        "Driver performance analytics",
-        "Passenger capacity monitoring",
-        "Service disruption alerts",
-        "Accessibility compliance tools",
-      ],
-    },
-    aviation: {
-      id: "aviation",
-      name: "Aviation & Maritime",
-      icon: <Plane className="w-6 h-6" />,
-      color: "indigo",
-      bgGradient: "from-indigo-500/10 to-indigo-600/5",
-      iconBg: "bg-indigo-100",
-      iconColor: "text-indigo-600",
-      description:
-        "Specialized tracking for ground support equipment and marine vessels with global connectivity.",
-      challenges: [
-        "Ground support equipment coordination",
-        "Global vessel tracking requirements",
-        "Cargo handling optimization",
-        "International compliance standards",
-        "Remote area connectivity",
-        "High-value asset protection",
-      ],
-      capabilities: [
-        {
-          icon: <Plane className="w-5 h-5" />,
-          title: "Airport Operations",
-          description: "Ground support equipment tracking and coordination",
-          technical: "Aircraft turnaround optimization, equipment allocation",
-        },
-        {
-          icon: <Ship className="w-5 h-5" />,
-          title: "Maritime Tracking",
-          description: "Global vessel monitoring with satellite connectivity",
-          technical: "Iridium satellite support, international waters coverage",
-        },
-        {
-          icon: <Shield className="w-5 h-5" />,
-          title: "Compliance Ready",
-          description: "International aviation and maritime regulation support",
-          technical: "Automated compliance reporting, audit trails",
-        },
-        {
-          icon: <BarChart3 className="w-5 h-5" />,
-          title: "Operations Analytics",
-          description:
-            "Cargo handling efficiency and asset utilization analysis",
-          technical: "Turnaround time analysis, capacity optimization",
-        },
-      ],
-      readyFeatures: [
-        "Satellite communication device support",
-        "International compliance reporting",
-        "Maritime-grade hardware compatibility",
-        "Airport security integration ready",
-        "Global timezone handling",
-        "Multi-currency cost tracking",
-      ],
-    },
-  };
+  // Industry content (no testimonials, purely capabilities + readiness)
+  const industries = useMemo(
+    () => ({
+      logistics: {
+        id: "logistics",
+        name: "Logistics & Transportation",
+        description:
+          "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with comprehensive fleet visibility.",
+        challenges: [
+          "Route optimization for fuel efficiency",
+          "Real-time delivery tracking and ETAs",
+          "Driver behavior monitoring and safety",
+          "Cargo security and temperature control",
+          "Fleet maintenance scheduling",
+          "Fuel consumption management",
+        ],
+        capabilities: [
+          {
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Advanced Route Planning",
+            description:
+              "Multi-stop optimization with traffic-aware dynamic re-routing",
+            technical: "Traffic integration, configurable SLAs",
+          },
+          {
+            icon: <Clock className="w-5 h-5" />,
+            title: "Live Tracking & ETAs",
+            description:
+              "Precise location updates with automated ETA notifications",
+            technical: "GPS accuracy ±3m, 30s updates",
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Cargo Security",
+            description:
+              "Geo-fence violations, door sensors, and theft recovery mode",
+            technical: "Real-time alerting, escalation rules",
+          },
+          {
+            icon: <Thermometer className="w-5 h-5" />,
+            title: "Cold Chain Monitoring",
+            description:
+              "Continuous temperature logging and compliance exports",
+            technical: "Multi-sensor, configurable thresholds",
+          },
+        ],
+        readyFeatures: [
+          "151+ verified devices supported",
+          "Real-time GPS tracking with 30s updates",
+          "Driver and dispatch mobile apps",
+          "Rich analytics and reporting suite",
+          "REST API and webhooks integration",
+          "Multi-language UI (including Arabic/English)",
+        ],
+      },
+      construction: {
+        id: "construction",
+        name: "Construction & Heavy Equipment",
+        description:
+          "Protect assets, track usage, and reduce downtime with rugged, job-site-ready telematics.",
+        challenges: [
+          "Equipment theft and unauthorized usage",
+          "Usage hours tracking and billing",
+          "Predictive maintenance scheduling",
+          "Multi-site visibility and control",
+        ],
+        capabilities: [
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Asset Protection",
+            description:
+              "Motion/tilt detection, geofencing, recovery workflows",
+            technical: "Custom alerts, incident playbooks",
+          },
+          {
+            icon: <BarChart3 className="w-5 h-5" />,
+            title: "Usage Analytics",
+            description: "Engine hours, idle time, and productivity insights",
+            technical: "CAN/J1939 support where available",
+          },
+          {
+            icon: <Wrench className="w-5 h-5" />,
+            title: "Maintenance Management",
+            description: "Automated maintenance based on hours or calendar",
+            technical: "Service logs, reminders, parts tracking",
+          },
+          {
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Site Visibility",
+            description: "Asset location and movement history across job sites",
+            technical: "Multi-site dashboards, access control",
+          },
+        ],
+        readyFeatures: [
+          "Rugged devices (-40°C to +85°C)",
+          "CAN bus and sensor integrations",
+          "Multi-site role-based access",
+          "Work-hour and idle-time reporting",
+          "Offline caching and sync",
+        ],
+      },
+      healthcare: {
+        id: "healthcare",
+        name: "Healthcare & Emergency Services",
+        description:
+          "Support emergency response, medical cold chain, and safe patient transport with reliable, compliant tracking.",
+        challenges: [
+          "Faster emergency dispatch and routing",
+          "Cold chain integrity for vaccines and meds",
+          "Patient transport safety and comfort",
+          "Audit-ready compliance reporting",
+        ],
+        capabilities: [
+          {
+            icon: <Zap className="w-5 h-5" />,
+            title: "Emergency Response",
+            description:
+              "Priority routing, dispatch coordination, ETA accuracy",
+            technical: "Fast route recalculation, SLA targeting",
+          },
+          {
+            icon: <Thermometer className="w-5 h-5" />,
+            title: "Medical Cold Chain",
+            description: "Continuous temperature monitoring and alerts",
+            technical: "Multi-sensor logging, exportable audit trails",
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Safety Monitoring",
+            description: "Behavior analysis for safe patient transport",
+            technical: "Event detection, safety scoring",
+          },
+          {
+            icon: <Clock className="w-5 h-5" />,
+            title: "Secure Sharing",
+            description: "Privacy-controlled live location sharing",
+            technical: "Time-limited links, access auditing",
+          },
+        ],
+        readyFeatures: [
+          "Compliance-ready data handling",
+          "Sensor integrations for medical use",
+          "High-availability infrastructure",
+          "Role-based access and audit logs",
+        ],
+      },
+      agriculture: {
+        id: "agriculture",
+        name: "Agriculture & Farming",
+        description:
+          "Track equipment across vast areas, optimize fuel usage, and protect assets in remote locations.",
+        challenges: [
+          "Large-area coverage and connectivity",
+          "Harvest progress and field coverage",
+          "Fuel usage monitoring and control",
+          "Remote asset security",
+        ],
+        capabilities: [
+          {
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Field Mapping",
+            description: "Coverage trails and task verification",
+            technical: "Trail heatmaps, area computation",
+          },
+          {
+            icon: <BarChart3 className="w-5 h-5" />,
+            title: "Harvest Analytics",
+            description: "Equipment productivity and timing insights",
+            technical: "Shift analytics, utilization KPIs",
+          },
+          {
+            icon: <Zap className="w-5 h-5" />,
+            title: "Fuel Management",
+            description: "Consumption tracking and alerting",
+            technical: "Fuel sensors, anomaly detection",
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Remote Security",
+            description: "Battery-powered trackers and alerts",
+            technical: "Long-life devices, satcom-ready options",
+          },
+        ],
+        readyFeatures: [
+          "Long-life battery trackers (5–7 years)",
+          "Weather-resistant hardware options",
+          "Offline logging and syncing",
+          "Multi-farm and contractor modes",
+        ],
+      },
+      transportation: {
+        id: "transportation",
+        name: "Public Transportation",
+        description:
+          "Improve passenger experience, safety, and route reliability with real-time insights and automation.",
+        challenges: [
+          "Accurate real-time arrivals for passengers",
+          "Driver safety and incident reduction",
+          "Dynamic routing and headway management",
+          "Predictive maintenance and uptime",
+        ],
+        capabilities: [
+          {
+            icon: <Clock className="w-5 h-5" />,
+            title: "Real-Time Arrivals",
+            description: "Accurate ETAs for stops and stations",
+            technical: "ML ETA models, public API",
+          },
+          {
+            icon: <Camera className="w-5 h-5" />,
+            title: "Safety Systems",
+            description: "Driver monitoring and incident tagging",
+            technical: "Dashcam integrations, event sync",
+          },
+          {
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Route Optimization",
+            description: "Dynamic routing based on traffic and load",
+            technical: "Headway control, load-aware routing",
+          },
+          {
+            icon: <Wrench className="w-5 h-5" />,
+            title: "Predictive Maintenance",
+            description: "Diagnostics and service scheduling",
+            technical: "CAN/OBD data, parts tracking",
+          },
+        ],
+        readyFeatures: [
+          "Public APIs for rider apps",
+          "Multi-route, multi-agency dashboards",
+          "Driver performance analytics",
+          "Service disruption workflows",
+        ],
+      },
+      aviation: {
+        id: "aviation",
+        name: "Aviation & Maritime",
+        description:
+          "Specialized tracking for ground support equipment and vessels with global connectivity and compliance.",
+        challenges: [
+          "GSE coordination and turnaround",
+          "Global vessel visibility at sea",
+          "Cargo handling optimization",
+          "International compliance and audits",
+        ],
+        capabilities: [
+          {
+            icon: <Plane className="w-5 h-5" />,
+            title: "Airport Operations",
+            description: "Track tugs, loaders, and support vehicles",
+            technical: "Turnaround analytics, allocation tools",
+          },
+          {
+            icon: <Ship className="w-5 h-5" />,
+            title: "Maritime Tracking",
+            description: "Satellite coverage for international waters",
+            technical: "Iridium-ready devices, global timezones",
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Compliance Support",
+            description: "Automated reports and audit trails",
+            technical: "Retention policies, role-based access",
+          },
+          {
+            icon: <BarChart3 className="w-5 h-5" />,
+            title: "Operations Analytics",
+            description: "Cargo handling and utilization insights",
+            technical: "Cycle analytics, KPI dashboards",
+          },
+        ],
+        readyFeatures: [
+          "Satellite communication support",
+          "Maritime-grade hardware options",
+          "Compliance-ready reporting",
+          "Global timezone and currency handling",
+        ],
+      },
+    }),
+    []
+  );
 
   // Auto-rotate through industries
   useEffect(() => {
     if (!autoRotate) return;
+    const keys = Object.keys(industries);
+    let i = keys.indexOf(activeIndustry);
+    const t = setInterval(() => {
+      i = (i + 1) % keys.length;
+      setActiveIndustry(keys[i]);
+    }, 6000);
+    return () => clearInterval(t);
+  }, [activeIndustry, autoRotate, industries]);
 
-    const industryKeys = Object.keys(industries);
-    let currentIndex = industryKeys.indexOf(activeIndustry);
-
-    const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % industryKeys.length;
-      setActiveIndustry(industryKeys[currentIndex]);
-    }, 12000);
-
-    return () => clearInterval(interval);
-  }, [activeIndustry, autoRotate]);
-
-  const currentIndustry = industries[activeIndustry];
-  const industryKeys = Object.keys(industries);
+  const keys = Object.keys(industries);
+  const current = industries[activeIndustry];
+  const bg = industryBackgrounds[activeIndustry];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-green-500 to-blue-500 rounded-full blur-3xl"></div>
+    <section className="relative w-full">
+      {/* Background image per industry */}
+      <div className="relative w-full min-h-[70vh]">
+        <Image
+          src={bg?.src || "/images/backgrounds/logistics_hub_bg.png"}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center pointer-events-none select-none"
+        />
+        <div
+          className={`absolute inset-0 bg-gradient-to-b ${
+            bg?.overlay || "from-slate-900/65 to-slate-900/25"
+          }`}
+        />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Foreground content */}
+      <div className="container mx-auto px-4 -mt-[55vh] pb-16 relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center max-w-4xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white mb-5">
             <Target className="w-4 h-4" />
             Industry-Ready Solutions
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             Solutions Tailored for{" "}
-            <span className="text-brand-green">Your Industry</span>
+            <span className="text-emerald-300">Your Industry</span>
           </h2>
 
-          <p className="text-xl text-gray-600 leading-relaxed">
-            We understand that every industry has unique challenges. Our
-            platform is built with the flexibility and power to meet the
-            specific needs of your business from day one.
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+            Built with the flexibility and power to meet the specific needs of
+            modern operations from day one.
           </p>
         </motion.div>
 
-        {/* Interactive Industry Selector */}
+        {/* Tabs */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-wrap justify-center gap-3 mb-8"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: 0.15, duration: 0.4 }}
         >
-          {industryKeys.map((key) => {
-            const industry = industries[key];
-            const isActive = key === activeIndustry;
-
+          {keys.map((k) => {
+            const isActive = k === activeIndustry;
             return (
               <motion.button
-                key={key}
+                key={k}
                 onClick={() => {
-                  setActiveIndustry(key);
+                  setActiveIndustry(k);
                   setAutoRotate(false);
                 }}
-                className={`flex items-center gap-3 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`flex items-center gap-3 px-5 py-2.5 rounded-full font-medium transition-all duration-200 ${
                   isActive
-                    ? `bg-${industry.color}-500 text-white shadow-lg transform scale-105`
-                    : `bg-white text-gray-600 border border-gray-200 hover:border-${industry.color}-300 hover:text-${industry.color}-600`
+                    ? "bg-emerald-500 text-white shadow-lg"
+                    : "bg-white/90 text-gray-700 border border-white/70 hover:bg-white"
                 }`}
-                whileHover={{ scale: isActive ? 1.05 : 1.02 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onMouseEnter={() => setAutoRotate(false)}
                 onMouseLeave={() => setAutoRotate(true)}
               >
-                <span className={isActive ? "text-white" : industry.iconColor}>
-                  {industry.icon}
+                <IndustryIcon id={k} />
+                <span className="hidden sm:inline">{industries[k].name}</span>
+                <span className="sm:hidden">
+                  {industries[k].name.split(" ")[0]}
                 </span>
-                <span className="hidden sm:inline">{industry.name}</span>
-                <span className="sm:hidden">{industry.name.split(" ")[0]}</span>
               </motion.button>
             );
           })}
         </motion.div>
 
-        {/* Main Content Area */}
+        {/* Panel */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndustry}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`rounded-3xl p-8 md:p-12 bg-gradient-to-br ${currentIndustry.bgGradient} border border-white/50 shadow-xl backdrop-blur-sm`}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.45 }}
+            className="rounded-3xl p-6 md:p-10 bg-white/90 backdrop-blur shadow-2xl border border-white"
           >
-            {/* Industry Header */}
-            <div className="text-center mb-12">
-              <div
-                className={`inline-flex items-center justify-center w-16 h-16 ${currentIndustry.iconBg} rounded-2xl mb-4`}
-              >
-                <span className={currentIndustry.iconColor}>
-                  {currentIndustry.icon}
-                </span>
+            {/* Intro */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-50 rounded-2xl mb-4">
+                <IndustryIcon id={activeIndustry} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">
-                {currentIndustry.name}
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                {current.name}
               </h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                {currentIndustry.description}
+              <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                {current.description}
               </p>
             </div>
 
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-8 mb-12">
-              {/* Industry Challenges */}
+            {/* Content grid */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Challenges + Ready features */}
               <div>
-                <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <Settings className="w-5 h-5 text-orange-600" />
                   Industry Challenges We Address
                 </h4>
-                <div className="space-y-3 mb-8">
-                  {currentIndustry.challenges.map((challenge, idx) => (
+                <div className="space-y-2 mb-6">
+                  {current.challenges.map((c, idx) => (
                     <motion.div
                       key={idx}
-                      className="flex items-start gap-3 p-3 bg-white/60 rounded-lg"
-                      initial={{ opacity: 0, x: -20 }}
+                      className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-100"
+                      initial={{ opacity: 0, x: -16 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 + 0.3 }}
+                      transition={{ delay: idx * 0.06 + 0.1 }}
                     >
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-700">{challenge}</span>
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <span className="text-gray-700 text-sm md:text-base">
+                        {c}
+                      </span>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Platform Readiness */}
-                <motion.div
-                  className="bg-white/80 rounded-xl p-6 border border-white/60"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <h5 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                <div className="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+                  <h5 className="font-bold text-emerald-900 mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600" />
                     Platform Ready Features
                   </h5>
-                  <div className="space-y-2">
-                    {currentIndustry.readyFeatures.map((feature, idx) => (
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    {current.readyFeatures.map((f, idx) => (
                       <div key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
+                        <span className="text-emerald-900/90 text-sm">{f}</span>
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Our Capabilities */}
+              {/* Capabilities */}
               <div>
-                <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-green-600" />
+                <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-emerald-600" />
                   Our Platform Capabilities
                 </h4>
                 <div className="space-y-4">
-                  {currentIndustry.capabilities.map((capability, idx) => (
+                  {current.capabilities.map((cap, idx) => (
                     <motion.div
                       key={idx}
-                      className="bg-white/70 rounded-xl p-4 border border-white/40 hover:bg-white/90 transition-all duration-200 cursor-pointer"
-                      initial={{ opacity: 0, y: 20 }}
+                      className="bg-white rounded-xl p-4 border border-gray-100 hover:border-emerald-200 transition-all duration-200 cursor-default"
+                      initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.1 + 0.4 }}
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      onMouseEnter={() => setHoveredFeature(capability.title)}
+                      transition={{ delay: idx * 0.08 + 0.15 }}
+                      onMouseEnter={() => setHoveredFeature(cap.title)}
                       onMouseLeave={() => setHoveredFeature(null)}
                     >
                       <div className="flex items-start gap-4">
-                        <div
-                          className={`w-10 h-10 ${currentIndustry.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}
-                        >
-                          <span className={currentIndustry.iconColor}>
-                            {capability.icon}
-                          </span>
+                        <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <span className="text-emerald-700">{cap.icon}</span>
                         </div>
                         <div className="flex-1">
-                          <h5 className="font-semibold text-gray-800 mb-2">
-                            {capability.title}
-                          </h5>
-                          <p className="text-sm text-gray-600 mb-2">
-                            {capability.description}
+                          <div className="flex items-center justify-between">
+                            <h5 className="font-semibold text-gray-900">
+                              {cap.title}
+                            </h5>
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {cap.description}
                           </p>
-                          <p className="text-xs text-gray-500 italic">
-                            Technical: {capability.technical}
+                          <p className="text-xs text-gray-500 italic mt-2">
+                            Technical: {cap.technical}
                           </p>
                         </div>
                       </div>
@@ -572,11 +566,41 @@ const IndustryCapabilitiesShowcase = () => {
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* Bottom highlights */}
+            <div className="grid md:grid-cols-4 gap-4 mt-10">
+              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
+                <Database className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
+                <div className="font-semibold text-gray-900">151+ Devices</div>
+                <div className="text-xs text-gray-600">
+                  Verified compatibility
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
+                <Globe className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
+                <div className="font-semibold text-gray-900">Global Ready</div>
+                <div className="text-xs text-gray-600">
+                  Multi-region deployment
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
+                <Lock className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
+                <div className="font-semibold text-gray-900">
+                  Enterprise Security
+                </div>
+                <div className="text-xs text-gray-600">Encryption & RBAC</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
+                <Code className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
+                <div className="font-semibold text-gray-900">API First</div>
+                <div className="text-xs text-gray-600">REST + webhooks</div>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
               <motion.button
-                className={`bg-${currentIndustry.color}-600 hover:bg-${currentIndustry.color}-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center gap-3 group transition-all duration-300`}
-                whileHover={{ scale: 1.05, y: -2 }}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl shadow-md flex items-center gap-3 group transition-all duration-200"
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Schedule Platform Demo
@@ -584,8 +608,8 @@ const IndustryCapabilitiesShowcase = () => {
               </motion.button>
 
               <motion.button
-                className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold px-8 py-4 rounded-xl flex items-center gap-3 group transition-all duration-300 bg-white/60"
-                whileHover={{ scale: 1.05, y: -2 }}
+                className="border-2 border-gray-200 hover:border-gray-300 text-gray-800 font-semibold px-8 py-3 rounded-xl flex items-center gap-3 group transition-all duration-200 bg-white"
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 View Technical Specs
@@ -594,45 +618,6 @@ const IndustryCapabilitiesShowcase = () => {
             </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Bottom Platform Highlights */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
-              <Database className="w-8 h-8 text-brand-green mx-auto mb-3" />
-              <div className="font-bold text-gray-800 mb-2">151+ Devices</div>
-              <div className="text-sm text-gray-600">
-                Verified compatible hardware
-              </div>
-            </div>
-            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
-              <Globe className="w-8 h-8 text-brand-green mx-auto mb-3" />
-              <div className="font-bold text-gray-800 mb-2">Global Ready</div>
-              <div className="text-sm text-gray-600">
-                Multi-region deployment
-              </div>
-            </div>
-            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
-              <Lock className="w-8 h-8 text-brand-green mx-auto mb-3" />
-              <div className="font-bold text-gray-800 mb-2">
-                Enterprise Security
-              </div>
-              <div className="text-sm text-gray-600">Bank-grade encryption</div>
-            </div>
-            <div className="bg-white/60 rounded-xl p-6 border border-white/40">
-              <Code className="w-8 h-8 text-brand-green mx-auto mb-3" />
-              <div className="font-bold text-gray-800 mb-2">API First</div>
-              <div className="text-sm text-gray-600">
-                Full integration support
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

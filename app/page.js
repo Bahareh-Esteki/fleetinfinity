@@ -34,9 +34,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adjust path if needed
 import FaqSection from "./components/FaqSection";
-import HighlightsSection from "./components/HighlightsSection";
 import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
@@ -487,9 +485,6 @@ export default function HomePage() {
       </section>
       {/* --- NEW: Solutions by Industry Section --- */}
       <IndustryCapabilitiesShowcase />
-
-      {/* ---Highlights Section--- */}
-      <HighlightsSection />
 
       {/* ---  Customer Story Section --- */}
       <section className="relative py-28 bg-gray-800 text-white">

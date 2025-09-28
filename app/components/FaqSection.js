@@ -9,7 +9,6 @@ import {
   HelpCircle,
   MessageCircle,
   Phone,
-  Globe,
 } from "lucide-react";
 
 const FaqSection = () => {
@@ -27,100 +26,86 @@ const FaqSection = () => {
 
   const faqData = [
     {
-      category: "Platform & Global Setup",
+      category: "Platform & Compatibility",
       questions: [
         {
-          question:
-            "Which GPS devices are compatible with FleetInfinity globally?",
+          question: "Which GPS devices work with FleetInfinity?",
           answer:
-            "FleetInfinity supports 151+ verified GPS tracking devices from 15+ leading manufacturers including Teltonika, Suntech, Coban, Meitrack, and Queclink. Our devices work worldwide with multi-constellation GNSS support. We provide regional device recommendations and can source hardware globally through our international supplier network.",
+            "FleetInfinity supports 151+ verified GPS tracking devices from leading manufacturers including Teltonika, Suntech, Coban, Meitrack, and Queclink. We maintain detailed compatibility lists and can recommend the best device based on your specific fleet requirements and budget.",
         },
         {
-          question: "How quickly can we deploy FleetInfinity internationally?",
+          question: "How long does implementation take?",
           answer:
-            "Global deployment typically takes 1-4 weeks depending on fleet size and geographic spread. Our cloud-based platform enables instant access worldwide, while local device installation can be coordinated through our international partner network or your local IT teams with our remote support.",
+            "Implementation typically takes 1-3 weeks depending on fleet size. Small fleets (1-10 vehicles) can be up and running within 48-72 hours. We handle device configuration, platform setup, and provide comprehensive training to ensure your team is ready to go.",
         },
         {
-          question:
-            "Do you support fleet operations across multiple countries?",
+          question: "Can I manage fleets in different locations?",
           answer:
-            "Yes, FleetInfinity is designed for global fleet operations. Our platform handles multiple time zones, currencies, languages, and regional compliance requirements. You can manage fleets across different continents from a single unified dashboard with country-specific reporting and analytics.",
+            "Yes, FleetInfinity handles multi-location fleet management seamlessly. You can monitor vehicles across different cities or countries from a single dashboard, with support for multiple time zones, currencies, and regional settings as needed.",
         },
       ],
     },
     {
-      category: "Global Features & Capabilities",
+      category: "Technical Specifications",
       questions: [
         {
-          question: "What's the GPS coverage and accuracy worldwide?",
+          question: "What's the GPS accuracy and update frequency?",
           answer:
-            "FleetInfinity provides ±3 meter GPS accuracy globally using multi-constellation GNSS (GPS, GLONASS, Galileo, BeiDou). Our platform works with satellite coverage worldwide, including remote areas. Real-time updates are configurable from 10-30 seconds with global map coverage and local traffic integration where available.",
+            "Our platform provides ±3 meter GPS accuracy using multi-constellation GNSS (GPS, GLONASS, Galileo, BeiDou). Real-time updates are configurable from 10-30 seconds based on your needs, with live tracking and complete historical route playback.",
         },
         {
-          question:
-            "Can FleetInfinity integrate with international business systems?",
+          question: "Does FleetInfinity integrate with existing software?",
           answer:
-            "Absolutely. Our REST API and webhooks enable integration with global ERP systems, international accounting software, logistics platforms, and customer management systems. We support popular international standards and can accommodate region-specific integration requirements.",
+            "Yes, we offer comprehensive API integration. FleetInfinity can connect with ERP systems, accounting software, dispatch platforms, and customer management systems through our REST API and webhooks, enabling seamless data flow with your existing workflows.",
         },
         {
-          question: "What languages and regional features are supported?",
+          question: "What about data security and backup?",
           answer:
-            "FleetInfinity supports multiple languages including English, Arabic, and can be localized for specific markets. The platform handles different currencies, date/time formats, measurement units (metric/imperial), and can accommodate local regulatory requirements across different regions.",
+            "FleetInfinity uses enterprise-grade security with 256-bit SSL encryption and secure cloud infrastructure. Your data is automatically backed up with 99.9% uptime SLA. We comply with international data protection standards and provide audit trails for compliance requirements.",
         },
       ],
     },
     {
-      category: "International Pricing & Support",
+      category: "Pricing & Plans",
       questions: [
         {
-          question: "How does international pricing work?",
+          question: "How is FleetInfinity priced?",
           answer:
-            "We offer flexible global pricing in major currencies (USD, EUR, AED, etc.) with volume discounts for large international fleets. Pricing is transparent with no hidden fees, and we can accommodate different regional billing requirements. Enterprise customers receive custom international pricing packages.",
+            "Pricing is based on the number of vehicles and features selected. We offer flexible monthly or annual plans with volume discounts for larger fleets. Contact us for a customized quote - we work with businesses of all sizes from single vehicle operations to enterprise fleets.",
         },
         {
-          question: "What technical support do you provide globally?",
+          question: "Are there any setup fees or hidden costs?",
           answer:
-            "We provide 24/7 technical support with multi-language capabilities and follow-the-sun support coverage. Our UAE Freezone headquarters coordinates with regional partners to provide local support where needed. Remote diagnostics and training are available worldwide via video conferencing and online platforms.",
+            "No hidden fees. Our pricing is transparent and includes platform access, basic support, and regular updates. Optional services like professional installation, advanced training, or premium support packages are clearly outlined with separate pricing.",
         },
         {
-          question:
-            "Do you offer flexible contracts for international clients?",
+          question: "Can I change my plan as my fleet grows?",
           answer:
-            "Yes, we understand international business requirements vary by region. We offer both month-to-month and annual contracts, with flexible terms for multi-national corporations. Our UAE Freezone structure enables efficient international contracting and invoicing across global markets.",
+            "Absolutely. FleetInfinity scales with your business. You can easily upgrade or modify your plan as you add vehicles or need additional features. Changes take effect immediately, and we'll prorate any billing adjustments.",
         },
       ],
     },
     {
-      category: "Compliance & Global Operations",
+      category: "Support & Training",
       questions: [
         {
-          question:
-            "How do you handle international data privacy and compliance?",
+          question: "What support do you provide?",
           answer:
-            "FleetInfinity complies with international data protection standards including GDPR, and regional privacy laws. Our UAE Freezone structure provides a strategic advantage for global operations while maintaining high security standards. We can accommodate specific regional compliance requirements and provide data residency options where required.",
+            "We provide comprehensive technical support via phone, email, and live chat. Our support team can help with device troubleshooting, platform training, and technical questions. Enterprise customers get dedicated account management and priority support.",
         },
         {
-          question:
-            "Can we export our data for global reporting and compliance?",
+          question: "Do you provide training for our team?",
           answer:
-            "Yes, you maintain full ownership of your data with comprehensive export capabilities in multiple formats (CSV, Excel, JSON, API). Our platform supports international reporting standards and can generate region-specific compliance reports. Data can be accessed and exported from anywhere globally.",
+            "Yes, we include platform training with every implementation. This covers basic operation, reporting, and administrative functions. We also offer advanced training sessions and can create custom training materials for larger teams.",
         },
         {
-          question: "What are the advantages of your UAE Freezone structure?",
+          question: "What if I need help with device installation?",
           answer:
-            "Our UAE Freezone setup provides strategic advantages for global operations: 100% foreign ownership, tax benefits, simplified international trade, strategic location bridging East and West markets, and streamlined global business setup. This structure enables us to serve international clients efficiently while maintaining competitive pricing.",
+            "We can connect you with certified installation partners in your area, or provide detailed installation guides and remote support for DIY installation. For complex setups or large deployments, we recommend professional installation to ensure optimal performance.",
         },
       ],
     },
   ];
-
-  const allQuestions = faqData.flatMap((category, categoryIndex) =>
-    category.questions.map((q, questionIndex) => ({
-      ...q,
-      globalIndex: categoryIndex * 100 + questionIndex,
-      category: category.category,
-    }))
-  );
 
   return (
     <section className="py-24 bg-gradient-to-br from-slate-50 to-white">
@@ -133,18 +118,17 @@ const FaqSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green mb-6">
-            <Globe className="w-4 h-4" />
-            Global Fleet Management FAQ
+            <HelpCircle className="w-4 h-4" />
+            Frequently Asked Questions
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-6">
-            Everything You Need to Know
+            Common Questions Answered
           </h2>
 
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Get answers to common questions about FleetInfinity's global GPS
-            tracking platform, international deployment, and worldwide support
-            services.
+            Find answers to the most common questions about FleetInfinity's GPS
+            tracking platform, setup process, and support services.
           </p>
         </motion.div>
 
@@ -225,11 +209,11 @@ const FaqSection = () => {
         >
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <h3 className="text-2xl font-bold text-brand-dark-blue mb-4">
-              Ready for Global Fleet Management?
+              Ready to Get Started?
             </h3>
             <p className="text-gray-600 mb-6">
-              Our international team is ready to help you deploy FleetInfinity
-              across your global operations.
+              Our team is here to help you find the right fleet management
+              solution for your business.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -238,23 +222,20 @@ const FaqSection = () => {
                 className="bg-brand-green text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-green-dark transition-colors flex items-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" />
-                Contact Global Team
+                Contact Our Team
               </Link>
 
               <Link
                 href="/demo"
                 className="border border-gray-300 text-gray-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2"
               >
-                <Globe className="w-5 h-5" />
-                Schedule Global Demo
+                <Phone className="w-5 h-5" />
+                Schedule a Demo
               </Link>
             </div>
 
             <div className="mt-6 text-sm text-gray-500">
-              <p>
-                🌍 Global Coverage | 📞 24/7 Support | 🏢 UAE Freezone
-                Headquarters | 💬 Multi-Language Support
-              </p>
+              <p>Professional support • Flexible plans • No hidden fees</p>
             </div>
           </div>
         </motion.div>

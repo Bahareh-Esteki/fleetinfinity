@@ -1,316 +1,137 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, Play, MapPin, BarChart3, Shield, Zap } from "lucide-react";
+import { Plane } from "lucide-react";
+import React from "react";
 
 const ModernHero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  // Platform screenshots - 5 cards in straight line
-  const platformScreenshots = [
-    {
-      id: 1,
-      type: "mobile",
-      title: "Driver Mobile App",
-      src: "/images/screenshots/mobile-driver.png",
-    },
-    {
-      id: 2,
-      type: "web",
-      title: "Fleet Dashboard",
-      src: "/images/screenshots/dashboard-overview.png",
-    },
-    {
-      id: 3,
-      type: "web",
-      title: "Live GPS Tracking",
-      src: "/images/screenshots/live-tracking.png",
-    },
-    {
-      id: 4,
-      type: "web",
-      title: "Analytics & Reports",
-      src: "/images/screenshots/analytics-dashboard.png",
-    },
-    {
-      id: 5,
-      type: "mobile",
-      title: "Route Navigation",
-      src: "/images/screenshots/mobile-navigation.png",
-    },
-  ];
-
-  const floatingElements = [
-    {
-      id: 1,
-      icon: <MapPin className="w-6 h-6" />,
-      x: "10%",
-      y: "20%",
-      delay: 0,
-    },
-    {
-      id: 2,
-      icon: <BarChart3 className="w-6 h-6" />,
-      x: "85%",
-      y: "15%",
-      delay: 1,
-    },
-    {
-      id: 3,
-      icon: <Shield className="w-6 h-6" />,
-      x: "15%",
-      y: "70%",
-      delay: 2,
-    },
-    { id: 4, icon: <Zap className="w-6 h-6" />, x: "90%", y: "65%", delay: 3 },
-  ];
-
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-brand-dark-blue via-slate-900 to-brand-dark-blue overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute w-96 h-96 bg-gradient-to-r from-brand-green/20 to-lime-400/30 rounded-full blur-3xl"
-          style={{
-            left: mousePosition.x * 0.02 + "px",
-            top: mousePosition.y * 0.02 + "px",
-          }}
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute right-0 top-1/4 w-80 h-80 bg-gradient-to-l from-lime-400/20 to-brand-green/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
+    <header className="relative h-screen w-full overflow-hidden">
+      {/* Background image (full bleed) */}
+      <Image
+        src="/images/hero_bg.png" // replace with your landscape photo
+        alt="Traveler overlooking mountain landscape"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
 
-      {/* Floating Icons */}
-      {floatingElements.map((element) => (
-        <motion.div
-          key={element.id}
-          className="absolute z-10 p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
-          style={{ left: element.x, top: element.y }}
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            delay: element.delay,
-            ease: "easeInOut",
-          }}
-        >
-          <div className="text-white/70">{element.icon}</div>
-        </motion.div>
-      ))}
+      {/* Dark gradient overlay for readability */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/20"
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-4 pt-20 pb-8 relative z-20">
-        {/* Professional Badge */}
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm font-medium">
-            <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
-            Next-Gen Fleet Intelligence Platform
-          </div>
-        </motion.div>
-
-        {/* Main Headline */}
-        <motion.div
-          className="text-center max-w-5xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-            <span className="text-white">Smarter Fleet,</span>{" "}
-            <span className="bg-gradient-to-r from-lime-400 to-brand-green bg-clip-text text-transparent">
-              Better Business
-            </span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
-            Transform your fleet operations with real-time GPS tracking,
-            intelligent analytics, and comprehensive management tools.
-          </p>
-
-          {/* Trust Indicators */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-8 mb-10 text-white/70"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+      {/* Top navigation */}
+      <nav className="absolute top-0 left-0 right-0 z-20">
+        <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+          {/* Logo left */}
+          <Link
+            href="/"
+            className="text-white text-xl font-extrabold tracking-tight"
           >
-            <div className="text-center">
-              <div className="text-2xl font-bold text-lime-400">151+</div>
-              <div className="text-sm">Compatible Devices</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-lime-400">99.9%</div>
-              <div className="text-sm">Platform Uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-lime-400">24/7</div>
-              <div className="text-sm">Expert Support</div>
-            </div>
-          </motion.div>
+            Wanderly
+          </Link>
 
-          {/* Dual CTA */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            <Link
-              href="/demo"
-              className="group bg-gradient-to-r from-lime-400 to-brand-green text-brand-dark-blue font-bold px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-lime-400/25 transition-all duration-300 flex items-center gap-2"
-            >
-              Get Free Demo
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <button className="group border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center gap-2">
-              <Play className="w-5 h-5" />
-              Watch Platform Demo
-            </button>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* 3D Tilted Screenshot Showcase */}
-      <motion.div
-        className="relative w-full mt-8 pb-16"
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-        style={{
-          perspective: "1000px", // This enables 3D perspective
-        }}
-      >
-        <div className="flex justify-center items-center gap-4 px-4 overflow-x-auto">
-          {platformScreenshots.map((screenshot, index) => {
-            const isMobile = screenshot.type === "mobile";
-            const isMiddle = index === 2; // Middle card (index 2)
-
-            // Calculate Y-axis rotation: middle = 0°, sides tilt away from viewer
-            let rotationY = 0;
-            if (index < 2) {
-              // Left cards tilt left (show right side to viewer)
-              rotationY = (2 - index) * 15; // 15° for adjacent, 30° for far left
-            } else if (index > 2) {
-              // Right cards tilt right (show left side to viewer)
-              rotationY = (index - 2) * -15; // -15° for adjacent, -30° for far right
-            }
-
-            // Z-index: middle card highest, decreasing towards edges
-            const zIndex = 5 - Math.abs(index - 2);
-
-            return (
-              <motion.div
-                key={screenshot.id}
-                className={`relative ${
-                  isMobile
-                    ? "w-48 h-80 md:w-56 md:h-96"
-                    : "w-64 h-40 md:w-80 md:h-48"
-                } rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10 flex-shrink-0`}
-                style={{
-                  transform: `rotateY(${rotationY}deg)`,
-                  zIndex: zIndex,
-                  transformStyle: "preserve-3d",
-                }}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
+          {/* Menu right */}
+          <ul className="hidden md:flex items-center gap-8 text-white/80">
+            <li>
+              <Link
+                href="/destinations"
+                className="hover:text-white transition-colors"
               >
-                {/* Placeholder for screenshot - replace with actual images */}
-                <div className="w-full h-full bg-gradient-to-br from-slate-100 to-slate-300 flex flex-col items-center justify-center p-4">
-                  <div className="text-center text-slate-600">
-                    <div className="text-sm font-bold mb-2">
-                      {screenshot.title}
-                    </div>
-                    <div className="text-xs opacity-70 mb-4">
-                      {isMobile ? "Mobile App" : "Web Platform"}
-                    </div>
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/experiences"
+                className="hover:text-white transition-colors"
+              >
+                Experiences
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/stories"
+                className="hover:text-white transition-colors"
+              >
+                Stories
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="hover:text-white transition-colors"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
 
-                    {/* Mock UI elements */}
-                    {isMobile ? (
-                      <div className="w-full space-y-2">
-                        <div className="h-2 bg-slate-400 rounded w-3/4 mx-auto"></div>
-                        <div className="h-2 bg-slate-400 rounded w-1/2 mx-auto"></div>
-                        <div className="h-8 bg-brand-green/60 rounded mx-auto mt-4 w-5/6"></div>
-                      </div>
-                    ) : (
-                      <div className="w-full space-y-2">
-                        <div className="flex gap-1 mb-2 justify-center">
-                          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                          <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                        </div>
-                        <div className="h-1.5 bg-slate-400 rounded w-full"></div>
-                        <div className="h-1.5 bg-slate-400 rounded w-4/5"></div>
-                        <div className="h-1.5 bg-slate-400 rounded w-3/5"></div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Glass overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
-
-                {/* Pulsing GPS indicators for tracking screenshots */}
-                {screenshot.title.includes("Tracking") && (
-                  <motion.div
-                    className="absolute top-3 right-3 w-3 h-3 bg-lime-400 rounded-full"
-                    animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                )}
-
-                {/* Screenshot label overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                  <div className="text-white text-xs font-medium text-center">
-                    {screenshot.title}
-                  </div>
-                </div>
-
-                {/* Highlight middle card */}
-                {isMiddle && (
-                  <div className="absolute -inset-1 bg-gradient-to-r from-lime-400/20 to-brand-green/20 rounded-2xl blur-sm -z-10"></div>
-                )}
-              </motion.div>
-            );
-          })}
+          {/* Mobile menu placeholder (optional) */}
+          <button
+            className="md:hidden text-white/90 hover:text-white"
+            aria-label="Open menu"
+          >
+            {/* You can place a hamburger icon here */}☰
+          </button>
         </div>
+      </nav>
 
-        {/* Subtle glow beneath screenshots */}
-        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-20 bg-gradient-to-r from-transparent via-lime-400/20 to-transparent blur-2xl"></div>
-      </motion.div>
-    </section>
+      {/* Content wrapper (left-aligned, left third) */}
+      <div className="relative z-10 h-full">
+        <div className="mx-auto max-w-7xl h-full px-6">
+          <div className="flex h-full">
+            {/* Left column: text area occupies ~35% on desktop */}
+            <div className="w-full md:w-5/12 lg:w-4/12 flex items-center">
+              <div className="py-28 md:py-0">
+                {/* Small brand icon */}
+                <div className="mb-4 inline-flex items-center gap-2 text-white/90">
+                  <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                    <Plane className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-sm tracking-wide">
+                    Explore with confidence
+                  </span>
+                </div>
+
+                {/* Headline */}
+                <h1 className="text-4xl leading-tight md:text-6xl font-extrabold text-white">
+                  Find your path.
+                  <br className="hidden md:block" />
+                  Travel with purpose.
+                </h1>
+
+                {/* Subtitle (single supporting line) */}
+                <p className="mt-5 text-base md:text-lg text-white/80 max-w-md">
+                  Plan meaningful journeys with curated routes, local insights,
+                  and trips crafted for real discovery.
+                </p>
+
+                {/* Single CTA */}
+                <div className="mt-8">
+                  <Link
+                    href="/get-started"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#B89CFF] text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
+                  >
+                    Start Planning
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Right column: left empty to let imagery breathe (asymmetrical balance) */}
+            <div className="hidden md:block md:w-7/12 lg:w-8/12" />
+          </div>
+        </div>
+      </div>
+
+      {/* Accessibility: non-visual label for the hero */}
+      <h2 className="sr-only">Adventure travel planning for explorers</h2>
+    </header>
   );
 };
 

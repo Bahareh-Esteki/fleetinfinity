@@ -58,7 +58,7 @@ const FleetInfinityHero = () => {
                 <div className="mt-8 flex items-center gap-3">
                   <Link
                     href="/demo"
-                    className="inline-flex items-center justify-center rounded-lg bg-[#B89CFF] text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
+                    className="inline-flex items-center justify-center rounded-lg bg-brand-green text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
                   >
                     Get a Free Demo
                   </Link>

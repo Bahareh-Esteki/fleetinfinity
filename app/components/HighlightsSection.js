@@ -25,11 +25,12 @@ const GPSFleetSolutions = () => {
   const solutions = [
     {
       id: "dashcams",
-      icon: <Camera className="w-8 h-8 text-brand-green" />,
+      icon: <Camera className="w-8 h-8 text-blue-600" />,
       title: "Fleet Dash Cams",
       description:
         "AI-powered collision detection and driver behavior monitoring for enhanced safety.",
       metric: "70% fewer incidents",
+      metricColor: "bg-blue-50 text-blue-700",
       features: [
         "HD video recording with night vision",
         "AI-powered incident detection",
@@ -46,11 +47,12 @@ const GPSFleetSolutions = () => {
     },
     {
       id: "tracking",
-      icon: <MapPin className="w-8 h-8 text-brand-green" />,
+      icon: <MapPin className="w-8 h-8 text-purple-600" />,
       title: "Real-Time GPS Tracking",
       description:
         "Precise location monitoring with 30-second updates and comprehensive fleet visibility.",
       metric: "±3m accuracy",
+      metricColor: "bg-purple-50 text-purple-700",
       features: [
         "Real-time location with 30s updates",
         "Multi-constellation GNSS support",
@@ -67,11 +69,12 @@ const GPSFleetSolutions = () => {
     },
     {
       id: "compliance",
-      icon: <BookOpenCheck className="w-8 h-8 text-brand-green" />,
+      icon: <BookOpenCheck className="w-8 h-8 text-emerald-600" />,
       title: "ELD & Compliance",
       description:
         "FMCSA-certified electronic logging with automated reporting and violation prevention.",
       metric: "100% compliant",
+      metricColor: "bg-emerald-50 text-emerald-700",
       features: [
         "FMCSA-certified ELD solution",
         "Automated HOS tracking",
@@ -88,11 +91,12 @@ const GPSFleetSolutions = () => {
     },
     {
       id: "routing",
-      icon: <Route className="w-8 h-8 text-brand-green" />,
+      icon: <Route className="w-8 h-8 text-orange-600" />,
       title: "Smart Route Optimization",
       description:
         "AI-powered routing that reduces fuel costs and improves delivery efficiency.",
       metric: "25% fuel savings",
+      metricColor: "bg-orange-50 text-orange-700",
       features: [
         "Multi-stop route optimization",
         "Real-time traffic integration",
@@ -109,11 +113,12 @@ const GPSFleetSolutions = () => {
     },
     {
       id: "fuel",
-      icon: <Fuel className="w-8 h-8 text-brand-green" />,
+      icon: <Fuel className="w-8 h-8 text-red-600" />,
       title: "Fuel Management",
       description:
         "Monitor consumption, detect theft, and optimize fuel efficiency across your fleet.",
       metric: "20% cost reduction",
+      metricColor: "bg-red-50 text-red-700",
       features: [
         "Real-time fuel level monitoring",
         "Theft and unusual consumption alerts",
@@ -130,11 +135,12 @@ const GPSFleetSolutions = () => {
     },
     {
       id: "driver",
-      icon: <UserCheck className="w-8 h-8 text-brand-green" />,
+      icon: <UserCheck className="w-8 h-8 text-indigo-600" />,
       title: "Driver Performance",
       description:
         "Comprehensive driver monitoring with safety scoring and coaching tools.",
       metric: "40% safer driving",
+      metricColor: "bg-indigo-50 text-indigo-700",
       features: [
         "Driver safety scoring system",
         "Harsh driving event detection",
@@ -188,14 +194,16 @@ const GPSFleetSolutions = () => {
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-brand-green/10 rounded-lg">
+                    <div className="p-2 bg-gray-50 rounded-lg">
                       {solution.icon}
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-brand-dark-blue mb-1">
                         {solution.title}
                       </h3>
-                      <div className="inline-flex items-center px-2 py-1 bg-brand-green/10 text-brand-green text-xs font-medium rounded-full">
+                      <div
+                        className={`inline-flex items-center px-2 py-1 ${solution.metricColor} text-xs font-medium rounded-full`}
+                      >
                         {solution.metric}
                       </div>
                     </div>
@@ -224,11 +232,11 @@ const GPSFleetSolutions = () => {
                 {/* Expand/Collapse Button */}
                 <button
                   onClick={() => toggleCard(solution.id)}
-                  className="w-full text-left font-medium text-brand-green hover:text-brand-green-dark flex items-center gap-2 group text-sm"
+                  className="w-full text-left font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 group text-sm"
                 >
                   {expandedCard === solution.id ? "Show Less" : "View Details"}
                   <ArrowRight
-                    className={`w-4 h-4 transition-transform ${
+                    className={`w-4 h-4 text-gray-500 transition-transform ${
                       expandedCard === solution.id
                         ? "rotate-90"
                         : "group-hover:translate-x-1"
@@ -250,14 +258,14 @@ const GPSFleetSolutions = () => {
                     <div className="p-6 pt-4 bg-gray-50/50">
                       {/* Key Features */}
                       <div className="mb-6">
-                        <h4 className="font-semibold text-brand-dark-blue mb-3 flex items-center gap-2">
-                          <Zap className="w-4 h-4 text-brand-green" />
+                        <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-gray-600" />
                           Key Features
                         </h4>
                         <div className="space-y-2">
                           {solution.features.map((feature, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 bg-brand-green rounded-full mt-2 flex-shrink-0" />
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
                               <span className="text-gray-700 text-sm">
                                 {feature}
                               </span>
@@ -268,8 +276,8 @@ const GPSFleetSolutions = () => {
 
                       {/* Technical Specs */}
                       <div>
-                        <h4 className="font-semibold text-brand-dark-blue mb-3 flex items-center gap-2">
-                          <BarChart3 className="w-4 h-4 text-brand-green" />
+                        <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                          <BarChart3 className="w-4 h-4 text-gray-600" />
                           Technical Specifications
                         </h4>
                         <div className="grid grid-cols-1 gap-2">

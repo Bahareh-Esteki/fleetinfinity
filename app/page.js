@@ -319,122 +319,7 @@ export default function HomePage() {
       </section>
       <MorphingPlatformShowcase />
       <RealDeviceCompatibilityShowcase />
-      {/* --- EXPANDED Core Solutions Sections --- */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-4">
-              A Complete Fleet Management Ecosystem
-            </h2>
-            <p className="text-lg text-gray-600">
-              Go beyond simple GPS tracking. Our integrated solutions provide
-              deep insights into every corner of your operations, empowering you
-              to make smarter, data-backed decisions.
-            </p>
-          </div>
 
-          {/* Solution 1: Optimization */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <span className="text-brand-green font-bold uppercase tracking-wider">
-                Productivity
-              </span>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mt-4 mb-6">
-                Maximize Efficiency and Uptime
-              </h3>
-              <p className="text-gray-700 mb-4">
-                In today's competitive landscape, every minute and every gallon
-                of fuel counts. Our platform transforms your fleet's raw data
-                into a powerful engine for productivity. Monitor vehicle health
-                to prevent costly breakdowns, optimize routes to cut fuel
-                consumption, and automate workflows to give your team more time
-                to focus on what matters.
-              </p>
-              <p className="text-gray-700">
-                With real-time visibility, you can dispatch the nearest vehicle,
-                provide customers with accurate ETAs, and ensure your assets are
-                always where they need to be.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                src="/images/feature-optimization.png"
-                alt="Fleet Optimization Graphic"
-                width={500}
-                height={400}
-                className="rounded-xl shadow-2xl"
-              />
-            </div>
-          </div>
-
-          {/* Solution 2: Safety */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="flex justify-center lg:order-2">
-              <Image
-                src="/images/feature-safety.png"
-                alt="Driver Safety Graphic"
-                width={500}
-                height={400}
-                className="rounded-xl shadow-2xl"
-              />
-            </div>
-            <div className="lg:order-1">
-              <span className="text-brand-green font-bold uppercase tracking-wider">
-                Safety
-              </span>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mt-4 mb-6">
-                Build a World-Class Safety Culture
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Your drivers are your most valuable asset. Protect them and
-                reduce risk with a proactive safety program powered by AI and
-                video telematics. Identify risky behaviors like speeding or
-                harsh braking, and use in-cab voice coaching to correct them in
-                real-time.
-              </p>
-              <p className="text-gray-700">
-                In the event of a collision, instant alerts and high-fidelity
-                video footage give you the context you need to exonerate
-                innocent drivers, streamline insurance claims, and prevent
-                future incidents.
-              </p>
-            </div>
-          </div>
-
-          {/* Solution 3: Sustainability */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-brand-green font-bold uppercase tracking-wider">
-                Sustainability
-              </span>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mt-4 mb-6">
-                Drive Toward a Greener Future
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Meet your corporate sustainability goals and reduce your
-                environmental impact. Our platform provides the tools to monitor
-                fuel consumption, track engine idling, and reduce your fleet's
-                overall carbon footprint.
-              </p>
-              <p className="text-gray-700">
-                Planning your transition to electric vehicles? We offer
-                comprehensive EV suitability assessments, real-time battery
-                health monitoring, and smart charging solutions to ensure your
-                electrification journey is smooth and cost-effective.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                src="/images/feature-sustainability.png"
-                alt="Fleet Sustainability Graphic"
-                width={500}
-                height={400}
-                className="rounded-xl shadow-2xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
       {/* --- NEW: How It Works Section --- */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
@@ -491,51 +376,26 @@ export default function HomePage() {
       {/* ---Highlights Section--- */}
       <GPSFleetSolutions />
 
-      {/* ---  Customer Story Section --- */}
-      <section className="relative py-28 bg-gray-800 text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/customer-background.png"
-            alt="Customer background"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-20"
-          />
-        </div>
-        <div className="relative container mx-auto px-4 text-center">
-          <Image
-            src="/images/client-logo-white.png"
-            alt="Client Logo"
-            width={150}
-            height={50}
-            className="mx-auto mb-8"
-          />
-          <blockquote className="max-w-4xl mx-auto">
-            <p className="text-2xl md:text-3xl font-medium leading-relaxed">
-              "With FleetInfinity, we reduced our fuel costs by 15% and cut
-              accident rates by half in the first year alone. The platform paid
-              for itself in six months. It's an essential part of our
-              operation."
-            </p>
-            <footer className="mt-8">
-              <p className="text-xl font-bold">Jane Doe</p>
-              <p className="text-gray-300">
-                Director of Operations, Global Logistics Inc.
-              </p>
-            </footer>
-          </blockquote>
-        </div>
-      </section>
       {/* --- Stats Section --- */}
       <section className="py-20 bg-brand-dark-blue">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Platform Ready for Global Operations
+            </h3>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Built on proven technology with the infrastructure and
+              capabilities to support fleets across the Middle East and beyond.
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-12">
-            <StatItem value="4M+" label="Connected Vehicles" />
-            <StatItem value="60B+" label="Data Points Processed Daily" />
-            <StatItem value="150+" label="Countries Supported" />
+            <StatItem value="151+" label="Verified Compatible Devices" />
+            <StatItem value="24/7" label="Technical Support Coverage" />
+            <StatItem value="99.9%" label="Platform Uptime SLA" />
           </div>
         </div>
       </section>
+
       {/* --- NEW: Latest Insights Section --- */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">

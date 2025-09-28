@@ -41,7 +41,7 @@ import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
 import IndustryCapabilitiesShowcase from "./components/IndustrySolutionsShowcase";
-import HeroSection from "./components/HeroSection";
+import ModernHero from "./components/HeroSection";
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -87,7 +87,7 @@ export default function HomePage() {
   return (
     <main className="bg-gray-50 text-gray-800">
       {/* Hero Section */}
-      <HeroSection />
+      <ModernHero />
 
       {/* --- Trust Builder / Innovation Advantage Section --- */}
       <section className="py-16 bg-gradient-to-r from-slate-50 to-white">

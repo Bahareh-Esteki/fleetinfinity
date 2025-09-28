@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Plane } from "lucide-react";
+import { MapPin, ShieldCheck, Satellite, Activity } from "lucide-react";
 import React from "react";
 
-const ModernHero = () => {
+const FleetInfinityHero = () => {
   return (
     <header className="relative h-screen w-full overflow-hidden">
-      {/* Background image (full bleed) */}
+      {/* Background image (full bleed). Replace with your fleet background: logistics hub / highway interchange */}
       <Image
-        src="/images/hero_bg.png" // replace with your landscape photo
-        alt="Traveler overlooking mountain landscape"
+        src="/images/hero_bg.png" // e.g., your generated logistics/command image
+        alt="Fleet manager overlooking organized logistics hub at golden hour"
         fill
         priority
         sizes="100vw"
@@ -20,119 +20,86 @@ const ModernHero = () => {
 
       {/* Dark gradient overlay for readability */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/20"
+        className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/15"
         aria-hidden="true"
       />
-
-      {/* Top navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-20">
-        <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
-          {/* Logo left */}
-          <Link
-            href="/"
-            className="text-white text-xl font-extrabold tracking-tight"
-          >
-            Wanderly
-          </Link>
-
-          {/* Menu right */}
-          <ul className="hidden md:flex items-center gap-8 text-white/80">
-            <li>
-              <Link
-                href="/destinations"
-                className="hover:text-white transition-colors"
-              >
-                Destinations
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/experiences"
-                className="hover:text-white transition-colors"
-              >
-                Experiences
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/stories"
-                className="hover:text-white transition-colors"
-              >
-                Stories
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="hover:text-white transition-colors"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-
-          {/* Mobile menu placeholder (optional) */}
-          <button
-            className="md:hidden text-white/90 hover:text-white"
-            aria-label="Open menu"
-          >
-            {/* You can place a hamburger icon here */}☰
-          </button>
-        </div>
-      </nav>
 
       {/* Content wrapper (left-aligned, left third) */}
       <div className="relative z-10 h-full">
         <div className="mx-auto max-w-7xl h-full px-6">
           <div className="flex h-full">
-            {/* Left column: text area occupies ~35% on desktop */}
+            {/* Left column: text area ~35% */}
             <div className="w-full md:w-5/12 lg:w-4/12 flex items-center">
               <div className="py-28 md:py-0">
-                {/* Small brand icon */}
+                {/* Small brand context icon */}
                 <div className="mb-4 inline-flex items-center gap-2 text-white/90">
                   <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                    <Plane className="w-5 h-5 text-white" />
+                    <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-sm tracking-wide">
-                    Explore with confidence
+                    GPS Fleet Intelligence
                   </span>
                 </div>
 
                 {/* Headline */}
                 <h1 className="text-4xl leading-tight md:text-6xl font-extrabold text-white">
-                  Find your path.
+                  Track. Manage. Optimize.
                   <br className="hidden md:block" />
-                  Travel with purpose.
+                  Fleet operations made simple.
                 </h1>
 
-                {/* Subtitle (single supporting line) */}
-                <p className="mt-5 text-base md:text-lg text-white/80 max-w-md">
-                  Plan meaningful journeys with curated routes, local insights,
-                  and trips crafted for real discovery.
+                {/* Subtitle */}
+                <p className="mt-5 text-base md:text-lg text-white/85 max-w-md">
+                  Real-time GPS tracking, smart routing, and actionable
+                  analytics—built for reliable, scalable fleet performance.
                 </p>
 
                 {/* Single CTA */}
-                <div className="mt-8">
+                <div className="mt-8 flex items-center gap-3">
                   <Link
-                    href="/get-started"
+                    href="/demo"
                     className="inline-flex items-center justify-center rounded-lg bg-[#B89CFF] text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
                   >
-                    Start Planning
+                    Get a Free Demo
                   </Link>
+                  <Link
+                    href="/solutions"
+                    className="inline-flex items-center justify-center rounded-lg border border-white/30 text-white px-6 py-3 text-base hover:bg-white/10 transition-all"
+                  >
+                    Explore Solutions
+                  </Link>
+                </div>
+
+                {/* Trust indicators (minimal row) */}
+                <div className="mt-6 flex items-center gap-5 text-white/80">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-emerald-300" />
+                    <span className="text-sm">99.9% uptime</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Satellite className="w-4 h-4 text-emerald-300" />
+                    <span className="text-sm">±3m accuracy</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-emerald-300" />
+                    <span className="text-sm">151+ devices</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right column: left empty to let imagery breathe (asymmetrical balance) */}
+            {/* Right column left empty for imagery breathing room */}
             <div className="hidden md:block md:w-7/12 lg:w-8/12" />
           </div>
         </div>
       </div>
 
-      {/* Accessibility: non-visual label for the hero */}
-      <h2 className="sr-only">Adventure travel planning for explorers</h2>
+      {/* Accessibility: hero label */}
+      <h2 className="sr-only">
+        FleetInfinity GPS fleet management platform hero section
+      </h2>
     </header>
   );
 };
 
-export default ModernHero;
+export default FleetInfinityHero;

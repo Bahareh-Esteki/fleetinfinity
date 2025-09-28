@@ -17,43 +17,42 @@ const HeroSection = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Mock screenshot data - replace with your actual app/platform screenshots
+  // 5 Platform screenshots - mix of mobile and web
   const platformScreenshots = [
     {
       id: 1,
       type: "web",
       title: "Fleet Dashboard",
       src: "/images/screenshots/dashboard-overview.png",
+      description: "Live fleet overview with real-time tracking",
     },
     {
       id: 2,
       type: "mobile",
-      title: "Driver App",
+      title: "Driver Mobile App",
       src: "/images/screenshots/mobile-driver.png",
+      description: "Driver interface with route navigation",
     },
     {
       id: 3,
       type: "web",
-      title: "Live Tracking",
-      src: "/images/screenshots/live-map.png",
+      title: "Live GPS Tracking",
+      src: "/images/screenshots/live-tracking.png",
+      description: "Real-time vehicle locations and routes",
     },
     {
       id: 4,
       type: "mobile",
-      title: "Route Navigation",
-      src: "/images/screenshots/mobile-navigation.png",
+      title: "Mobile Analytics",
+      src: "/images/screenshots/mobile-analytics.png",
+      description: "Fleet performance on the go",
     },
     {
       id: 5,
       type: "web",
-      title: "Analytics",
+      title: "Reports & Analytics",
       src: "/images/screenshots/analytics-dashboard.png",
-    },
-    {
-      id: 6,
-      type: "mobile",
-      title: "Notifications",
-      src: "/images/screenshots/mobile-alerts.png",
+      description: "Comprehensive fleet insights",
     },
   ];
 
@@ -86,7 +85,6 @@ const HeroSection = () => {
     <section className="relative min-h-screen bg-gradient-to-br from-brand-dark-blue via-slate-900 to-brand-dark-blue overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        {/* Gradient Orbs */}
         <motion.div
           className="absolute w-96 h-96 bg-gradient-to-r from-brand-green/20 to-lime-400/30 rounded-full blur-3xl"
           style={{
@@ -132,7 +130,7 @@ const HeroSection = () => {
         </motion.div>
       ))}
 
-      <div className="container mx-auto px-4 pt-20 pb-16 relative z-20">
+      <div className="container mx-auto px-4 pt-20 pb-32 relative z-20">
         {/* Professional Badge */}
         <motion.div
           className="text-center mb-8"
@@ -148,22 +146,22 @@ const HeroSection = () => {
 
         {/* Main Headline */}
         <motion.div
-          className="text-center max-w-5xl mx-auto mb-12"
+          className="text-center max-w-5xl mx-auto mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-            <span className="text-white">Track.</span>{" "}
-            <span className="text-white">Manage.</span>{" "}
+            <span className="text-white">Smart Fleet,</span>{" "}
             <span className="bg-gradient-to-r from-lime-400 to-brand-green bg-clip-text text-transparent">
-              Optimize.
+              Less Work
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
-            Transform your fleet operations with real-time GPS tracking,
-            intelligent analytics, and comprehensive management tools.
+            Transform your fleet operations with intelligent GPS tracking,
+            automated reporting, and comprehensive management tools that save
+            time and reduce costs.
           </p>
 
           {/* Trust Indicators */}
@@ -198,78 +196,81 @@ const HeroSection = () => {
               href="/demo"
               className="group bg-gradient-to-r from-lime-400 to-brand-green text-brand-dark-blue font-bold px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-lime-400/25 transition-all duration-300 flex items-center gap-2"
             >
-              Get Free Demo
+              Take Control of Your Fleet Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-
-            <button className="group border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center gap-2">
-              <Play className="w-5 h-5" />
-              Watch Platform Demo
-            </button>
           </motion.div>
         </motion.div>
 
-        {/* Curved Screenshot Showcase */}
+        {/* Large Screenshot Showcase - Like the Image */}
         <motion.div
-          className="relative max-w-6xl mx-auto mt-20"
-          initial={{ opacity: 0, y: 60 }}
+          className="relative max-w-7xl mx-auto mt-24"
+          initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
+          transition={{ delay: 1, duration: 1.2 }}
         >
           <div className="flex justify-center items-end gap-4 overflow-hidden">
             {platformScreenshots.map((screenshot, index) => {
               const isMobile = screenshot.type === "mobile";
-              const rotation = (index - 2.5) * 8; // Creates arc effect
-              const yOffset = Math.abs(index - 2.5) * 20; // Creates curve
-              const scale = 1 - Math.abs(index - 2.5) * 0.1; // Size variation
+              // Create gentle arc like in the image
+              const rotation = (index - 2) * 6; // Less rotation for subtlety
+              const yOffset = Math.abs(index - 2) * 15; // Gentle curve
+              const scale = 1 - Math.abs(index - 2) * 0.05; // Minimal size variation
 
               return (
                 <motion.div
                   key={screenshot.id}
                   className={`relative ${
-                    isMobile ? "w-32 h-56" : "w-48 h-32"
-                  } rounded-lg overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10`}
+                    isMobile ? "w-64 h-96" : "w-80 h-64"
+                  } rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm`}
                   style={{
                     transform: `rotate(${rotation}deg) translateY(${yOffset}px) scale(${scale})`,
-                    zIndex: 6 - Math.abs(index - 2.5),
+                    zIndex: 5 - Math.abs(index - 2),
                   }}
                   whileHover={{
-                    scale: scale + 0.05,
-                    rotate: rotation * 0.5,
-                    zIndex: 10,
+                    scale: scale + 0.03,
+                    rotate: rotation * 0.3,
+                    y: -10,
+                    zIndex: 20,
                     transition: { duration: 0.3 },
                   }}
                 >
-                  {/* Placeholder for screenshot - replace with actual images */}
-                  <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                    <div className="text-center text-gray-600">
-                      <div className="text-xs font-medium mb-1">
+                  {/* Placeholder for screenshot - replace with actual platform images */}
+                  <div className="w-full h-full bg-gradient-to-br from-slate-100 via-white to-gray-100 flex flex-col items-center justify-center p-6 text-gray-700">
+                    <div className="text-center">
+                      <div className="text-lg font-bold mb-2 text-brand-dark-blue">
                         {screenshot.title}
                       </div>
-                      <div className="text-xs opacity-70">
-                        {isMobile ? "Mobile" : "Web"}
+                      <div className="text-sm text-gray-600 mb-4">
+                        {screenshot.description}
+                      </div>
+                      <div className="text-xs px-3 py-1 bg-brand-green/10 text-brand-green rounded-full font-medium">
+                        {isMobile ? "📱 Mobile App" : "💻 Web Platform"}
                       </div>
                     </div>
                   </div>
 
-                  {/* Glass overlay effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
+                  {/* Subtle glass overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/5 pointer-events-none"></div>
 
-                  {/* Pulsing GPS indicators for tracking screenshots */}
-                  {screenshot.title.includes("Tracking") && (
+                  {/* Pulsing indicator for live features */}
+                  {screenshot.title.includes("Live") && (
                     <motion.div
-                      className="absolute top-2 right-2 w-3 h-3 bg-lime-400 rounded-full"
-                      animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
+                      className="absolute top-4 right-4 w-3 h-3 bg-lime-400 rounded-full shadow-lg"
+                      animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
                   )}
+
+                  {/* Screenshot frame effect */}
+                  <div className="absolute inset-2 border border-white/30 rounded-xl pointer-events-none"></div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Subtle glow beneath screenshots */}
-          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-96 h-20 bg-gradient-to-r from-transparent via-lime-400/20 to-transparent blur-2xl"></div>
+          {/* Large glow effect beneath screenshots */}
+          <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-32 bg-gradient-to-r from-transparent via-lime-400/15 to-transparent blur-3xl"></div>
         </motion.div>
       </div>
     </section>

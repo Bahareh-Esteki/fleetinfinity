@@ -12,7 +12,7 @@ import {
   Globe,
 } from "lucide-react";
 
-const PowerfulFAQ = () => {
+const FaqSection = () => {
   const [openItems, setOpenItems] = useState(new Set([0])); // First item open by default
 
   const toggleItem = (index) => {

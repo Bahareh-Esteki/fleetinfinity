@@ -17,19 +17,19 @@ const ModernHero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Platform screenshots - 5 cards like in the reference image
+  // Platform screenshots - 5 cards in straight line
   const platformScreenshots = [
     {
       id: 1,
-      type: "web",
-      title: "Fleet Dashboard",
-      src: "/images/screenshots/dashboard-overview.png",
-    },
-    {
-      id: 2,
       type: "mobile",
       title: "Driver Mobile App",
       src: "/images/screenshots/mobile-driver.png",
+    },
+    {
+      id: 2,
+      type: "web",
+      title: "Fleet Dashboard",
+      src: "/images/screenshots/dashboard-overview.png",
     },
     {
       id: 3,
@@ -39,15 +39,15 @@ const ModernHero = () => {
     },
     {
       id: 4,
-      type: "mobile",
-      title: "Route Navigation",
-      src: "/images/screenshots/mobile-navigation.png",
-    },
-    {
-      id: 5,
       type: "web",
       title: "Analytics & Reports",
       src: "/images/screenshots/analytics-dashboard.png",
+    },
+    {
+      id: 5,
+      type: "mobile",
+      title: "Route Navigation",
+      src: "/images/screenshots/mobile-navigation.png",
     },
   ];
 
@@ -202,20 +202,30 @@ const ModernHero = () => {
         </motion.div>
       </div>
 
-      {/* Large Screenshot Showcase - Similar to reference image */}
+      {/* Straight Line Screenshot Showcase */}
       <motion.div
         className="relative w-full mt-8 pb-16"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
       >
-        <div className="flex justify-center items-end gap-4 px-4 overflow-x-auto">
+        <div className="flex justify-center items-center gap-4 px-4 overflow-x-auto">
           {platformScreenshots.map((screenshot, index) => {
             const isMobile = screenshot.type === "mobile";
-            // Create curved arrangement
-            const rotation = (index - 2) * 6; // Reduced rotation for subtler effect
-            const yOffset = Math.abs(index - 2) * 15; // Creates gentle curve
-            const scale = 1 - Math.abs(index - 2) * 0.05; // Minimal size variation
+            const isMiddle = index === 2; // Middle card (index 2)
+
+            // Calculate rotation: middle = 0°, sides tilt away
+            let rotation = 0;
+            if (index < 2) {
+              // Left cards tilt left (negative rotation)
+              rotation = (2 - index) * -12; // -12° for far left, -24° for second from left
+            } else if (index > 2) {
+              // Right cards tilt right (positive rotation)
+              rotation = (index - 2) * 12; // 12° for first right, 24° for far right
+            }
+
+            // Z-index: middle card highest, decreasing towards edges
+            const zIndex = 5 - Math.abs(index - 2);
 
             return (
               <motion.div
@@ -226,16 +236,13 @@ const ModernHero = () => {
                     : "w-64 h-40 md:w-80 md:h-48"
                 } rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10 flex-shrink-0`}
                 style={{
-                  transform: `rotate(${rotation}deg) translateY(${yOffset}px) scale(${scale})`,
-                  zIndex: 5 - Math.abs(index - 2),
+                  transform: `rotateY(${rotation}deg)`,
+                  zIndex: zIndex,
+                  transformStyle: "preserve-3d",
                 }}
-                whileHover={{
-                  scale: scale + 0.05,
-                  rotate: rotation * 0.3,
-                  y: -20,
-                  zIndex: 10,
-                  transition: { duration: 0.3 },
-                }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
               >
                 {/* Placeholder for screenshot - replace with actual images */}
                 <div className="w-full h-full bg-gradient-to-br from-slate-100 to-slate-300 flex flex-col items-center justify-center p-4">
@@ -256,7 +263,7 @@ const ModernHero = () => {
                       </div>
                     ) : (
                       <div className="w-full space-y-2">
-                        <div className="flex gap-1 mb-2">
+                        <div className="flex gap-1 mb-2 justify-center">
                           <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                           <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                           <div className="w-2 h-2 bg-green-400 rounded-full"></div>
@@ -287,6 +294,11 @@ const ModernHero = () => {
                     {screenshot.title}
                   </div>
                 </div>
+
+                {/* Highlight middle card */}
+                {isMiddle && (
+                  <div className="absolute -inset-1 bg-gradient-to-r from-lime-400/20 to-brand-green/20 rounded-2xl blur-sm -z-10"></div>
+                )}
               </motion.div>
             );
           })}

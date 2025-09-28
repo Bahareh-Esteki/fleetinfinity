@@ -202,26 +202,29 @@ const ModernHero = () => {
         </motion.div>
       </div>
 
-      {/* Straight Line Screenshot Showcase */}
+      {/* 3D Tilted Screenshot Showcase */}
       <motion.div
         className="relative w-full mt-8 pb-16"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
+        style={{
+          perspective: "1000px", // This enables 3D perspective
+        }}
       >
         <div className="flex justify-center items-center gap-4 px-4 overflow-x-auto">
           {platformScreenshots.map((screenshot, index) => {
             const isMobile = screenshot.type === "mobile";
             const isMiddle = index === 2; // Middle card (index 2)
 
-            // Calculate rotation: middle = 0°, sides tilt away
-            let rotation = 0;
+            // Calculate Y-axis rotation: middle = 0°, sides tilt away from viewer
+            let rotationY = 0;
             if (index < 2) {
-              // Left cards tilt left (negative rotation)
-              rotation = (2 - index) * -12; // -12° for far left, -24° for second from left
+              // Left cards tilt left (show right side to viewer)
+              rotationY = (2 - index) * 15; // 15° for adjacent, 30° for far left
             } else if (index > 2) {
-              // Right cards tilt right (positive rotation)
-              rotation = (index - 2) * 12; // 12° for first right, 24° for far right
+              // Right cards tilt right (show left side to viewer)
+              rotationY = (index - 2) * -15; // -15° for adjacent, -30° for far right
             }
 
             // Z-index: middle card highest, decreasing towards edges
@@ -236,7 +239,7 @@ const ModernHero = () => {
                     : "w-64 h-40 md:w-80 md:h-48"
                 } rounded-2xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm bg-white/10 flex-shrink-0`}
                 style={{
-                  transform: `rotateY(${rotation}deg)`,
+                  transform: `rotateY(${rotationY}deg)`,
                   zIndex: zIndex,
                   transformStyle: "preserve-3d",
                 }}

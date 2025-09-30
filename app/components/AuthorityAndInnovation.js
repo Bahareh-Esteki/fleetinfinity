@@ -16,7 +16,7 @@ const AuthorityAndInnovation = () => {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Performance, Zero Compromise",
       description:
-        "Our proprietary microservice architecture guarantees absolute high availability and unmatched speed. This standard ensures real-time data is delivered with true zero-latency, achieving location accuracy down to $\\pm 3\\text{ meters}$.",
+        "Our proprietary microservice architecture guarantees absolute high availability and unmatched speed. This standard ensures real-time data is delivered with true zero-latency, achieving location accuracy down to **±3m**.",
       accent: "text-blue-600 bg-blue-50",
       bg: "hover:shadow-blue-200",
     },
@@ -47,7 +47,7 @@ const AuthorityAndInnovation = () => {
     },
     {
       title: "Real-Time Accuracy",
-      value: "$\\pm 3\\text{m}$",
+      value: "±3m",
       icon: <Globe className="w-5 h-5" />,
     },
     {

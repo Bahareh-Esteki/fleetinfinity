@@ -36,7 +36,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adjust path if needed
 import FaqSection from "./components/FaqSection";
-import GPSFleetSolutions from "./components/HighlightsSection";
+import BusinessOutcomesFocus from "./components/HighlightsSection";
 import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
@@ -148,7 +148,7 @@ export default function HomePage() {
       <IndustryCapabilitiesShowcase />
 
       {/* ---Highlights Section--- */}
-      <GPSFleetSolutions />
+      <BusinessOutcomesFocus />
 
       {/* --- Stats Section --- */}
       <section className="py-20 bg-brand-dark-blue">

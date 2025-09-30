@@ -89,7 +89,7 @@ export default function HomePage() {
     <main className="bg-gray-50 text-gray-800">
       {/* Hero Section */}
       <ModernHero />
-
+      <AuthorityAndInnovation />
       {/* --- Trust Builder / Innovation Advantage Section --- */}
       <section className="py-16 bg-gradient-to-r from-slate-50 to-white">
         <div className="container mx-auto px-4">
@@ -164,7 +164,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <AuthorityAndInnovation />
+
             <AnimatedStatsPanel />
           </div>
         </div>

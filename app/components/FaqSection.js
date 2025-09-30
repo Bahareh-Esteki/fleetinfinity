@@ -206,39 +206,7 @@ const FaqSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h3 className="text-2xl font-bold text-brand-dark-blue mb-4">
-              Ready to Get Started?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Our team is here to help you find the right fleet management
-              solution for your business.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/contact"
-                className="bg-brand-green text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-green-dark transition-colors flex items-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Contact Our Team
-              </Link>
-
-              <Link
-                href="/demo"
-                className="border border-gray-300 text-gray-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2"
-              >
-                <Phone className="w-5 h-5" />
-                Schedule a Demo
-              </Link>
-            </div>
-
-            <div className="mt-6 text-sm text-gray-500">
-              <p>Professional support • Flexible plans • No hidden fees</p>
-            </div>
-          </div>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );

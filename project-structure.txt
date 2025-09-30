@@ -1,0 +1,96 @@
+project-root/
+├── .gitignore
+├── .next/
+├── app/
+│   ├── about/
+│   │   └── page.jsx
+│   ├── components/
+│   │   ├── AnimatedHeroBackground.js
+│   │   ├── AnimatedStatsPanel.js
+│   │   ├── DeviceCompatibilityShowcase.js
+│   │   ├── faq.js
+│   │   ├── FaqSection.js
+│   │   ├── Footer.jsx
+│   │   ├── HeroSection.js
+│   │   ├── HighlightsSection.js
+│   │   ├── IndustrySolutionsShowcase.js
+│   │   ├── MorphingPlatformShowcase.js
+│   │   ├── Navbar.jsx
+│   │   └── SectionBackground.js
+│   ├── contact/
+│   │   └── page.jsx
+│   ├── demo/
+│   │   └── page.jsx
+│   ├── favicon.ico
+│   ├── fleet-solutions/
+│   │   └── page.jsx
+│   ├── globals.css
+│   ├── layout.js
+│   ├── page.js
+│   ├── personal-app/
+│   │   └── page.jsx
+│   ├── personal-solutions/
+│   │   └── page.jsx
+│   ├── platform-overview/
+│   │   └── page.jsx
+│   └── price-calculator/
+│       └── page.jsx
+├── data/
+│   └── deviceDatabase.js
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── project-structure.txt
+├── public/
+│   ├── 1000232044.png
+│   ├── 1000232045.png
+│   ├── 1000232046.png
+│   ├── d096401355c0ff8334a9572dc59c5a3c.jpg
+│   ├── dashboard-screenshot.png
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── images/
+│   │   ├── 1.svg
+│   │   ├── backgrounds/
+│   │   │   ├── agriculture_bg.png
+│   │   │   ├── aviation_bg.png
+│   │   │   ├── construction_bg.png
+│   │   │   ├── healthcare_bg.png
+│   │   │   ├── logistics_hub_bg.png
+│   │   │   └── transport_bg.png
+│   │   ├── bg-1.jpg
+│   │   ├── bg-1.png
+│   │   ├── blog-1.png
+│   │   ├── blog-2.png
+│   │   ├── blog-3.png
+│   │   ├── client-logo-white.png
+│   │   ├── customer-background.png
+│   │   ├── feature-optimization.png
+│   │   ├── feature-safety.png
+│   │   ├── feature-sustainability.png
+│   │   ├── hero_bg.png
+│   │   ├── industry-leader-graphic.png
+│   │   └── the-old-way.svg
+│   ├── logo-white.png
+│   ├── logo.png
+│   ├── newway.png
+│   ├── next.svg
+│   ├── oldway.png
+│   ├── Screenshot 2025-07-31 114917.png
+│   ├── Screenshot 2025-07-31 115543.png
+│   ├── Screenshot 2025-07-31 120058.png
+│   ├── Screenshot 2025-07-31 121520.png
+│   ├── Screenshot 2025-07-31 121605.png
+│   ├── Screenshot 2025-07-31 121637.png
+│   ├── Screenshot 2025-07-31 121746.png
+│   ├── Screenshot 2025-07-31 122257.png
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── structure.js
+├── tailwind.config.js
+├── utils/
+│   └── iconMapping.js

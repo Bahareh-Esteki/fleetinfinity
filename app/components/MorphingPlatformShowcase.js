@@ -65,32 +65,32 @@ const IMAGE_DATA = {
   "mobile-live-map": {
     src: "/images/screenshots/mobile-live-map.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
   "mobile-geofence-alert": {
     src: "/images/screenshots/mobile-geofence-alert.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
   "mobile-remote-control": {
     src: "/images/screenshots/mobile-remote-control.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
   "mobile-phone-tracker": {
     src: "/images/screenshots/mobile-phone-tracker.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
   "mobile-alerts-log": {
     src: "/images/screenshots/mobile-alerts-log.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
   "mobile-performance": {
     src: "/images/screenshots/mobile-performance.png",
     width: 350,
-    height: 650,
+    height: 550,
   },
 };
 

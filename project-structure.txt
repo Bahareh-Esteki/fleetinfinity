@@ -73,6 +73,18 @@ project-root/
 │   │   ├── feature-sustainability.png
 │   │   ├── hero_bg.png
 │   │   ├── industry-leader-graphic.png
+│   │   ├── screenshots/
+│   │   │   ├── dashboard-analytics.jpg
+│   │   │   ├── dashboard-driver-score.jpg
+│   │   │   ├── dashboard-live-video.jpg
+│   │   │   ├── dashboard-route-replay.jpg
+│   │   │   ├── dashboard-user-roles.jpg
+│   │   │   ├── download.png
+│   │   │   ├── mobile-alerts-log.png
+│   │   │   ├── mobile-geofence-alert.png
+│   │   │   ├── mobile-live-map.png
+│   │   │   ├── mobile-performance.png
+│   │   │   └── mobile-phone-tracker.png
 │   │   └── the-old-way.svg
 │   ├── logo-white.png
 │   ├── logo.png

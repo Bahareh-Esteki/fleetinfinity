@@ -42,6 +42,7 @@ import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
 import IndustryCapabilitiesShowcase from "./components/IndustrySolutionsShowcase";
 import ModernHero from "./components/HeroSection";
+import AuthorityAndInnovation from "./components/AuthorityAndInnovation";
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -163,7 +164,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
+            <AuthorityAndInnovation />
             <AnimatedStatsPanel />
           </div>
         </div>

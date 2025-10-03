@@ -374,7 +374,7 @@ const IndustryCapabilitiesShowcase = () => {
     const t = setInterval(() => {
       i = (i + 1) % keys.length;
       setActiveIndustry(keys[i]);
-    }, 6000);
+    }, 15000);
     return () => clearInterval(t);
   }, [activeIndustry, autoRotate, industries]);
 

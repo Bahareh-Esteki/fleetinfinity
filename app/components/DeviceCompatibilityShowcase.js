@@ -191,21 +191,28 @@ const RealDeviceCompatibilityShowcase = () => {
         >
           {/* Enhanced Search Bar */}
           <div className="relative mb-6">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search devices, manufacturers, or features..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={handleSearchKeyPress}
-              className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-transparent text-base" // Increased font size and padding
-            />
-            <button
-              onClick={handleSearchClick}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-green text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-green-dark transition-colors text-sm"
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex flex-col sm:flex-row gap-2 sm:gap-0"
             >
-              Search
-            </button>
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
+                <input
+                  type="text"
+                  placeholder="Search devices, manufacturers, or features..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-transparent text-base"
+                />
+              </div>
+              <button
+                type="submit"
+                className="sm:absolute sm:right-2 sm:top-1/2 sm:-translate-y-1/2 bg-brand-green text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-green-dark transition-colors text-sm"
+                style={{ minWidth: "96px" }}
+              >
+                Search
+              </button>
+            </form>
           </div>
 
           {/* Show search prompt when no results are displayed */}

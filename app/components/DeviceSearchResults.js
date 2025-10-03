@@ -127,14 +127,6 @@ const DeviceSearchResults = ({
       <div className="container mx-auto px-4">
         {/* Header with back button */}
         <div className="mb-8">
-          <button
-            onClick={() => router.push("/")}
-            className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 mb-4 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </button>
-
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">

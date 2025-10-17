@@ -127,9 +127,16 @@ const PLATFORM_DATA = {
       {
         icon: <Zap />,
         title: "Proactive Maintenance Planner",
-        desc: "Automated reminders for insurance renewal, oil changes, brake pads, and custom service reminders to minimize downtime.",
+        desc: "Automated reminders for insurance renewal, oil changes, brake pads, and custom service reminders based on mileage, working hour, and date,to minimize downtime.",
         screenshotKey: "dashboard-maintenance",
       },
+      {
+        icon: <BarChart3 />,
+        title: "Advanced Report Builder",
+        desc: "Select from dozens of ready-made report templates or build fully custom fleet, trip, maintenance, and compliance reports. Generate deep analytics from hundreds or thousands of vehicles in just seconds, export to Excel, PDF, or via API.",
+        screenshotKey: "dashboard-report-builder",
+      },
+
       {
         icon: <Shield />,
         title: "Modular User Access (RBAC)",
@@ -173,6 +180,13 @@ const PLATFORM_DATA = {
         desc: "Convert any Android phone into a GPS device to track children, elderly family members, or field employees.",
         screenshotKey: "mobile-phone-tracker",
       },
+      {
+        icon: <BarChart3 />,
+        title: "Customizable Trip & History Reports",
+        desc: "Instantly build and export detailed reports of your vehicle’s journeys, driving habits, or event history—customized for your peace of mind or family needs.",
+        screenshotKey: "mobile-report",
+      },
+
       {
         icon: <Database />,
         title: "High-Speed, Low-Data Design",

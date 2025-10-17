@@ -103,7 +103,7 @@ const PLATFORM_DATA = {
       {
         icon: <BarChart3 />,
         title: "Deep Operational Intelligence",
-        desc: "Comprehensive charts for fuel, speed, and weight analysis to drive predictive maintenance and cost reduction.",
+        desc: "Comprehensive charts for temperature, moisture, fuel, speed, and weight analysis to drive predictive maintenance and cost reduction.",
         screenshotKey: "dashboard-analytics",
       },
       {
@@ -115,7 +115,7 @@ const PLATFORM_DATA = {
       {
         icon: <Camera />,
         title: "Real-Time Visual Monitoring",
-        desc: "Integration with camera devices for live image/video streaming and immediate visual confirmation of events.",
+        desc: "Integration with camera devices for storing and live image/video streaming, enabling immediate visual confirmation of events and reporting functionalities.",
         screenshotKey: "dashboard-live-video",
       },
       {
@@ -124,6 +124,13 @@ const PLATFORM_DATA = {
         desc: "Create authorized/unauthorized zones and replay travel history as a film, complete with all associated alerts.",
         screenshotKey: "dashboard-route-replay",
       },
+      {
+        icon: <Wrench />,
+        title: "Maintenance Automation",
+        desc: "Schedule and track maintenance based on mileage, engine working hours, or calendar date to reduce breakdowns, control service cost, and automate reminders for every vehicle.",
+        screenshotKey: "dashboard-maintenance",
+      },
+
       {
         icon: <Zap />,
         title: "Proactive Maintenance Planner",
@@ -161,6 +168,13 @@ const PLATFORM_DATA = {
         desc: "Remotely turn the ignition on/off and lock/unlock doors using the app for quick security response (hardware dependent).",
         screenshotKey: "mobile-remote-control",
       },
+      {
+        icon: <Wrench />,
+        title: "Smart Maintenance Reminders",
+        desc: "Automatic alerts on your phone for oil change, service, or inspection – based on distance travelled, driving time, or calendar schedule, so your car is always healthy.",
+        screenshotKey: "dashboard-maintenance",
+      },
+
       {
         icon: <GitCommit />,
         title: "Safe Zone & Towing Alerts",

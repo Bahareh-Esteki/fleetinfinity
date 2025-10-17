@@ -20,7 +20,6 @@ import {
   Database,
   Briefcase,
   GitCommit,
-  Wrench,
   User,
 } from "lucide-react";
 
@@ -126,13 +125,6 @@ const PLATFORM_DATA = {
         screenshotKey: "dashboard-route-replay",
       },
       {
-        icon: <Wrench />,
-        title: "Maintenance Automation",
-        desc: "Schedule and track maintenance based on mileage, engine working hours, or calendar date to reduce breakdowns, control service cost, and automate reminders for every vehicle.",
-        screenshotKey: "dashboard-maintenance",
-      },
-
-      {
         icon: <Zap />,
         title: "Proactive Maintenance Planner",
         desc: "Automated reminders for insurance renewal, oil changes, brake pads, and custom service reminders to minimize downtime.",
@@ -169,13 +161,6 @@ const PLATFORM_DATA = {
         desc: "Remotely turn the ignition on/off and lock/unlock doors using the app for quick security response (hardware dependent).",
         screenshotKey: "mobile-remote-control",
       },
-      {
-        icon: <Wrench />,
-        title: "Smart Maintenance Reminders",
-        desc: "Automatic alerts on your phone for oil change, service, or inspection – based on distance travelled, driving time, or calendar schedule, so your car is always healthy.",
-        screenshotKey: "dashboard-maintenance",
-      },
-
       {
         icon: <GitCommit />,
         title: "Safe Zone & Towing Alerts",

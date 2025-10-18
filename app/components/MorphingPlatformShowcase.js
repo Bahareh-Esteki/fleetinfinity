@@ -50,6 +50,11 @@ const IMAGE_DATA = {
     width: 1200,
     height: 675,
   },
+  "dashboard-report-builder": {
+    src: "/images/screenshots/dashboard-report-builder.jpg",
+    width: 1200,
+    height: 675,
+  },
   "dashboard-maintenance": {
     src: "/images/screenshots/dashboard-maintenance.jpg",
     width: 1200,
@@ -84,6 +89,11 @@ const IMAGE_DATA = {
   },
   "mobile-alerts-log": {
     src: "/images/screenshots/mobile-alerts-log.png",
+    width: 350,
+    height: 550,
+  },
+  "mobile-report": {
+    src: "/images/screenshots/mobile-report.png",
     width: 350,
     height: 550,
   },

@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image"; // <-- NEW: Import Next.js Image component
+import Image from "next/image";
 import {
   Truck,
   Heart,
@@ -21,15 +23,11 @@ import {
   Briefcase,
   GitCommit,
   User,
+  Wrench,
 } from "lucide-react";
 
-// Wrap Next.js Image component with motion for animation support
-const MotionImage = motion(Image);
-
-// --- IMAGE DATA (Use relative paths for Next.js optimization) ---
-// Note: You must place your screenshots in the public folder, e.g., /public/images/screenshots/
+// --- IMAGE DATA (should match files in /public/images/screenshots/) ---
 const IMAGE_DATA = {
-  // Business (Desktop Screenshots - 16:9 aspect)
   "dashboard-analytics": {
     src: "/images/screenshots/dashboard-analytics.jpg",
     width: 1200,
@@ -66,7 +64,7 @@ const IMAGE_DATA = {
     height: 675,
   },
 
-  // Personal (Mobile Screenshots - 9:16 aspect)
+  // Personal (Mobile)
   "mobile-live-map": {
     src: "/images/screenshots/mobile-live-map.png",
     width: 350,
@@ -104,7 +102,7 @@ const IMAGE_DATA = {
   },
 };
 
-// --- PLATFORM DATA (Unchanged features, now referencing IMAGE_DATA) ---
+// --- PLATFORM DATA: All main features ---
 const PLATFORM_DATA = {
   business: {
     tagline: "Enterprise-grade fleet management without enterprise complexity",
@@ -115,6 +113,24 @@ const PLATFORM_DATA = {
         title: "Deep Operational Intelligence",
         desc: "Comprehensive charts for temperature, moisture, fuel, speed, and weight analysis to drive predictive maintenance and cost reduction.",
         screenshotKey: "dashboard-analytics",
+      },
+      {
+        icon: <Monitor />,
+        title: "CAN & OBD-II Data Analytics",
+        desc: "Live access to vehicle CAN-bus and OBD-II data with real-time alarms, advanced analytics, and in-depth reporting. Instantly monitor and set alerts for critical engine parameters, fuel and temperature, custom sensor values, and driver/vehicle status. Full protocol support (SAE-J1939, J1708) ensures compatibility with all fleet vehicles.",
+        screenshotKey: "dashboard-analytics",
+      },
+      {
+        icon: <BarChart3 />,
+        title: "Advanced Report Builder",
+        desc: "Select from dozens of ready-made report templates or build fully custom fleet, trip, maintenance, and compliance reports. Generate deep analytics from hundreds or thousands of vehicles in just seconds, export to Excel, PDF, or via API.",
+        screenshotKey: "dashboard-report-builder",
+      },
+      {
+        icon: <Zap />,
+        title: "Proactive Maintenance Planner",
+        desc: "Automated reminders for insurance renewal, oil changes, brake pads, and custom service reminders based on mileage, working hour, and date, to minimize downtime.",
+        screenshotKey: "dashboard-maintenance",
       },
       {
         icon: <Users />,
@@ -135,18 +151,17 @@ const PLATFORM_DATA = {
         screenshotKey: "dashboard-route-replay",
       },
       {
-        icon: <Zap />,
-        title: "Proactive Maintenance Planner",
-        desc: "Automated reminders for insurance renewal, oil changes, brake pads, and custom service reminders based on mileage, working hour, and date,to minimize downtime.",
-        screenshotKey: "dashboard-maintenance",
+        icon: <MapPin />,
+        title: "Advanced Geofence & Presence Monitoring",
+        desc: "Create custom geofences to receive instant alarms on vehicle entrance or exit. Automatically check passenger or cargo presence, and generate detailed, customized geofence reports for compliance or operational auditing.",
+        screenshotKey: "dashboard-route-replay",
       },
       {
-        icon: <BarChart3 />,
-        title: "Advanced Report Builder",
-        desc: "Select from dozens of ready-made report templates or build fully custom fleet, trip, maintenance, and compliance reports. Generate deep analytics from hundreds or thousands of vehicles in just seconds, export to Excel, PDF, or via API.",
-        screenshotKey: "dashboard-report-builder",
+        icon: <Smartphone />,
+        title: "Remote Diagnostics & Control",
+        desc: "Run full remote vehicle diagnostics, instantly clear fault codes (DTCs), and activate remote engine cutoff or immobilization capabilities. Securely control and troubleshoot your entire fleet from the cloud dashboard.",
+        screenshotKey: "dashboard-live-video",
       },
-
       {
         icon: <Shield />,
         title: "Modular User Access (RBAC)",
@@ -196,7 +211,6 @@ const PLATFORM_DATA = {
         desc: "Instantly build and export detailed reports of your vehicle’s journeys, driving habits, or event history—customized for your peace of mind or family needs.",
         screenshotKey: "mobile-report",
       },
-
       {
         icon: <Database />,
         title: "High-Speed, Low-Data Design",
@@ -209,6 +223,12 @@ const PLATFORM_DATA = {
         desc: "Review a comprehensive log of all vehicle events, including speeding, dangerous driving, and alert history.",
         screenshotKey: "mobile-alerts-log",
       },
+      {
+        icon: <Route />,
+        title: "Easy Car Recovery",
+        desc: "After remotely shutting off your car from anywhere, instantly navigate to the exact parked location using turn-by-turn guidance to find your vehicle with zero hassle.",
+        screenshotKey: "mobile-live-map",
+      },
     ],
     cta: {
       text: "Download Apps",
@@ -220,7 +240,7 @@ const PLATFORM_DATA = {
   },
 };
 
-// --- COMPONENT IMPLEMENTATION ---
+const MotionImage = motion(Image);
 
 const MorphingPlatformShowcase = () => {
   const [activeMode, setActiveMode] = useState("business");
@@ -236,7 +256,7 @@ const MorphingPlatformShowcase = () => {
   );
   const currentImageData = IMAGE_DATA[activeScreenshot];
 
-  // Handle auto-cycling of screenshots when user hasn't interacted
+  // Auto-cycle logic for desktop demo
   useEffect(() => {
     if (!userInteracted) {
       const cycleScreenshots = () => {
@@ -246,20 +266,16 @@ const MorphingPlatformShowcase = () => {
           return featureKeys[nextIndex];
         });
       };
-
       const interval = setInterval(cycleScreenshots, 5000);
-
       return () => clearInterval(interval);
     }
   }, [activeMode, featureKeys, userInteracted]);
 
-  // Reset screenshot state when mode changes
   useEffect(() => {
     setActiveScreenshot(currentData.defaultScreenshotKey);
     setUserInteracted(false);
   }, [activeMode, currentData.defaultScreenshotKey]);
 
-  // Helper function for user interaction (hover/tap)
   const handleFeatureInteraction = useCallback((key, type) => {
     setActiveScreenshot(key);
     if (type === "enter") {
@@ -274,23 +290,18 @@ const MorphingPlatformShowcase = () => {
 
   const MockupFrame = ({ mode, children }) => {
     if (mode === "business") {
-      // Desktop Monitor Mockup
       return (
-        // The container manages the responsive aspect ratio using padding-top
         <div className="w-full h-auto bg-gray-900 border-[10px] border-gray-800 rounded-xl shadow-2xl relative p-3">
           <div
             className="relative w-full overflow-hidden rounded-md"
             style={{ paddingTop: "56.25%" }}
           >
-            {" "}
-            {/* 16:9 Aspect Ratio */}
             <div className="absolute inset-0">{children}</div>
           </div>
           <div className="h-4 w-1/3 mx-auto mt-2 bg-gray-700 rounded-sm"></div>
         </div>
       );
     } else {
-      // Mobile Phone Mockup
       return (
         <div className="w-72 h-[600px] lg:w-80 lg:h-[700px] bg-black border-[12px] lg:border-[16px] border-gray-900 rounded-[3rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] relative flex items-center justify-center">
           <div className="w-[calc(100%-4px)] h-[calc(100%-4px)] overflow-hidden rounded-[2.5rem] bg-gray-100 relative">
@@ -317,11 +328,9 @@ const MorphingPlatformShowcase = () => {
             <Zap className="w-4 h-4" />
             Total Visibility. Global Control. One Platform.
           </div>
-
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
             FleetInfinity Adapts to Your World
           </h2>
-
           <p className="text-lg text-gray-600 leading-relaxed">
             Whether you're managing a commercial fleet or protecting your
             family, FleetInfinity provides the perfect tracking solution. See
@@ -347,7 +356,6 @@ const MorphingPlatformShowcase = () => {
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
-
             {/* Toggle Buttons */}
             <div className="relative flex">
               <motion.button
@@ -363,7 +371,6 @@ const MorphingPlatformShowcase = () => {
                 <Building className="w-4 h-4" />
                 For Business
               </motion.button>
-
               <motion.button
                 onClick={() => handleModeChange("personal")}
                 className={`px-8 py-4 rounded-full font-semibold text-sm transition-all z-10 flex items-center gap-2 ${
@@ -381,7 +388,7 @@ const MorphingPlatformShowcase = () => {
           </div>
         </motion.div>
 
-        {/* Morphing Content Area */}
+        {/* DESKTOP: Split grid (features on left, image on right) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeMode}
@@ -389,118 +396,137 @@ const MorphingPlatformShowcase = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.98 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`rounded-3xl p-8 md:p-12 ${currentData.bgColor} border border-white/50 shadow-xl backdrop-blur-sm`}
+            className={`hidden lg:grid rounded-3xl p-8 md:p-12 ${currentData.bgColor} border border-white/50 shadow-xl backdrop-blur-sm lg:grid-cols-12 gap-12 items-start`}
           >
-            {/* Tagline */}
+            {/* LEFT COLUMN (FEATURES & CTA) */}
             <motion.div
-              className="text-center mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              className="lg:col-span-5 space-y-6 order-2 lg:order-1"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <p
-                className={`text-xl font-semibold ${currentData.accentColor} italic`}
-              >
-                "{currentData.tagline}"
-              </p>
-            </motion.div>
-
-            <div className="grid lg:grid-cols-12 gap-12 items-start">
-              {/* LEFT COLUMN (FEATURES & CTA) - 5/12 width */}
-              <motion.div
-                className="lg:col-span-5 space-y-6 order-2 lg:order-1"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-              >
-                <h4 className="text-2xl font-bold text-gray-800 text-center lg:text-left">
-                  Key Features & Capabilities
-                </h4>
-
-                <div className="grid gap-4">
-                  {currentData.features.map((feature, index) => (
-                    <motion.div
-                      key={feature.screenshotKey}
-                      className={`flex items-start gap-4 bg-white/70 backdrop-blur-sm rounded-xl p-4 border transition-all duration-200 cursor-pointer ${
-                        activeScreenshot === feature.screenshotKey
-                          ? `${currentData.accentColor} border-4 border-current shadow-lg` // Highlight active
-                          : "border-white/50 hover:bg-white/90"
-                      }`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 + 0.4, duration: 0.4 }}
-                      // Split-Screen Interaction Logic
-                      onMouseEnter={() =>
-                        handleFeatureInteraction(feature.screenshotKey, "enter")
-                      }
-                      onMouseLeave={() =>
-                        activeMode === "business"
-                          ? setActiveScreenshot(
-                              currentData.defaultScreenshotKey
-                            )
-                          : null
-                      } // Keep active on mobile for tap
-                      onClick={() =>
-                        handleFeatureInteraction(feature.screenshotKey, "click")
-                      } // Mobile Tap interaction
+              <h4 className="text-2xl font-bold text-gray-800 text-center lg:text-left">
+                Key Features & Capabilities
+              </h4>
+              <div className="grid gap-4">
+                {currentData.features.map((feature, index) => (
+                  <motion.div
+                    key={feature.screenshotKey}
+                    className={`flex items-start gap-4 bg-white/70 backdrop-blur-sm rounded-xl p-4 border transition-all duration-200 cursor-pointer ${
+                      activeScreenshot === feature.screenshotKey
+                        ? `${currentData.accentColor} border-4 border-current shadow-lg`
+                        : "border-white/50 hover:bg-white/90"
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 + 0.4, duration: 0.4 }}
+                    onMouseEnter={() =>
+                      handleFeatureInteraction(feature.screenshotKey, "enter")
+                    }
+                    onMouseLeave={() =>
+                      activeMode === "business"
+                        ? setActiveScreenshot(currentData.defaultScreenshotKey)
+                        : null
+                    }
+                    onClick={() =>
+                      handleFeatureInteraction(feature.screenshotKey, "click")
+                    }
+                  >
+                    <div
+                      className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0 border-2 border-white ${currentData.accentColor}`}
                     >
-                      <div
-                        className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0 border-2 border-white ${currentData.accentColor}`}
-                      >
-                        <div className="w-6 h-6">{feature.icon}</div>
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h5 className="font-bold text-gray-800 mb-1">
-                          {feature.title}
-                        </h5>
-                        <p className="text-gray-600 text-sm leading-snug">
-                          {feature.desc}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <motion.a
-                  href={currentData.cta.href}
-                  className={`${currentData.cta.color} text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 group transition-all duration-300 text-center block mt-8`}
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {currentData.cta.text}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.a>
-              </motion.div>
-
-              {/* RIGHT COLUMN (DYNAMIC MOCKUP) - 7/12 width */}
-              <motion.div
-                className="lg:col-span-7 flex justify-center items-center relative min-h-[400px] lg:min-h-[500px] order-1 lg:order-2"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                      <div className="w-6 h-6">{feature.icon}</div>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h5 className="font-bold text-gray-800 mb-1">
+                        {feature.title}
+                      </h5>
+                      <p className="text-gray-600 text-sm leading-snug">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              {/* CTA Button */}
+              <motion.a
+                href={currentData.cta.href}
+                className={`${currentData.cta.color} text-white font-semibold px-8 py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 group transition-all duration-300 text-center block mt-8`}
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <MockupFrame mode={activeMode}>
-                  <AnimatePresence mode="wait">
-                    <MotionImage
-                      key={activeScreenshot}
-                      className="object-cover"
-                      src={currentImageData.src}
-                      alt={`FleetInfinity Platform Screenshot - ${activeScreenshot}`}
-                      width={currentImageData.width}
-                      height={currentImageData.height}
-                      layout={activeMode === "business" ? "responsive" : "fill"} // Use fill for mobile container, responsive for desktop
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  </AnimatePresence>
-                </MockupFrame>
-              </motion.div>
-            </div>
+                {currentData.cta.text}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+            </motion.div>
+            {/* RIGHT COLUMN (DYNAMIC MOCKUP) */}
+            <motion.div
+              className="lg:col-span-7 flex justify-center items-center relative min-h-[400px] lg:min-h-[500px] order-1 lg:order-2"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <MockupFrame mode={activeMode}>
+                <AnimatePresence mode="wait">
+                  <MotionImage
+                    key={activeScreenshot}
+                    className="object-cover"
+                    src={currentImageData.src}
+                    alt={`FleetInfinity Platform Screenshot - ${activeScreenshot}`}
+                    width={currentImageData.width}
+                    height={currentImageData.height}
+                    layout={activeMode === "business" ? "responsive" : "fill"}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </AnimatePresence>
+              </MockupFrame>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
+
+        {/* MOBILE: Stacked feature cards (each with image and description) */}
+        <div className="block lg:hidden">
+          <h4 className="text-2xl font-bold text-gray-800 mb-5 text-center">
+            Features & Capabilities
+          </h4>
+          {currentData.features.map((feature, index) => {
+            const imgData = IMAGE_DATA[feature.screenshotKey];
+            return (
+              <motion.div
+                key={feature.screenshotKey}
+                className="mb-8 rounded-2xl shadow-lg bg-white/80 border border-white/60 overflow-hidden"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.4 }}
+              >
+                <div className="flex items-center gap-4 px-4 py-3">
+                  <div
+                    className={`w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0 border-2 border-white ${currentData.accentColor}`}
+                  >
+                    <div className="w-6 h-6">{feature.icon}</div>
+                  </div>
+                  <h5 className="font-bold text-gray-800">{feature.title}</h5>
+                </div>
+                <div className="px-4 pb-2 text-gray-700 text-sm">
+                  {feature.desc}
+                </div>
+                <div className="relative w-full pt-[56.25%] bg-gray-100">
+                  <Image
+                    alt={feature.title}
+                    src={imgData.src}
+                    fill
+                    className="object-cover absolute inset-0 rounded-b-2xl"
+                    sizes="100vw"
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

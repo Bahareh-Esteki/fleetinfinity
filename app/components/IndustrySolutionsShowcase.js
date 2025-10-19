@@ -27,6 +27,7 @@ import {
   Globe,
   Lock,
   Code,
+  Route,
 } from "lucide-react";
 
 // Background config (place files in public/images/backgrounds/)

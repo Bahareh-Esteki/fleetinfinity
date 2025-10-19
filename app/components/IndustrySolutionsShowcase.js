@@ -104,34 +104,61 @@ const IndustryCapabilitiesShowcase = () => {
         ],
         capabilities: [
           {
-            icon: <MapPin className="w-5 h-5" />,
-            title: "Advanced Route Planning",
+            icon: <Route className="w-5 h-5" />,
+            title: "Smart Route Optimization",
             description:
-              "Multi-stop optimization with traffic-aware dynamic re-routing",
-            technical: "Traffic integration, configurable SLAs",
+              "AI-powered route planning reduces mileage, saves fuel, and ensures on-time deliveries.",
+            technical:
+              "Dynamic rerouting with live traffic and SLA constraints",
           },
           {
-            icon: <Clock className="w-5 h-5" />,
-            title: "Live Tracking & ETAs",
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Real-Time Multi-Access Tracking",
             description:
-              "Precise location updates with automated ETA notifications",
-            technical: "GPS accuracy ±3m, 30s updates",
+              "Individualized live tracking portals for fleet managers, shippers, and passengers.",
+            technical: "Role-based access, live map view, ETA synchronization",
+          },
+          {
+            icon: <GitCommit className="w-5 h-5" />,
+            title: "BLE Cargo Identification",
+            description:
+              "Monitor which pallets are loaded and track them anywhere using BLE tags.",
+            technical: "BLE sensor integration and pallet mapping dashboard",
           },
           {
             icon: <Shield className="w-5 h-5" />,
-            title: "Cargo Security",
+            title: "Cargo Security & Compliance",
             description:
-              "Geo-fence violations, door sensors, and theft recovery mode",
-            technical: "Real-time alerting, escalation rules",
+              "Immediate alerts for route or geo-fence violations, door access, or unauthorized stops.",
+            technical:
+              "Encrypted sensor communication and configurable alert rules",
           },
           {
             icon: <Thermometer className="w-5 h-5" />,
-            title: "Cold Chain Monitoring",
+            title: "Cold Chain Assurance",
             description:
-              "Continuous temperature logging and compliance exports",
-            technical: "Multi-sensor, configurable thresholds",
+              "Monitor temperature, humidity, and environmental readings in real-time.",
+            technical:
+              "Multi-sensor input, threshold-triggered alerts, compliance exports",
+          },
+          {
+            icon: <Wrench className="w-5 h-5" />,
+            title: "Predictive Maintenance",
+            description:
+              "Automate maintenance scheduling based on mileage, engine hours, or usage time.",
+            technical:
+              "Data-driven diagnostics integrated with vehicle CAN/OBD inputs",
+          },
+          {
+            icon: <Fuel className="w-5 h-5" />,
+            title: "Fuel & Cost Analytics",
+            description:
+              "Get real-time visibility of consumption, detect drain, and eliminate hidden costs.",
+            technical:
+              "CAN data analytics, fuel level sensors, trend-based forecasting",
           },
         ],
+
         readyFeatures: [
           "151+ verified devices supported",
           "Real-time GPS tracking with 30s updates",

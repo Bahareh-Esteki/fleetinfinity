@@ -296,46 +296,83 @@ const IndustryCapabilitiesShowcase = () => {
         id: "agriculture",
         name: "Agriculture & Farming",
         description:
-          "Track equipment across vast areas, optimize fuel usage, and protect assets in remote locations.",
+          "Track equipment across vast areas, optimize fuel usage, ensure operator accountability, and protect assets in remote locations.",
         challenges: [
           "Large-area coverage and connectivity",
           "Harvest progress and field coverage",
           "Fuel usage monitoring and control",
           "Remote asset security",
+          "Driver attendance and identification",
+          "Preventing off-site equipment use",
+          "Maintenance scheduling and vehicle health monitoring",
         ],
         capabilities: [
           {
             icon: <MapPin className="w-5 h-5" />,
             title: "Field Mapping",
-            description: "Coverage trails and task verification",
-            technical: "Trail heatmaps, area computation",
+            description:
+              "Coverage trails and real-time task verification across farmlands.",
+            technical: "Trail heatmaps, area computation, block-wise tracking",
           },
           {
             icon: <BarChart3 className="w-5 h-5" />,
             title: "Harvest Analytics",
-            description: "Equipment productivity and timing insights",
-            technical: "Shift analytics, utilization KPIs",
+            description:
+              "Monitor equipment productivity, timing, and operator efficiency.",
+            technical:
+              "Shift analytics, utilization KPIs, assign driver to fleet records",
           },
           {
             icon: <Zap className="w-5 h-5" />,
             title: "Fuel Management",
-            description: "Consumption tracking and alerting",
-            technical: "Fuel sensors, anomaly detection",
+            description:
+              "Real-time consumption tracking, alerting, and wastage prevention.",
+            technical:
+              "Fuel sensors, anomaly detection, trip-based fuel audits",
           },
           {
             icon: <Shield className="w-5 h-5" />,
             title: "Remote Security",
-            description: "Battery-powered trackers and alerts",
-            technical: "Long-life devices, satcom-ready options",
+            description:
+              "Battery-powered trackers, RFID/iButton-based access, and geofence alerts for remote equipment.",
+            technical:
+              "Long-life tracking devices, RFID/iButton integration, ignition blocking, geofence entry/exit notifications",
+          },
+          {
+            icon: <Thermometer className="w-5 h-5" />,
+            title: "Predictive Maintenance",
+            description:
+              "Automated reminders for servicing based on CAN data and engine hours.",
+            technical:
+              "CAN/OBD-II analytics, parts lifecycle alerts, service logs",
+          },
+          {
+            icon: <Route className="w-5 h-5" />,
+            title: "Operator Attendance & Authorization",
+            description:
+              "RFID cards, eyebicon, or iButton required for authenticated machine usage and time tracking.",
+            technical:
+              "Driver assignment to equipment, time logs, access restriction",
+          },
+          {
+            icon: <MapPin className="w-5 h-5" />,
+            title: "Geofence Enforcement",
+            description:
+              "Ensure equipment stays within authorized zones; prevent external use.",
+            technical:
+              "Virtual boundaries, off-area alerting, historical entry/exit reporting",
           },
         ],
         readyFeatures: [
           "Long-life battery trackers (5–7 years)",
-          "Weather-resistant hardware options",
-          "Offline logging and syncing",
-          "Multi-farm and contractor modes",
+          "RFID and iButton driver identification",
+          "Geofence setup and mobile alerts",
+          "Weather-resistant, offline-ready hardware",
+          "Comprehensive analytics and syncing",
+          "Multi-farm, contractor, and block-level modes",
         ],
       },
+
       transportation: {
         id: "transportation",
         name: "Public Transportation",

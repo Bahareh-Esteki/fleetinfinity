@@ -543,59 +543,6 @@ const IndustryCapabilitiesShowcase = () => {
                         </div>
                       ))}
                 </div>
-
-                {/* Ready Features */}
-                {/* Desktop: grid; Mobile: summary/expand */}
-                <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-100 mt-3">
-                  <h5 className="font-bold text-emerald-900 mb-2 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-emerald-600" />
-                    Platform Ready Features
-                  </h5>
-                  <div className="hidden md:grid md:grid-cols-2 gap-2">
-                    {current.readyFeatures.map((f, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
-                        <span className="text-emerald-900/90 text-base">
-                          {f}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Mobile: Show two, toggle rest */}
-                  <div className="md:hidden space-y-1">
-                    {current.readyFeatures
-                      .slice(0, previewFeatures)
-                      .map((f, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
-                          <span className="text-emerald-900/90 text-sm">
-                            {f}
-                          </span>
-                        </div>
-                      ))}
-                    {current.readyFeatures.length > previewFeatures &&
-                      !showMoreMobileFeatures && (
-                        <button
-                          onClick={() => setShowMoreMobileFeatures(true)}
-                          className="px-2 py-1 text-emerald-600 text-sm font-medium underline"
-                        >
-                          Show {current.readyFeatures.length - previewFeatures}{" "}
-                          more...
-                        </button>
-                      )}
-                    {showMoreMobileFeatures &&
-                      current.readyFeatures
-                        .slice(previewFeatures)
-                        .map((f, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5" />
-                            <span className="text-emerald-900/90 text-sm">
-                              {f}
-                            </span>
-                          </div>
-                        ))}
-                  </div>
-                </div>
               </div>
 
               {/* Capabilities */}

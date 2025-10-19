@@ -30,6 +30,7 @@ import {
   GitCommit,
   Fuel,
   Route,
+  UserCheck,
 } from "lucide-react";
 
 // Background config (place files in public/images/backgrounds/)

@@ -161,62 +161,92 @@ const IndustryCapabilitiesShowcase = () => {
               "CAN data analytics, fuel level sensors, trend-based forecasting",
           },
         ],
-
-        readyFeatures: [
-          "151+ verified devices supported",
-          "Real-time GPS tracking with 30s updates",
-          "Driver and dispatch mobile apps",
-          "Rich analytics and reporting suite",
-          "REST API and webhooks integration",
-          "Multi-language UI (including Arabic/English)",
-        ],
       },
       construction: {
         id: "construction",
         name: "Construction & Heavy Equipment",
         description:
-          "Protect assets, track usage, and reduce downtime with rugged, job-site-ready telematics.",
+          "Protect assets, monitor operations, and minimize downtime with rugged, job-site-ready telematics for heavy machinery and fleets.",
         challenges: [
           "Equipment theft and unauthorized usage",
           "Usage hours tracking and billing",
           "Predictive maintenance scheduling",
           "Multi-site visibility and control",
+          "Loading/unloading time and location verification",
+          "Presence check at assigned job sites",
+          "Tire health and pressure monitoring",
+          "Surrounding environment visibility for operators",
+          "Idle or waste time and vehicle health status",
+          "Risky driver behavior and safety issues",
         ],
+
         capabilities: [
           {
             icon: <Shield className="w-5 h-5" />,
             title: "Asset Protection",
             description:
-              "Motion/tilt detection, geofencing, recovery workflows",
-            technical: "Custom alerts, incident playbooks",
+              "Geofence-based alerts and motion detection prevent theft or misuse of heavy equipment.",
+            technical: "Customized recovery workflows, 24/7 asset monitoring",
           },
           {
             icon: <BarChart3 className="w-5 h-5" />,
             title: "Usage Analytics",
-            description: "Engine hours, idle time, and productivity insights",
-            technical: "CAN/J1939 support where available",
+            description:
+              "Track engine hours, idle time, and productivity trends across machines.",
+            technical:
+              "Full CAN/J1939 data support for telematics-enabled equipment",
           },
           {
             icon: <Wrench className="w-5 h-5" />,
             title: "Maintenance Management",
-            description: "Automated maintenance based on hours or calendar",
-            technical: "Service logs, reminders, parts tracking",
+            description:
+              "Automate maintenance planning based on engine hours, operating days, or sensor-based alerts.",
+            technical:
+              "Service logs, part lifecycle tracking, and scheduled service reminders",
           },
           {
             icon: <MapPin className="w-5 h-5" />,
             title: "Site Visibility",
-            description: "Asset location and movement history across job sites",
-            technical: "Multi-site dashboards, access control",
+            description:
+              "Monitor real-time asset positions, loading/unloading events, and movement between job sites.",
+            technical:
+              "Multi-site dashboards, BLE event tracking, and configurable access levels",
+          },
+          {
+            icon: <GitCommit className="w-5 h-5" />,
+            title: "BLE Load & Unload Monitoring",
+            description:
+              "BLE sensors detect equipment loading/unloading and enforce geofence-based workflows.",
+            technical:
+              "Geo-triggered BLE event detection and job-site attendance tracking",
+          },
+          {
+            icon: <Thermometer className="w-5 h-5" />,
+            title: "Tire & Environment Sensors",
+            description:
+              "Monitor tire pressure, temperature, and surrounding environmental factors for both driver and fleet management.",
+            technical:
+              "Wireless BLE tire sensors, air/temperature/pressure alerts for driver and operator dashboards",
+          },
+          {
+            icon: <Fuel className="w-5 h-5" />,
+            title: "Vehicle Health & Diagnostics",
+            description:
+              "Gain diagnostic insights from vehicle systems to prevent unexpected breakdowns.",
+            technical:
+              "CAN and OBD-II data analytics, alert rules for fault codes and engine parameters",
+          },
+          {
+            icon: <Route className="w-5 h-5" />,
+            title: "Driver Behavior & Safety",
+            description:
+              "Detect risky driving patterns and enforce safety standards across vehicles and operators.",
+            technical:
+              "Acceleration, braking, cornering analytics with AI-based behavior scoring",
           },
         ],
-        readyFeatures: [
-          "Rugged devices (-40°C to +85°C)",
-          "CAN bus and sensor integrations",
-          "Multi-site role-based access",
-          "Work-hour and idle-time reporting",
-          "Offline caching and sync",
-        ],
       },
+
       healthcare: {
         id: "healthcare",
         name: "Healthcare & Emergency Services",

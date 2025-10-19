@@ -377,88 +377,136 @@ const IndustryCapabilitiesShowcase = () => {
         id: "transportation",
         name: "Public Transportation",
         description:
-          "Improve passenger experience, safety, and route reliability with real-time insights and automation.",
+          "Enhance passenger safety, service reliability, and operational efficiency with smart telematics and AI-powered automation.",
         challenges: [
           "Accurate real-time arrivals for passengers",
           "Driver safety and incident reduction",
           "Dynamic routing and headway management",
           "Predictive maintenance and uptime",
+          "Passenger attendance and service verification",
+          "Health and diagnostics monitoring",
+          "AI-assisted safety event detection",
         ],
         capabilities: [
           {
             icon: <Clock className="w-5 h-5" />,
             title: "Real-Time Arrivals",
-            description: "Accurate ETAs for stops and stations",
-            technical: "ML ETA models, public API",
+            description:
+              "Provide passengers and dispatch centers with accurate ETAs for each stop and route.",
+            technical:
+              "GTFS and SIRI integration, ML ETA models, public tracking APIs",
           },
           {
             icon: <Camera className="w-5 h-5" />,
-            title: "Safety Systems",
-            description: "Driver monitoring and incident tagging",
-            technical: "Dashcam integrations, event sync",
+            title: "AI Safety Monitoring",
+            description:
+              "Monitor driver behavior, detect incidents, and protect passengers with real-time visibility.",
+            technical:
+              "AI dashcams, multi-camera recording, driver coaching, and automatic event tagging",
+          },
+          {
+            icon: <UserCheck className="w-5 h-5" />,
+            title: "Passenger Identification & Attendance",
+            description:
+              "Automatically verify passenger pickups for enterprise shuttle or school transit services.",
+            technical:
+              "RFID/NFC card readers or mobile ID integrations for [translate:حضور و غیاب سرویس شرکت‌ها]",
           },
           {
             icon: <MapPin className="w-5 h-5" />,
             title: "Route Optimization",
-            description: "Dynamic routing based on traffic and load",
-            technical: "Headway control, load-aware routing",
+            description:
+              "Dynamically adjust routes based on live traffic and passenger load demand.",
+            technical:
+              "Real-time route planning, headway control, load-aware adjustments",
           },
           {
             icon: <Wrench className="w-5 h-5" />,
             title: "Predictive Maintenance",
-            description: "Diagnostics and service scheduling",
-            technical: "CAN/OBD data, parts tracking",
+            description:
+              "Automate service scheduling and health alerts to reduce downtime and safety risks.",
+            technical:
+              "CAN/OBD-II analytics, fault code reports, threshold-based service reminders",
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Health & Diagnostics",
+            description:
+              "Monitor vehicle systems and report any abnormal readings impacting safety or efficiency.",
+            technical:
+              "Continuous CAN data monitoring, engine temperature, fuel usage, and electrical fault detection",
           },
         ],
         readyFeatures: [
-          "Public APIs for rider apps",
-          "Multi-route, multi-agency dashboards",
-          "Driver performance analytics",
-          "Service disruption workflows",
+          "Public APIs and open data for rider apps",
+          "AI-assisted video safety and driver scoring",
+          "RFID/NFC passenger identification for attendance",
+          "Multi-route and multi-fleet dashboards",
+          "Predictive maintenance powered by CAN and AI",
+          "Incident detection and automated safety reporting",
         ],
       },
+
       aviation: {
         id: "aviation",
         name: "Aviation & Maritime",
         description:
-          "Specialized tracking for ground support equipment and vessels with global connectivity and compliance.",
+          "Global airside and maritime visibility with satellite communication, cargo security, and compliance-ready analytics.",
         challenges: [
-          "GSE coordination and turnaround",
-          "Global vessel visibility at sea",
-          "Cargo handling optimization",
-          "International compliance and audits",
+          "Global vessel visibility across international waters",
+          "End-to-end cargo integrity and security",
+          "Cross-border compliance and audit tracking",
+          "Safety and chain-of-custody for high-value assets",
         ],
         capabilities: [
           {
             icon: <Plane className="w-5 h-5" />,
             title: "Airport Operations",
-            description: "Track tugs, loaders, and support vehicles",
-            technical: "Turnaround analytics, allocation tools",
+            description:
+              "Real-time tracking of ground support fleets, tugs, and loaders on the airfield.",
+            technical:
+              "Turnaround time analytics, GNSS and RFID positioning, and operator assignment system",
           },
           {
             icon: <Ship className="w-5 h-5" />,
             title: "Maritime Tracking",
-            description: "Satellite coverage for international waters",
-            technical: "Iridium-ready devices, global timezones",
+            description:
+              "Continuous tracking of vessels and cargo using global satellite network coverage.",
+            technical:
+              "Iridium, Inmarsat, and AIS-based hybrid tracking for global maritime connectivity",
+          },
+          {
+            icon: <Lock className="w-5 h-5" />,
+            title: "Smart Cargo Locks",
+            description:
+              "IoT-based lock systems ensure tamper detection and secure chain-of-custody for all containerized cargo.",
+            technical:
+              "GPS-enabled electronic seals, remote lock/unlock commands, and irregular access alerts",
           },
           {
             icon: <Shield className="w-5 h-5" />,
-            title: "Compliance Support",
-            description: "Automated reports and audit trails",
-            technical: "Retention policies, role-based access",
+            title: "Compliance & Audit Support",
+            description:
+              "Ensure international maritime and air transport compliance with automated logging and audit trails.",
+            technical:
+              "Retention policies, automatic compliance reporting, and role-based data access controls",
           },
           {
             icon: <BarChart3 className="w-5 h-5" />,
             title: "Operations Analytics",
-            description: "Cargo handling and utilization insights",
-            technical: "Cycle analytics, KPI dashboards",
+            description:
+              "Comprehensive analytics for cargo handling, utilization, and environmental operation metrics.",
+            technical:
+              "Cycle efficiency reporting, satellite-linked KPIs, maritime vs. ground dwell time metrics",
           },
         ],
         readyFeatures: [
-          "Satellite communication support",
-          "Maritime-grade hardware options",
-          "Compliance-ready reporting",
-          "Global timezone and currency handling",
+          "Global satellite connectivity (Iridium, Inmarsat, GNSS, AIS)",
+          "Smart lock integration for cargo safety and visibility",
+          "Unified land-sea-air fleet dashboards",
+          "Compliance-ready logs and retention tools",
+          "AI-based cargo route optimization",
+          "End-to-end IoT connectivity with maritime-grade hardware",
         ],
       },
     }),

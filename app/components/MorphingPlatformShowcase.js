@@ -312,7 +312,7 @@ const MorphingPlatformShowcase = () => {
           className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent"
           aria-label="Platform Capabilities Tabs"
         >
-          <ul className="flex gap-2 min-w-[600px] sm:min-w-0 items-center justify-left pb-4">
+          <ul className="flex flex-wrap gap-2 items-center justify-center pb-4">
             {features.map((feature, i) => (
               <li key={feature.label}>
                 <button

@@ -253,7 +253,7 @@ const MorphingPlatformShowcase = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % features.length);
-    }, 7000);
+    }, 10000);
     return () => clearInterval(timer);
   }, [activeMode, features.length]);
 

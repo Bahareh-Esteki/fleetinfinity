@@ -1,260 +1,338 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Zap, Users, ShieldCheck, Globe, Code, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Zap,
+  ShieldCheck,
+  Globe,
+  Code,
+  BarChart3,
+  SatelliteDish,
+  HeartHandshake,
+  ArrowRight,
+} from "lucide-react";
 
-// Custom hook for detecting when an element is in view
-const useOnScreen = (options) => {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    }, options);
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [ref, options]);
-
-  return [ref, isVisible];
-};
-
-const PageHeader = () => (
-  <div className="relative bg-brand-dark-blue text-white pt-40 pb-20 text-center overflow-hidden">
-    <div
-      className="absolute inset-0 bg-opacity-10"
-      style={{
-        backgroundImage:
-          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3e%3cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(169,192,209,0.5)' stroke-width='0.5'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100' height='100' fill='url(%23grid)'/%3e%3c/svg%3e\")",
-      }}
-    ></div>
-    <div className="container mx-auto px-4 relative z-10">
-      <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
-        Unburdened by Legacy.
-        <br />
-        <span className="text-brand-green">Driven by Innovation.</span>
-      </h1>
-      <p className="max-w-2xl mx-auto text-lg text-brand-light-blue">
-        We didn't set out to fix the old way of fleet management. We started
-        fresh to build the future of it.
-      </p>
-    </div>
-  </div>
-);
-
-const TimelineSection = () => {
-  const [ref1, isVisible1] = useOnScreen({ threshold: 0.5 });
-  const [ref2, isVisible2] = useOnScreen({ threshold: 0.5 });
-  const [ref3, isVisible3] = useOnScreen({ threshold: 0.5 });
-
-  const timelineItemClass = (isVisible) =>
-    `transition-all duration-700 ease-out ${
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-    }`;
-
-  return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="relative">
-          {/* The vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-brand-light-blue hidden md:block"></div>
-
-          {/* Timeline Item 1: The Past */}
-          <div
-            ref={ref1}
-            className={`${timelineItemClass(
-              isVisible1
-            )} md:grid md:grid-cols-2 md:gap-12 items-center mb-24`}
-          >
-            <div className="md:text-right md:pr-12 mb-8 md:mb-0">
-              <p className="text-brand-green font-semibold">THE OLD WAY</p>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mb-2">
-                Complexity & Clutter
-              </h3>
-              <p className="text-slate-600">
-                Legacy platforms were powerful, but became weighed down by
-                decades of patches and features. The result? Data overload,
-                clunky interfaces, and rigid systems that couldn't adapt.
-              </p>
-            </div>
-            <div className="relative md:pl-12">
-              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-dark-blue rounded-full hidden md:block"></div>
-              <Image
-                src="oldway.png"
-                alt="Old, cluttered technology interface"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl grayscale opacity-70"
-              />
-            </div>
-          </div>
-
-          {/* Timeline Item 2: The Need */}
-          <div
-            ref={ref2}
-            className={`${timelineItemClass(
-              isVisible2
-            )} md:grid md:grid-cols-2 md:gap-12 items-center mb-24`}
-          >
-            <div className="md:order-2 md:pl-12 mb-8 md:mb-0">
-              <p className="text-brand-green font-semibold">THE OPPORTUNITY</p>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mb-2">
-                A Blank Slate
-              </h3>
-              <p className="text-slate-600">
-                We saw a clear need for a new approach. A platform built from
-                the ground up using modern architecture, designed for today's
-                user, and powered by the potential of AI and real-time data.
-              </p>
-            </div>
-            <div className="relative md:order-1 md:pr-12 md:text-right">
-              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-dark-blue rounded-full hidden md:block"></div>
-              <Image
-                src="newway.png"
-                alt="A spark of an idea"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-
-          {/* Timeline Item 3: The Now */}
-          <div
-            ref={ref3}
-            className={`${timelineItemClass(
-              isVisible3
-            )} md:grid md:grid-cols-2 md:gap-12 items-center`}
-          >
-            <div className="md:text-right md:pr-12 mb-8 md:mb-0">
-              <p className="text-brand-green font-semibold">THE NEW WAY</p>
-              <h3 className="text-3xl font-bold text-brand-dark-blue mb-2">
-                FleetInfinity is Born
-              </h3>
-              <p className="text-slate-600">
-                In 2025, from the global innovation hub of Dubai, FleetInfinity
-                was launched. Not as an update, but as a revolution. Our newness
-                is our greatest strength—it means we're faster, smarter, and
-                more agile than anyone else.
-              </p>
-            </div>
-            <div className="relative md:pl-12">
-              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-green rounded-full ring-4 ring-white hidden md:block"></div>
-              <Image
-                src="Screenshot 2025-07-31 114917.png"
-                alt="Clean and modern FleetInfinity UI"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const OurDnaSection = () => (
-  <section className="py-24 bg-slate-50">
+// --- Animated Stats Section ---
+const AnimatedStats = () => (
+  <section className="py-12 bg-white">
     <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-blue mb-4">
-          Our DNA
-        </h2>
-        <p className="max-w-2xl mx-auto text-lg text-slate-600">
-          Being new allows us to be different. Our principles are built for the
-          modern world, not adapted from the old one.
-        </p>
-      </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="bg-white p-8 rounded-lg shadow-md text-center">
-          <Zap className="mx-auto w-12 h-12 text-brand-green mb-4" />
-          <h4 className="text-xl font-bold text-brand-dark-blue mb-2">
-            Agile Engineering
-          </h4>
-          <p className="text-slate-600">
-            We're not slowed by bureaucracy. We build, test, and deploy features
-            fast, responding to your needs in weeks, not years.
-          </p>
-        </div>
-        <div className="bg-white p-8 rounded-lg shadow-md text-center">
-          <Users className="mx-auto w-12 h-12 text-brand-green mb-4" />
-          <h4 className="text-xl font-bold text-brand-dark-blue mb-2">
-            User-Obsessed Design
-          </h4>
-          <p className="text-slate-600">
-            We designed our platform for the person using it today, creating an
-            intuitive experience that doesn't require a manual.
-          </p>
-        </div>
-        <div className="bg-white p-8 rounded-lg shadow-md text-center">
-          <ShieldCheck className="mx-auto w-12 h-12 text-brand-green mb-4" />
-          <h4 className="text-xl font-bold text-brand-dark-blue mb-2">
-            Security by Default
-          </h4>
-          <p className="text-slate-600">
-            Built from scratch with the latest security protocols, we protect
-            your data without compromise from day one.
-          </p>
-        </div>
-        <div className="bg-white p-8 rounded-lg shadow-md text-center">
-          <Globe className="mx-auto w-12 h-12 text-brand-green mb-4" />
-          <h4 className="text-xl font-bold text-brand-dark-blue mb-2">
-            Global from Day One
-          </h4>
-          <p className="text-slate-600">
-            Our Dubai HQ gives us a unique, international perspective to build
-            solutions that work seamlessly, everywhere.
-          </p>
-        </div>
+      <div className="flex flex-wrap justify-center gap-8">
+        {[
+          {
+            icon: <Globe className="w-12 h-12 text-brand-green mb-2" />,
+            stat: "60+",
+            desc: "Countries Served Worldwide",
+          },
+          {
+            icon: <BarChart3 className="w-12 h-12 text-brand-dark-blue mb-2" />,
+            stat: "5M+",
+            desc: "Trips Monitored",
+          },
+          {
+            icon: <ShieldCheck className="w-12 h-12 text-brand-green mb-2" />,
+            stat: "99.99%",
+            desc: "Average Uptime",
+          },
+        ].map((s, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 + i * 0.15 }}
+            className="bg-slate-100 rounded-lg shadow-md px-8 py-8 min-w-[220px] flex flex-col items-center"
+          >
+            {s.icon}
+            <span className="text-4xl font-extrabold text-brand-dark-blue">
+              {s.stat}
+            </span>
+            <span className="text-slate-600 mt-1 font-medium">{s.desc}</span>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>
 );
 
-const CtaSection = () => (
-  <div className="bg-white py-20">
-    <div className="container mx-auto px-4 text-center">
-      <div className="max-w-3xl mx-auto">
-        <Code className="mx-auto w-12 h-12 text-brand-dark-blue mb-4" />
-        <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-blue mb-4">
-          Join the New Standard
-        </h2>
-        <p className="text-lg text-slate-600 mb-8">
-          We're not just another platform; we're the future of fleet
-          intelligence. If you're ready for a solution built for today's
-          challenges and tomorrow's opportunities, let's talk.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-8 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
+// --- Vision/Mission Section ---
+const VisionMissionSection = () => (
+  <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+    <div className="container mx-auto px-4 grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-4"
         >
-          Contact Our Team <ArrowRight className="w-5 h-5" />
-        </Link>
+          Vision & Mission
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="text-lg text-slate-700 mb-6 max-w-xl"
+        >
+          Our vision is to redefine fleet and asset management for a connected,
+          intelligent world. <br />
+          Our mission is to empower organizations of every size with secure,
+          scalable, and intuitive technology that transforms vehicles, assets,
+          and operations into sources of actionable insight and sustainable
+          growth.
+        </motion.p>
+        <motion.ul
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.13 } },
+          }}
+          className="space-y-3 text-brand-dark-blue font-semibold"
+        >
+          {[
+            "AI-driven automation & analytics",
+            "Enterprise-grade security",
+            "Effortless user experience",
+            "Mission-critical reliability",
+            "Global interoperability",
+          ].map((item, idx) => (
+            <motion.li
+              key={item}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.35, delay: 0.24 + idx * 0.06 }}
+              className="flex items-center gap-2"
+            >
+              <span className="inline-block w-2 h-2 bg-brand-green rounded-full mr-2" />
+              {item}
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.15 }}
+        className="rounded-2xl shadow-2xl overflow-hidden"
+      >
+        <Image
+          src="/images/vision-mission-illustration.jpg"
+          alt="Vision and Mission Illustration"
+          width={560}
+          height={370}
+          className="object-cover"
+        />
+      </motion.div>
     </div>
-  </div>
+  </section>
 );
 
+// --- Product Innovation Section ---
+const InnovationSection = () => (
+  <section className="py-24 bg-white">
+    <div className="container mx-auto px-4">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-brand-dark-blue mb-8 text-center">
+        Technology That Sets You Free
+      </h2>
+      <p className="text-lg text-slate-700 mb-16 max-w-2xl mx-auto text-center">
+        Forget rigid, legacy platforms. Our technology is cloud-native,
+        future-proofed, and relentlessly user-focused—so you can focus on what
+        matters, not on managing software.
+      </p>
+      <div className="grid md:grid-cols-3 gap-10">
+        {[
+          {
+            Icon: SatelliteDish,
+            title: "Seamless Real-Time Data",
+            desc: "Instantly collect and process millions of touchpoints from vehicles, assets, and environments across the globe—with zero data silos.",
+          },
+          {
+            Icon: HeartHandshake,
+            title: "Proven Impact",
+            desc: "Trusted by enterprises, startups, and public sector fleets on five continents to drive measurable safety, savings, and sustainability.",
+          },
+          {
+            Icon: BarChart3,
+            title: "Intelligent Insights",
+            desc: "Transform raw data into reliable, actionable intelligence tailored to your operation—with powerful automations and intuitive dashboards.",
+          },
+        ].map((item, idx) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.18 + idx * 0.12 }}
+            className="bg-slate-50 rounded-lg shadow-lg p-8 text-center hover:scale-[1.025] transition-transform"
+          >
+            <item.Icon className="mx-auto w-12 h-12 text-brand-green mb-4" />
+            <h3 className="text-2xl font-bold mb-2 text-brand-dark-blue">
+              {item.title}
+            </h3>
+            <p className="text-base text-slate-600">{item.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// --- Values/Culture Section ---
+const ValuesSection = () => (
+  <section className="py-24 bg-slate-50">
+    <div className="container mx-auto px-4">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-blue mb-8 text-center">
+        What Makes Us Different
+      </h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        {[
+          {
+            icon: <Zap className="mx-auto w-12 h-12 text-brand-green mb-2" />,
+            title: "Relentless Innovation",
+            desc: "We build, test, and launch at the speed of your needs. Never standing still, always one step ahead.",
+          },
+          {
+            icon: (
+              <ShieldCheck className="mx-auto w-12 h-12 text-brand-green mb-2" />
+            ),
+            title: "Security by Default",
+            desc: "Zero compromise on your data—every feature is designed with global-grade security architecture from the start.",
+          },
+          {
+            icon: <Code className="mx-auto w-12 h-12 text-brand-green mb-2" />,
+            title: "Open, Flexible Platform",
+            desc: "Integrate, customize, and extend your experience through open APIs, modern SDKs, and a modular design.",
+          },
+          {
+            icon: <Globe className="mx-auto w-12 h-12 text-brand-green mb-2" />,
+            title: "Global Perspective",
+            desc: "Solutions built to empower organizations everywhere, fit for local nuances and international demands.",
+          },
+        ].map((item) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white p-8 rounded-lg shadow text-center"
+          >
+            {item.icon}
+            <h4 className="text-xl font-bold text-brand-dark-blue mb-2">
+              {item.title}
+            </h4>
+            <p className="text-slate-600">{item.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// --- Social Proof / Testimonials ---
+const TestimonialsSection = () => (
+  <section className="py-20 bg-white">
+    <div className="container mx-auto px-4">
+      <h2 className="text-2xl font-extrabold mb-8 text-center">
+        Hear from Our Clients
+      </h2>
+      <div className="flex flex-wrap gap-8 justify-center">
+        <motion.blockquote
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="bg-slate-50 p-8 rounded-lg shadow-md max-w-md"
+        >
+          “FleetInfinity makes every aspect of vehicle management smarter. Their
+          platform reclaimed my team’s time and improved safety overnight.”
+          <span className="block mt-3 text-brand-green font-semibold">
+            – North America Fleet Operations Manager
+          </span>
+        </motion.blockquote>
+        <motion.blockquote
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.25 }}
+          className="bg-slate-50 p-8 rounded-lg shadow-md max-w-md"
+        >
+          “Powerful, easy-to-use APIs and the security standards we require.
+          It's a real catalyst for digital transformation.”
+          <span className="block mt-3 text-brand-green font-semibold">
+            – European Systems Integration Lead
+          </span>
+        </motion.blockquote>
+      </div>
+    </div>
+  </section>
+);
+
+// --- Call To Action ---
+const CtaSection = () => (
+  <section className="bg-brand-dark-blue py-20 text-white text-center">
+    <div className="container mx-auto px-4">
+      <Code className="mx-auto w-12 h-12 text-brand-green mb-4" />
+      <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        Ready to Experience a New Standard?
+      </h2>
+      <p className="text-lg text-brand-light-blue mb-8 max-w-2xl mx-auto">
+        See why forward-thinking organizations trust FleetInfinity for
+        mission-critical visibility and automation.
+      </p>
+      <Link
+        href="/contact"
+        className="inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-8 py-3 rounded-md hover:bg-brand-green-dark transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
+      >
+        Request a Demo <ArrowRight className="w-5 h-5" />
+      </Link>
+    </div>
+  </section>
+);
+
+// --- Main About Page ---
 export default function AboutPage() {
   return (
     <>
-      <PageHeader />
-      <TimelineSection />
-      <OurDnaSection />
+      {/* Modern, impactful hero with animation */}
+      <header className="relative z-10 bg-brand-dark-blue text-white text-center py-32 px-4 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: -24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="container mx-auto"
+        >
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+            Unburdened by Legacy.
+            <br />
+            <span className="text-brand-green">Driven by Innovation.</span>
+          </h1>
+          <p className="max-w-2xl mx-auto text-xl text-brand-light-blue">
+            Welcome to FleetInfinity: The new standard for secure, intelligent,
+            and truly effortless fleet management.
+          </p>
+        </motion.div>
+        {/* Animated SVG background grid, optional */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3e%3cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(169,192,209,0.4)' stroke-width='0.5'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100' height='100' fill='url(%23grid)'/%3e%3c/svg%3e\")",
+          }}
+        />
+      </header>
+      <AnimatedStats />
+      <VisionMissionSection />
+      <InnovationSection />
+      <ValuesSection />
+      <TestimonialsSection />
       <CtaSection />
     </>
   );

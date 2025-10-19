@@ -28,6 +28,7 @@ import {
   Lock,
   Code,
   GitCommit,
+  Fuel,
   Route,
 } from "lucide-react";
 

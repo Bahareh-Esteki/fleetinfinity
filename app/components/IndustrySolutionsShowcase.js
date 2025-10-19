@@ -94,12 +94,13 @@ const IndustryCapabilitiesShowcase = () => {
         description:
           "Optimize delivery routes, reduce fuel costs, and ensure on-time deliveries with comprehensive fleet visibility.",
         challenges: [
-          "Route optimization for fuel efficiency",
-          "Real-time delivery tracking and ETAs",
-          "Driver behavior monitoring and safety",
-          "Cargo security and temperature control",
-          "Fleet maintenance scheduling",
-          "Fuel consumption management",
+          "Complex route planning for fuel efficiency",
+          "Real-time tracking with multi-level access for managers, shippers, and passengers",
+          "Driver behavior and safety monitoring",
+          "Cargo tracking with BLE pallet sensors",
+          "Security and environmental control (temperature/humidity)",
+          "Preventive maintenance planning",
+          "Accurate fuel and cost management",
         ],
         capabilities: [
           {

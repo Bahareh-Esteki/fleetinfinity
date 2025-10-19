@@ -606,55 +606,6 @@ const IndustryCapabilitiesShowcase = () => {
               </div>
             </div>
 
-            {/* Bottom highlights: PC grid, mobile summary */}
-            <div className="hidden md:grid md:grid-cols-4 gap-4 mt-10">
-              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
-                <Database className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">151+ Devices</div>
-                <div className="text-xs text-gray-600">
-                  Verified compatibility
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
-                <Globe className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">Global Ready</div>
-                <div className="text-xs text-gray-600">
-                  Multi-region deployment
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
-                <Lock className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">
-                  Enterprise Security
-                </div>
-                <div className="text-xs text-gray-600">Encryption & RBAC</div>
-              </div>
-              <div className="bg-white rounded-lg p-4 border border-gray-100 text-center">
-                <Code className="w-7 h-7 text-emerald-600 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">API First</div>
-                <div className="text-xs text-gray-600">REST + webhooks</div>
-              </div>
-            </div>
-            {/* Mobile: compact row */}
-            <div className="md:hidden flex justify-between mt-6 gap-2 text-xs">
-              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mr-1">
-                <Database className="w-6 h-6 text-emerald-600 mb-1" />
-                151+ Devices
-              </div>
-              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mx-1">
-                <Globe className="w-6 h-6 text-emerald-600 mb-1" />
-                Global Ready
-              </div>
-              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg mx-1">
-                <Lock className="w-6 h-6 text-emerald-600 mb-1" />
-                Security
-              </div>
-              <div className="flex flex-col items-center flex-1 py-4 bg-white border border-gray-100 rounded-lg ml-1">
-                <Code className="w-6 h-6 text-emerald-600 mb-1" />
-                API-First
-              </div>
-            </div>
-
             {/* CTAs (same style both views, stacked on mobile) */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-8">
               <motion.button

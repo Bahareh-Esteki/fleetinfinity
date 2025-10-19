@@ -27,6 +27,7 @@ import {
   Globe,
   Lock,
   Code,
+  GitCommit,
   Route,
 } from "lucide-react";
 

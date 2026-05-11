@@ -99,86 +99,8 @@ export default function HomePage() {
       <PartnerProgram />  
       <MorphingPlatformShowcase />
       <RealDeviceCompatibilityShowcase />
-
-      {/* How It Works Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-extrabold text-brand-dark-blue mb-4">
-            Getting Started is Simple
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-16">
-            Just four steps to transform and automate your fleet management.
-          </p>
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Step 1 */}
-            <div className="group flex flex-col items-center transition-transform hover:-translate-y-2">
-              <div className="bg-brand-green/10 p-6 rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                <Wrench className="w-12 h-12 text-brand-green animate-fadeIn" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-dark-blue mb-2">
-                1. Install Device
-              </h3>
-              <p className="text-gray-600">
-                Quick plug-and-play set up, or professional installation for
-                advanced devices.
-              </p>
-            </div>
-            {/* Step 2 */}
-            <div className="group flex flex-col items-center transition-transform hover:-translate-y-2">
-              <div className="bg-brand-green/10 p-6 rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                <Settings className="w-12 h-12 text-brand-green animate-fadeIn" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-dark-blue mb-2">
-                2. Configure Platform
-              </h3>
-              <p className="text-gray-600">
-                Connect and personalize your device in the FleetInfinity app or
-                web dashboard.
-              </p>
-            </div>
-            {/* Step 3 */}
-            <div className="group flex flex-col items-center transition-transform hover:-translate-y-2">
-              <div className="bg-brand-green/10 p-6 rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                <SatelliteDish className="w-12 h-12 text-brand-green animate-fadeIn" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-dark-blue mb-2">
-                3. Collect Real-Time Data
-              </h3>
-              <p className="text-gray-600">
-                Instantly stream actionable vehicle data to your secure cloud
-                dashboard.
-              </p>
-            </div>
-            {/* Step 4 */}
-            <div className="group flex flex-col items-center transition-transform hover:-translate-y-2">
-              <div className="bg-brand-green/10 p-6 rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                <BarChart3 className="w-12 h-12 text-brand-green animate-fadeIn" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-dark-blue mb-2">
-                4. Improve Efficiency
-              </h3>
-              <p className="text-gray-600">
-                Track KPIs, reduce costs, and boost performance with real-time
-                analytics and alerts.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="mt-12">
-            <button className="bg-brand-green text-white px-8 py-3 rounded-full text-lg font-bold shadow-md hover:bg-brand-dark-green transition-colors">
-              Start Now
-            </button>
-          </div>
-        </div>
-      </section>
-
       <GettingStarted />
-
-      {/* --- NEW: Solutions by Industry Section --- */}
       <IndustryCapabilitiesShowcase />
-
-      {/* ---Highlights Section--- */}
       <BusinessOutcomesFocus />
 
       {/* --- Stats Section --- */}

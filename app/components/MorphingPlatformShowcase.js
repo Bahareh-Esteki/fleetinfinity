@@ -24,70 +24,21 @@ import {
 
 // ---- IMAGE DATA ----
 const IMAGE_DATA = {
-  "dashboard-analytics": {
-    src: "/images/screenshots/dashboard-analytics.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-driver-score": {
-    src: "/images/screenshots/dashboard-driver-score.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-live-video": {
-    src: "/images/screenshots/dashboard-live-video.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-route-replay": {
-    src: "/images/screenshots/dashboard-route-replay.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-report-builder": {
-    src: "/images/screenshots/dashboard-report-builder.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-maintenance": {
-    src: "/images/screenshots/dashboard-maintenance.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "dashboard-user-roles": {
-    src: "/images/screenshots/dashboard-user-roles.jpg",
-    width: 1200,
-    height: 675,
-  },
-  "mobile-live-map": {
-    src: "/images/screenshots/mobile-live-map.png",
-    width: 350,
-    height: 550,
-  },
-  "mobile-geofence-alert": {
-    src: "/images/screenshots/mobile-geofence-alert.png",
-    width: 350,
-    height: 550,
-  },
-  "mobile-remote-control": {
-    src: "/images/screenshots/mobile-remote-control.png",
-    width: 350,
-    height: 550,
-  },
-  "mobile-phone-tracker": {
-    src: "/images/screenshots/mobile-phone-tracker.png",
-    width: 350,
-    height: 550,
-  },
-  "mobile-alerts-log": {
-    src: "/images/screenshots/mobile-alerts-log.png",
-    width: 350,
-    height: 550,
-  },
+  "dashboard-analytics": { src: "/images/screenshots/dashboard-analytics.jpg", width: 1200, height: 675 },
+  "dashboard-driver-score": { src: "/images/screenshots/dashboard-driver-score.jpg", width: 1200, height: 675 },
+  "dashboard-live-video": { src: "/images/screenshots/dashboard-live-video.jpg", width: 1200, height: 675 },
+  "dashboard-route-replay": { src: "/images/screenshots/dashboard-route-replay.jpg", width: 1200, height: 675 },
+  "dashboard-report-builder": { src: "/images/screenshots/dashboard-report-builder.jpg", width: 1200, height: 675 },
+  "dashboard-maintenance": { src: "/images/screenshots/dashboard-maintenance.jpg", width: 1200, height: 675 },
+  "dashboard-user-roles": { src: "/images/screenshots/dashboard-user-roles.jpg", width: 1200, height: 675 },
+  "mobile-live-map": { src: "/images/screenshots/mobile-live-map.png", width: 350, height: 550 },
+  "mobile-geofence-alert": { src: "/images/screenshots/mobile-geofence-alert.png", width: 350, height: 550 },
+  "mobile-remote-control": { src: "/images/screenshots/mobile-remote-control.png", width: 350, height: 550 },
+  "mobile-phone-tracker": { src: "/images/screenshots/mobile-phone-tracker.png", width: 350, height: 550 },
+  "mobile-alerts-log": { src: "/images/screenshots/mobile-alerts-log.png", width: 350, height: 550 },
 };
 
 // ---- FEATURE DATA ----
-// Max 5-6 features per mode as requested
 const FEATURES = {
   web: [
     {
@@ -176,9 +127,7 @@ const FEATURES = {
 // ---- DEVICE MOCKUP FRAMES ----
 const MonitorMockup = ({ children }) => (
   <div className="w-full max-w-2xl mx-auto">
-    {/* Screen */}
     <div className="relative bg-gray-900 rounded-2xl p-2.5 shadow-2xl border border-gray-700/60">
-      {/* Top bar dots */}
       <div className="flex items-center gap-1.5 mb-2 px-1">
         <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
@@ -187,12 +136,10 @@ const MonitorMockup = ({ children }) => (
           <span className="text-gray-400 text-[9px] font-mono">track.yourcompany.com</span>
         </div>
       </div>
-      {/* Screen content */}
       <div className="relative w-full overflow-hidden rounded-lg" style={{ paddingTop: "56.25%" }}>
         <div className="absolute inset-0">{children}</div>
       </div>
     </div>
-    {/* Stand */}
     <div className="flex flex-col items-center">
       <div className="w-20 h-4 bg-gray-300 dark:bg-gray-700 rounded-b-sm" />
       <div className="w-36 h-2 bg-gray-200 dark:bg-gray-600 rounded-sm" />
@@ -202,18 +149,14 @@ const MonitorMockup = ({ children }) => (
 
 const PhoneMockup = ({ children }) => (
   <div className="mx-auto relative" style={{ width: 230, height: 460 }}>
-    {/* Outer shell */}
     <div
       className="absolute inset-0 rounded-[2.4rem] border-[10px] border-gray-800 shadow-2xl bg-black"
       style={{ boxShadow: "0 24px 60px 0 rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.06)" }}
     />
-    {/* Screen */}
     <div className="absolute inset-[10px] rounded-[1.8rem] overflow-hidden bg-gray-100">
       {children}
     </div>
-    {/* Notch */}
     <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-14 h-4 bg-gray-800 rounded-b-xl z-10" />
-    {/* Side buttons */}
     <div className="absolute left-[-14px] top-20 w-1.5 h-8 bg-gray-700 rounded-l-sm" />
     <div className="absolute left-[-14px] top-32 w-1.5 h-6 bg-gray-700 rounded-l-sm" />
     <div className="absolute right-[-14px] top-24 w-1.5 h-10 bg-gray-700 rounded-r-sm" />
@@ -222,14 +165,14 @@ const PhoneMockup = ({ children }) => (
 
 // ---- WHITELABEL BADGE ----
 const WhitelabelBadge = ({ text }) => (
-  <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-brand-dark-blue-50 border border-brand-dark-blue-100 text-brand-dark-blue-600 text-xs font-medium">
-    <Layers className="w-3 h-3 flex-shrink-0" />
+  <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-slate-50 border border-brand-light-blue/40 text-brand-dark-blue text-xs font-medium">
+    <Layers className="w-3 h-3 flex-shrink-0 text-brand-light-blue" />
     <span>{text}</span>
   </div>
 );
 
 // ---- PROGRESS BAR ----
-const AutoplayBar = ({ duration, isPlaying }) => {
+const AutoplayBar = ({ duration, isPlaying, mode }) => {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -249,7 +192,7 @@ const AutoplayBar = ({ duration, isPlaying }) => {
   return (
     <div className="h-0.5 w-full bg-gray-100 rounded-full overflow-hidden">
       <div
-        className="h-full bg-brand-dark-blue-400 rounded-full transition-none"
+        className={`h-full rounded-full transition-none ${mode === 'web' ? 'bg-brand-dark-blue' : 'bg-brand-green'}`}
         style={{ width: `${width}%` }}
       />
     </div>
@@ -271,14 +214,12 @@ const MorphingPlatformShowcase = () => {
     setActiveIdx((prev) => (prev + 1) % features.length);
   }, [features.length]);
 
-  // Auto-play
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setTimeout(next, AUTOPLAY_DURATION);
     return () => clearTimeout(timer);
   }, [activeIdx, activeMode, isPlaying, next]);
 
-  // Reset on mode change
   const switchMode = (mode) => {
     setActiveMode(mode);
     setActiveIdx(0);
@@ -287,7 +228,7 @@ const MorphingPlatformShowcase = () => {
 
   const handleTabClick = (i) => {
     setActiveIdx(i);
-    setIsPlaying(false); // pause autoplay on manual interaction
+    setIsPlaying(false);
   };
 
   return (
@@ -296,16 +237,16 @@ const MorphingPlatformShowcase = () => {
 
         {/* ── Section Header ── */}
         <div className="mb-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-brand-dark-blue-600/8 border border-brand-dark-blue-200 rounded-full px-4 py-1.5 text-sm font-medium text-brand-dark-blue-600 mb-5">
+          <div className="inline-flex items-center gap-2 bg-brand-light-blue/10 border border-brand-light-blue/30 rounded-full px-4 py-1.5 text-sm font-medium text-brand-dark-blue mb-5">
             <Globe className="w-4 h-4" />
             White-label Ready · Your Brand. Your Domain.
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
             One Platform.{" "}
-            <span className="text-brand-dark-blue-600">Every Device.</span>{" "}
+            <span className="text-brand-green">Every Device.</span>{" "}
             Your Brand.
           </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
             Deliver a seamless experience to your customers — from powerful
             web dashboards for fleet managers to fast native mobile apps for
             drivers and owners. Fully white-labeled with your logo, colors,
@@ -315,13 +256,13 @@ const MorphingPlatformShowcase = () => {
 
         {/* ── Mode Toggle ── */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-gray-100 rounded-full p-1 gap-1">
+          <div className="inline-flex bg-slate-50 border border-gray-100 rounded-full p-1 gap-1">
             <button
               onClick={() => switchMode("web")}
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                 activeMode === "web"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
+                  ? "bg-white text-brand-dark-blue shadow-sm border border-gray-100"
+                  : "text-slate-600 hover:text-brand-dark-blue"
               }`}
             >
               <Monitor className="w-4 h-4" />
@@ -331,8 +272,8 @@ const MorphingPlatformShowcase = () => {
               onClick={() => switchMode("mobile")}
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                 activeMode === "mobile"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
+                  ? "bg-white text-brand-green shadow-sm border border-gray-100"
+                  : "text-slate-600 hover:text-brand-green"
               }`}
             >
               <Smartphone className="w-4 h-4" />
@@ -352,9 +293,9 @@ const MorphingPlatformShowcase = () => {
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                     i === activeIdx
                       ? activeMode === "web"
-                        ? "bg-brand-dark-blue-600 text-white border-brand-dark-blue-600 shadow-sm"
-                        : "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
+                        ? "bg-brand-dark-blue text-white border-brand-dark-blue shadow-sm"
+                        : "bg-brand-green text-white border-brand-green shadow-sm"
+                      : "bg-white text-slate-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
                   }`}
                 >
                   {feature.icon}
@@ -416,7 +357,7 @@ const MorphingPlatformShowcase = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-1">
               {activeFeature.label}
             </h3>
-            <p className="text-gray-500 text-sm leading-relaxed px-2">
+            <p className="text-slate-600 text-sm leading-relaxed px-2">
               {activeFeature.desc}
             </p>
             <WhitelabelBadge text={activeFeature.whitelabelNote} />
@@ -425,7 +366,7 @@ const MorphingPlatformShowcase = () => {
 
         {/* ── Autoplay progress & controls ── */}
         <div className="max-w-xl mx-auto mt-6">
-          <AutoplayBar duration={AUTOPLAY_DURATION} isPlaying={isPlaying} key={`${activeMode}-${activeIdx}-${isPlaying}`} />
+          <AutoplayBar duration={AUTOPLAY_DURATION} isPlaying={isPlaying} mode={activeMode} key={`${activeMode}-${activeIdx}-${isPlaying}`} />
           <div className="flex justify-center mt-4 gap-1.5">
             {features.map((_, i) => (
               <button
@@ -435,15 +376,15 @@ const MorphingPlatformShowcase = () => {
                 className={`rounded-full transition-all duration-200 ${
                   i === activeIdx
                     ? activeMode === "web"
-                      ? "w-5 h-1.5 bg-brand-dark-blue-500"
-                      : "w-5 h-1.5 bg-emerald-500"
-                    : "w-1.5 h-1.5 bg-gray-200 hover:bg-gray-300"
+                      ? "w-5 h-1.5 bg-brand-dark-blue"
+                      : "w-5 h-1.5 bg-brand-green"
+                    : "w-1.5 h-1.5 bg-gray-200 hover:bg-brand-light-blue"
                 }`}
               />
             ))}
             <button
               onClick={() => setIsPlaying((v) => !v)}
-              className="ml-3 text-gray-400 hover:text-gray-600 transition-colors"
+              className="ml-3 text-gray-400 hover:text-slate-600 transition-colors"
               aria-label={isPlaying ? "Pause autoplay" : "Resume autoplay"}
             >
               {isPlaying ? (
@@ -461,19 +402,19 @@ const MorphingPlatformShowcase = () => {
         </div>
 
         {/* ── Bottom Whitelabel CTA Strip ── */}
-        <div className="mt-14 rounded-2xl bg-gray-50 border border-gray-100 px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div className="mt-14 rounded-2xl bg-slate-50 border border-brand-light-blue/20 px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
-            <p className="text-sm font-semibold text-gray-900 mb-0.5">
+            <p className="text-sm font-semibold text-brand-dark-blue mb-0.5">
               Both platforms — fully white-labeled.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-slate-600">
               Partners get a web dashboard on their domain and native apps
               under their brand on both stores.
             </p>
           </div>
           <a
             href="/demo"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-dark-blue-600 hover:bg-brand-dark-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
           >
             Request a Demo
             <Route className="w-4 h-4" />

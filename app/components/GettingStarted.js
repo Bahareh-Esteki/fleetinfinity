@@ -55,10 +55,10 @@ const StepCard = ({ step, index, total }) => {
           aria-hidden="true"
         >
           {/* Dashed track */}
-          <div className="absolute inset-0 border-t border-dashed border-gray-200" />
+          <div className="absolute inset-0 border-t border-dashed border-slate-200" />
           {/* Animated fill */}
           <motion.div
-            className="absolute inset-y-0 left-0 bg-green-300 h-px"
+            className="absolute inset-y-0 left-0 bg-brand-light-blue h-px"
             initial={{ width: 0 }}
             animate={inView ? { width: "100%" } : {}}
             transition={{ duration: 0.6, delay: index * 0.12 + 0.4, ease: "easeOut" }}
@@ -70,7 +70,7 @@ const StepCard = ({ step, index, total }) => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.25, delay: index * 0.12 + 0.95 }}
           >
-            <ArrowRight className="w-3 h-3 text-green-300" />
+            <ArrowRight className="w-3 h-3 text-brand-light-blue" />
           </motion.div>
         </div>
       )}
@@ -78,27 +78,27 @@ const StepCard = ({ step, index, total }) => {
       {/* Icon circle */}
       <div className="relative z-10 mb-6">
         {/* Step number badge */}
-        <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center z-20 shadow">
+        <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-brand-dark-blue text-white text-[10px] font-bold flex items-center justify-center z-20 shadow">
           {index + 1}
         </span>
-        <div className="w-20 h-20 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:border-green-600 transition-all duration-300">
+        <div className="w-20 h-20 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center shadow-sm group-hover:bg-brand-dark-blue group-hover:border-brand-dark-blue transition-all duration-300">
           <Icon
-            className="w-9 h-9 text-green-500 group-hover:text-white transition-colors duration-300"
+            className="w-9 h-9 text-brand-dark-blue group-hover:text-white transition-colors duration-300"
             strokeWidth={1.5}
           />
         </div>
       </div>
 
       {/* Text */}
-      <h3 className="text-base font-semibold text-gray-900 mb-2 leading-snug">
+      <h3 className="text-base font-semibold text-slate-900 mb-2 leading-snug">
         {step.title}
       </h3>
-      <p className="text-sm text-gray-500 leading-relaxed mb-3 max-w-[200px]">
+      <p className="text-sm text-slate-600 leading-relaxed mb-3 max-w-[200px]">
         {step.desc}
       </p>
 
       {/* Accent pill */}
-      <span className="inline-block text-[11px] font-medium text-green-600 bg-green-50 border border-green-100 rounded-full px-3 py-0.5">
+      <span className="inline-block text-[11px] font-medium text-brand-dark-blue bg-brand-light-blue/10 border border-brand-light-blue/30 rounded-full px-3 py-0.5">
         {step.accent}
       </span>
     </motion.div>
@@ -121,15 +121,15 @@ const GettingStarted = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 rounded-full px-4 py-1.5 text-sm font-medium text-green-600 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-brand-light-blue/10 border border-brand-light-blue/30 rounded-full px-4 py-1.5 text-sm font-medium text-brand-dark-blue mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
             Up and running in under an hour
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
             Getting Started{" "}
-            <span className="text-green-600">is Simple</span>
+            <span className="text-brand-green">is Simple</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
             Four steps to deploy an enterprise-grade fleet management platform 
             and gain total control over your operations.
           </p>
@@ -152,14 +152,14 @@ const GettingStarted = () => {
         >
           <a
             href="/demo"
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-7 py-3 rounded-full transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-dark text-white font-semibold text-sm px-7 py-3 rounded-full transition-colors shadow-sm"
           >
             Request a Demo
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium text-sm px-7 py-3 rounded-full border border-gray-200 hover:border-gray-300 transition-colors"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-brand-dark-blue font-medium text-sm px-7 py-3 rounded-full border border-slate-200 hover:border-brand-light-blue/50 transition-colors"
           >
             Talk to a Telematics Expert
           </a>

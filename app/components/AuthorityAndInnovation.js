@@ -65,7 +65,7 @@ const AuthorityAndInnovation = () => {
             Foundational Excellence
           </p>
           <h2 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
-            Architected for Tomorrow. Delivering Results Today.
+            The Platform You Can Build On.
           </h2>
           <p className="mt-6 max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
             FleetInfinity is not an upgrade; it is a **complete technological

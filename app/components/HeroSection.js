@@ -50,8 +50,7 @@ const FleetInfinityHero = () => {
 
                 {/* Subtitle */}
                 <p className="mt-5 text-base md:text-lg text-white/85 max-w-md">
-                  Real-time GPS tracking, smart routing, and actionable
-                  analytics—built for reliable, scalable fleet performance.
+                  The advanced, reliable, and API-first platform for fleet operators and service providers. Built for scalable performance.
                 </p>
 
                 {/* Single CTA */}

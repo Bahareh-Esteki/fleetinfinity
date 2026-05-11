@@ -44,6 +44,9 @@ import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilitySho
 import IndustryCapabilitiesShowcase from "./components/IndustrySolutionsShowcase";
 import ModernHero from "./components/HeroSection";
 import AuthorityAndInnovation from "./components/AuthorityAndInnovation";
+import PartnerProgram from "./components/PartnerProgram";
+
+
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
   <div className="text-center">
@@ -91,7 +94,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <ModernHero />
       <AuthorityAndInnovation />
-
+      <PartnerProgram />  
       <MorphingPlatformShowcase />
       <RealDeviceCompatibilityShowcase />
 

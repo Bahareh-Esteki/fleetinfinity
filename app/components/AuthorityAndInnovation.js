@@ -1,127 +1,117 @@
 import React from "react";
 import {
-  Truck,
   Shield,
   Activity,
-  TrendingUp,
   Globe,
   Code,
   Zap,
 } from "lucide-react";
 
 const AuthorityAndInnovation = () => {
-  // Data structure for the key authority points
+  // Unified professional styling for all cards
   const authorityPoints = [
     {
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6" />,
       title: "Global Performance, Zero Compromise",
       description:
-        "Our proprietary microservice architecture guarantees absolute high availability and unmatched speed. This standard ensures real-time data is delivered with true zero-latency, achieving location accuracy down to **±3m**.",
-      accent: "text-blue-600 bg-blue-50",
-      bg: "hover:shadow-blue-200",
+        "Our proprietary microservice architecture guarantees absolute high availability and unmatched speed. This standard ensures real-time data is delivered with true zero-latency, achieving location accuracy down to ±3m.",
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Shield className="w-6 h-6" />,
       title: "Data Sovereignty and Security Assured",
       description:
         "We operate under the world's most stringent data residency and privacy standards. This commitment ensures superior data sovereignty and protection for your critical fleet and driver information.",
-      accent: "text-green-600 bg-green-50",
-      bg: "hover:shadow-green-200",
     },
     {
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-6 h-6" />,
       title: "Platform Agility and Continuous Innovation",
       description:
         "We utilize an API-first design philosophy, providing seamless support for the latest advancements—from AI cameras and edge computing to 5G integration. Your investment remains future-proof.",
-      accent: "text-purple-600 bg-purple-50",
-      bg: "hover:shadow-purple-200",
     },
   ];
 
-  // Data for the foundational metrics displayed at the bottom
   const foundationalMetrics = [
     {
       title: "Platform Uptime SLA",
       value: "99.99%",
-      icon: <Activity className="w-5 h-5" />,
+      icon: <Activity className="w-4 h-4" />,
     },
     {
       title: "Real-Time Accuracy",
       value: "±3m",
-      icon: <Globe className="w-5 h-5" />,
+      icon: <Globe className="w-4 h-4" />,
     },
     {
       title: "Deployment Speed",
       value: "Hours, Not Weeks",
-      icon: <Zap className="w-5 h-5" />,
+      icon: <Zap className="w-4 h-4" />,
     },
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-gray-50 overflow-hidden">
+    <section className="py-24 sm:py-32 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+        {/* Header */}
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-3">
             Foundational Excellence
           </p>
-          <h2 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-extrabold text-slate-900 sm:text-5xl tracking-tight mb-6">
             The Platform You Can Build On.
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
-            FleetInfinity is not an upgrade; it is a **complete technological
-            shift**. Our platform is the culmination of years of intensive
-            domain expertise, rigorously engineered to overcome the complexities
-            that bottleneck legacy systems.
+          <p className="text-lg text-slate-600 leading-relaxed">
+            FleetInfinity is not an upgrade; it is a <strong className="font-semibold text-slate-900">complete technological shift</strong>. Our platform is the culmination of years of intensive domain expertise, rigorously engineered to overcome the complexities that bottleneck legacy systems.
           </p>
         </div>
 
         {/* Authority Points Grid */}
-        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 mb-20">
           {authorityPoints.map((point, index) => (
             <div
               key={index}
-              className={`p-8 bg-white rounded-xl shadow-lg border border-gray-100 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl ${point.bg}`}
+              className="group p-8 bg-white rounded-2xl border border-slate-200 transition-all duration-300 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1"
             >
-              <div
-                className={`flex items-center justify-center w-16 h-16 rounded-full ${point.accent} bg-opacity-80 mb-6 shadow-md`}
-              >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 text-slate-700 mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
                 {point.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-slate-900 mb-3 leading-snug">
                 {point.title}
               </h3>
-              <p className="mt-2 text-gray-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed text-sm">
                 {point.description}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Foundational Metrics Bar */}
-        <div className="mt-20">
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-2xl shadow-blue-500/10 border border-gray-100">
-            <h4 className="text-center text-xl font-semibold text-gray-800 mb-6 flex items-center justify-center gap-2">
-              <TrendingUp className="w-6 h-6 text-blue-600" />
-              Core Foundational Metrics
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-              {foundationalMetrics.map((metric, index) => (
-                <div
-                  key={index}
-                  className="p-4 rounded-lg bg-gray-50/50 border border-gray-200"
-                >
-                  <div className="flex items-center justify-center text-gray-500 mb-1">
-                    {metric.icon}
-                    <p className="text-sm font-medium ml-2">{metric.title}</p>
-                  </div>
-                  <p className="text-3xl font-extrabold text-gray-900 mt-1">
-                    {metric.value}
-                  </p>
-                </div>
-              ))}
-            </div>
+        {/* Sleek Foundational Metrics Bar */}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            <div className="w-full border-t border-slate-200"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-slate-50 px-4 text-sm font-medium text-slate-500 uppercase tracking-wider">
+              Core Metrics
+            </span>
           </div>
         </div>
+
+        <div className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 gap-y-8">
+            {foundationalMetrics.map((metric, index) => (
+              <div key={index} className="flex flex-col items-center justify-center text-center px-6">
+                <div className="flex items-center text-slate-500 mb-2 gap-2">
+                  {metric.icon}
+                  <span className="text-sm font-medium">{metric.title}</span>
+                </div>
+                <p className="text-3xl font-extrabold text-slate-900 tracking-tight">
+                  {metric.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
     </section>
   );

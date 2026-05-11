@@ -9,28 +9,28 @@ const STEPS = [
     number: "01",
     icon: Wrench,
     title: "Install Any Device",
-    desc: "Plug-and-play setup or professional installation. Our platform is hardware-agnostic — works with any GPS or telematics device your clients already own.",
+    desc: "Plug-and-play setup or professional installation. Our platform is hardware-agnostic — works seamlessly with any GPS or telematics device.",
     accent: "Compatible with 200+ device brands",
   },
   {
     number: "02",
     icon: Settings,
-    title: "Configure & Brand",
-    desc: "White-label the platform in minutes. Set your domain, upload your logo, define user roles, and connect your clients — all from one partner dashboard.",
-    accent: "Your domain. Your colors. Your brand.",
+    title: "Configure Operations",
+    desc: "Set up your fleet hierarchy, define user roles, and establish safety protocols. Our flexible architecture adapts perfectly to your operational workflows.",
+    accent: "Highly adaptable architecture",
   },
   {
     number: "03",
     icon: SatelliteDish,
     title: "Stream Live Data",
-    desc: "Vehicles begin reporting instantly. Real-time location, driver events, fuel, video, and sensor data flow securely to your clients' dashboards and mobile apps.",
+    desc: "Vehicles begin reporting instantly. Real-time location, driver events, fuel, video, and sensor data flow securely to your operational dashboards.",
     accent: "Sub-second data delivery to cloud",
   },
   {
     number: "04",
     icon: BarChart3,
-    title: "Deliver Results",
-    desc: "Your clients track KPIs, cut fuel costs, improve driver safety, and automate compliance — all under your brand. You grow. They succeed.",
+    title: "Analyze & Optimize",
+    desc: "Track KPIs, cut fuel costs, improve driver safety, and automate compliance with powerful AI-driven reports and actionable insights.",
     accent: "Measurable ROI from day one",
   },
 ];
@@ -58,7 +58,7 @@ const StepCard = ({ step, index, total }) => {
           <div className="absolute inset-0 border-t border-dashed border-gray-200" />
           {/* Animated fill */}
           <motion.div
-            className="absolute inset-y-0 left-0 bg-indigo-300 h-px"
+            className="absolute inset-y-0 left-0 bg-green-300 h-px"
             initial={{ width: 0 }}
             animate={inView ? { width: "100%" } : {}}
             transition={{ duration: 0.6, delay: index * 0.12 + 0.4, ease: "easeOut" }}
@@ -70,7 +70,7 @@ const StepCard = ({ step, index, total }) => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.25, delay: index * 0.12 + 0.95 }}
           >
-            <ArrowRight className="w-3 h-3 text-indigo-300" />
+            <ArrowRight className="w-3 h-3 text-green-300" />
           </motion.div>
         </div>
       )}
@@ -78,12 +78,12 @@ const StepCard = ({ step, index, total }) => {
       {/* Icon circle */}
       <div className="relative z-10 mb-6">
         {/* Step number badge */}
-        <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center z-20 shadow">
+        <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center z-20 shadow">
           {index + 1}
         </span>
-        <div className="w-20 h-20 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center shadow-sm group-hover:bg-indigo-600 group-hover:border-indigo-600 transition-all duration-300">
+        <div className="w-20 h-20 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:border-green-600 transition-all duration-300">
           <Icon
-            className="w-9 h-9 text-indigo-500 group-hover:text-white transition-colors duration-300"
+            className="w-9 h-9 text-green-500 group-hover:text-white transition-colors duration-300"
             strokeWidth={1.5}
           />
         </div>
@@ -98,7 +98,7 @@ const StepCard = ({ step, index, total }) => {
       </p>
 
       {/* Accent pill */}
-      <span className="inline-block text-[11px] font-medium text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-0.5">
+      <span className="inline-block text-[11px] font-medium text-green-600 bg-green-50 border border-green-100 rounded-full px-3 py-0.5">
         {step.accent}
       </span>
     </motion.div>
@@ -121,17 +121,17 @@ const GettingStarted = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 text-sm font-medium text-indigo-600 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 rounded-full px-4 py-1.5 text-sm font-medium text-green-600 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             Up and running in under an hour
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
             Getting Started{" "}
-            <span className="text-indigo-600">is Simple</span>
+            <span className="text-green-600">is Simple</span>
           </h2>
           <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
-            Four steps to deploy a fully branded fleet management platform
-            for your clients — no development required.
+            Four steps to deploy an enterprise-grade fleet management platform 
+            and gain total control over your operations.
           </p>
         </motion.div>
 
@@ -152,7 +152,7 @@ const GettingStarted = () => {
         >
           <a
             href="/demo"
-            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm px-7 py-3 rounded-full transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm px-7 py-3 rounded-full transition-colors shadow-sm"
           >
             Request a Demo
             <ArrowRight className="w-4 h-4" />
@@ -161,7 +161,7 @@ const GettingStarted = () => {
             href="/contact"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium text-sm px-7 py-3 rounded-full border border-gray-200 hover:border-gray-300 transition-colors"
           >
-            Talk to a Partner Specialist
+            Talk to a Telematics Expert
           </a>
         </motion.div>
 

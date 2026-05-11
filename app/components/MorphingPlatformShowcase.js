@@ -467,7 +467,7 @@ const MorphingPlatformShowcase = () => {
               Both platforms — fully white-labeled.
             </p>
             <p className="text-sm text-gray-500">
-              Your partners get a web dashboard on their domain and native apps
+              Partners get a web dashboard on their domain and native apps
               under their brand on both stores.
             </p>
           </div>

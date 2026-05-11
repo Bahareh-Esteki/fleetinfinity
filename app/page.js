@@ -46,6 +46,8 @@ import ModernHero from "./components/HeroSection";
 import AuthorityAndInnovation from "./components/AuthorityAndInnovation";
 import PartnerProgram from "./components/PartnerProgram";
 
+import GettingStarted from "./components/GettingStarted";
+
 
 // Helper component for Stat Items
 const StatItem = ({ value, label }) => (
@@ -170,6 +172,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <GettingStarted />
 
       {/* --- NEW: Solutions by Industry Section --- */}
       <IndustryCapabilitiesShowcase />

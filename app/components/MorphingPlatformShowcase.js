@@ -222,7 +222,7 @@ const PhoneMockup = ({ children }) => (
 
 // ---- WHITELABEL BADGE ----
 const WhitelabelBadge = ({ text }) => (
-  <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-medium">
+  <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-brand-dark-blue-50 border border-brand-dark-blue-100 text-brand-dark-blue-600 text-xs font-medium">
     <Layers className="w-3 h-3 flex-shrink-0" />
     <span>{text}</span>
   </div>
@@ -249,7 +249,7 @@ const AutoplayBar = ({ duration, isPlaying }) => {
   return (
     <div className="h-0.5 w-full bg-gray-100 rounded-full overflow-hidden">
       <div
-        className="h-full bg-indigo-400 rounded-full transition-none"
+        className="h-full bg-brand-dark-blue-400 rounded-full transition-none"
         style={{ width: `${width}%` }}
       />
     </div>
@@ -296,13 +296,13 @@ const MorphingPlatformShowcase = () => {
 
         {/* ── Section Header ── */}
         <div className="mb-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-indigo-600/8 border border-indigo-200 rounded-full px-4 py-1.5 text-sm font-medium text-indigo-600 mb-5">
+          <div className="inline-flex items-center gap-2 bg-brand-dark-blue-600/8 border border-brand-dark-blue-200 rounded-full px-4 py-1.5 text-sm font-medium text-brand-dark-blue-600 mb-5">
             <Globe className="w-4 h-4" />
             White-label Ready · Your Brand. Your Domain.
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
             One Platform.{" "}
-            <span className="text-indigo-600">Every Device.</span>{" "}
+            <span className="text-brand-dark-blue-600">Every Device.</span>{" "}
             Your Brand.
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
@@ -352,7 +352,7 @@ const MorphingPlatformShowcase = () => {
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                     i === activeIdx
                       ? activeMode === "web"
-                        ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                        ? "bg-brand-dark-blue-600 text-white border-brand-dark-blue-600 shadow-sm"
                         : "bg-emerald-600 text-white border-emerald-600 shadow-sm"
                       : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
                   }`}
@@ -435,7 +435,7 @@ const MorphingPlatformShowcase = () => {
                 className={`rounded-full transition-all duration-200 ${
                   i === activeIdx
                     ? activeMode === "web"
-                      ? "w-5 h-1.5 bg-indigo-500"
+                      ? "w-5 h-1.5 bg-brand-dark-blue-500"
                       : "w-5 h-1.5 bg-emerald-500"
                     : "w-1.5 h-1.5 bg-gray-200 hover:bg-gray-300"
                 }`}
@@ -473,7 +473,7 @@ const MorphingPlatformShowcase = () => {
           </div>
           <a
             href="/demo"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-brand-dark-blue-600 hover:bg-brand-dark-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
           >
             Request a Demo
             <Route className="w-4 h-4" />

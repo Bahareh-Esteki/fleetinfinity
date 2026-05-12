@@ -12,9 +12,10 @@ export default function Navbar() {
 
   const transparentNavPaths = [
     "/",
-    "/platform-overview",
+    "/platform",
+    "/platform/fleet-management",
     "/about",
-    "/personal-solutions",
+    "/solutions",
     "/contact",
     "/price-calculator",
   ];
@@ -46,18 +47,37 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     {
-      name: "For Business",
+      name: "Platform",
       dropdown: [
-        { name: "Platform Overview", href: "/platform-overview" },
-        { name: "Fleet Solutions", href: "/fleet-solutions" },
+        { name: "Platform Overview", href: "/platform" },
+        { name: "Fleet Solutions", href: "/platform/fleet-management" },
         { name: "Price Claculator", href: "/price-calculator" },
+        { name: "How It Works", href: "/platform/personal-app" },
+        { name: "Personal Solutions", href: "/platform/personal-solutions" },
       ],
     },
     {
-      name: "For Personal Use",
+      name: "Solutions",
       dropdown: [
-        { name: "How It Works", href: "/personal-app" },
-        { name: "Personal Solutions", href: "/personal-solutions" },
+        
+      ],
+    },
+    {
+      name: "For Partners",
+      dropdown: [
+        
+      ],
+    },
+    {
+      name: "Hardware & Integrations",
+      dropdown: [
+        
+      ],
+    },
+    {
+      name: "Resources",
+      dropdown: [
+        
       ],
     },
     { name: "About Us", href: "/about" },

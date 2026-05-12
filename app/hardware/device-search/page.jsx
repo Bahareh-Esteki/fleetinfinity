@@ -3,7 +3,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import DeviceSearchResults from '@/components/DeviceSearchResults';
+import DeviceSearchResults from '@/app/components/DeviceSearchResults';
 
 function SearchContent() {
   const searchParams = useSearchParams();

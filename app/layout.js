@@ -14,7 +14,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+      {/* Add suppressHydrationWarning right here */}
+      <body className={`${inter.variable} font-sans`} suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -21,6 +21,10 @@ import {
   Info,
   Mail,
   Users,
+  Plane,
+  Ship,
+  Tractor,
+  Thermometer,
   ArrowRight,
 } from "lucide-react";
 
@@ -190,7 +194,31 @@ const SolutionsMegaMenu = () => (
         <MegaMenuLink
           Icon={Building}
           href="/solutions/construction"
-          title="Construction"
+          title="Construction & Heavy Equipment"
+          desc="Heavy equipment and assets."
+        />
+        <MegaMenuLink
+          Icon={Thermometer}
+          href="/solutions/logistics"
+          title="Healthcare & Emergency Services"
+          desc="Long-haul and last-mile."
+        />
+        <MegaMenuLink
+          Icon={Tractor}
+          href="/solutions/construction"
+          title="Agriculture & Farming"
+          desc="Heavy equipment and assets."
+        />
+        <MegaMenuLink
+          Icon={Users}
+          href="/solutions/logistics"
+          title="Public Transportation"
+          desc="Long-haul and last-mile."
+        />
+        <MegaMenuLink
+          Icon={Plane}
+          href="/solutions/construction"
+          title="Aviation & Maritime"
           desc="Heavy equipment and assets."
         />
       </div>

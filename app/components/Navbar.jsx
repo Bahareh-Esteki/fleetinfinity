@@ -50,10 +50,7 @@ export default function Navbar() {
       name: "Platform",
       dropdown: [
         { name: "Platform Overview", href: "/platform" },
-        { name: "Fleet Solutions", href: "/platform/fleet-management" },
-        { name: "Price Claculator", href: "/price-calculator" },
-        { name: "How It Works", href: "/platform/personal-app" },
-        { name: "Personal Solutions", href: "/platform/personal-solutions" },
+        
       ],
     },
     {

@@ -1,10 +1,9 @@
+"use client";
+
 // app/components/DeviceCompatibilityShowcase.js - UPDATED TO OPEN IN NEW PAGE
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Shield, Download, Award, ArrowRight } from "lucide-react";
-
-// Import the device database
-import { realDevices } from "../../data/deviceDatabase";
+import { Search, Shield, Award, ArrowRight } from "lucide-react";
 
 const RealDeviceCompatibilityShowcase = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +17,7 @@ const RealDeviceCompatibilityShowcase = () => {
     }
 
     // Open in new window/tab
-    const url = `/device-search?${params.toString()}`;
+    const url = `/hardware/device-search?${params.toString()}`;
     window.open(url, "_blank");
   };
 
@@ -27,15 +26,6 @@ const RealDeviceCompatibilityShowcase = () => {
     if (e.key === "Enter") {
       handleSearchClick();
     }
-  };
-
-  // Alternative: Open in same window (use this if you prefer)
-  const handleSearchSameWindow = () => {
-    const params = new URLSearchParams();
-    if (searchQuery) {
-      params.set("q", searchQuery);
-    }
-    window.location.href = `/device-search?${params.toString()}`;
   };
 
   return (
@@ -54,13 +44,13 @@ const RealDeviceCompatibilityShowcase = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-            {realDevices.length}+ Compatible Devices
+            151+ verified compatible devices
           </h2>
 
           <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            Comprehensive database of tested and verified GPS trackers, dash
-            cameras, and sensors. All specifications verified by our technical
-            team.
+            FleetInfinity works with the hardware you already have. No forced
+            device purchases, no proprietary dongles. Browse our verified
+            compatibility list or bring your existing fleet hardware.
           </p>
 
           {/* Enhanced Stats */}
@@ -71,7 +61,7 @@ const RealDeviceCompatibilityShowcase = () => {
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
               <div className="text-2xl font-bold text-emerald-600">
-                {realDevices.length}+
+                151+
               </div>
               <div className="text-sm text-gray-600">Devices</div>
             </div>
@@ -101,7 +91,7 @@ const RealDeviceCompatibilityShowcase = () => {
               placeholder="Search devices, manufacturers, or features..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={handleSearchKeyPress}
+              onKeyDown={handleSearchKeyPress}
               className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-base"
             />
             <button
@@ -119,8 +109,8 @@ const RealDeviceCompatibilityShowcase = () => {
               Search Our Device Database
             </h3>
             <p className="text-gray-600 mb-6">
-              Enter a search term or click search to browse all{" "}
-              {realDevices.length}+ compatible devices in a new window
+              Enter a search term or click search to browse all 151+ compatible
+              devices in a new window
             </p>
 
             {/* Quick Browse Button */}
@@ -132,14 +122,6 @@ const RealDeviceCompatibilityShowcase = () => {
                 Browse All Devices
                 <ArrowRight className="w-4 h-4" />
               </button>
-
-              {/* Alternative: Same Window Button (uncomment if needed) */}
-              {/* <button
-                onClick={handleSearchSameWindow}
-                className="border border-emerald-600 text-emerald-600 px-6 py-3 rounded-lg font-medium hover:bg-emerald-50 transition-colors"
-              >
-                Browse (Same Window)
-              </button> */}
             </div>
           </div>
         </motion.div>
@@ -158,15 +140,25 @@ const RealDeviceCompatibilityShowcase = () => {
             </h3>
           </div>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto text-base">
-            Can't find your device? Our technical team can help you integrate
-            almost any GPS tracker or sensor.
+            Don&apos;t see your device? Contact us — we add new integrations
+            regularly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 group text-base justify-center">
+            <button
+              onClick={() => {
+                window.location.href = "/contact";
+              }}
+              className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 group text-base justify-center"
+            >
               Request Integration
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="border border-emerald-600 text-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-emerald-600 hover:text-white transition-colors text-base">
+            <button
+              onClick={() => {
+                window.location.href = "/contact";
+              }}
+              className="border border-emerald-600 text-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-emerald-600 hover:text-white transition-colors text-base"
+            >
               Technical Support
             </button>
           </div>

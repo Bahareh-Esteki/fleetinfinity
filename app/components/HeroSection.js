@@ -56,10 +56,10 @@ const FleetInfinityHero = () => {
                 {/* Single CTA */}
                 <div className="mt-8 flex items-center gap-3">
                   <Link
-                    href="/demo"
+                    href="/partners"
                     className="inline-flex items-center justify-center rounded-lg bg-brand-green text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
                   >
-                    Get a Free Demo
+                    Become a Partner
                   </Link>
                   <Link
                     href="/solutions"
@@ -77,7 +77,7 @@ const FleetInfinityHero = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Satellite className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm">±3m accuracy</span>
+                    <span className="text-sm">hours-scale deployment</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Activity className="w-4 h-4 text-emerald-300" />

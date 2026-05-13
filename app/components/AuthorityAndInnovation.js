@@ -33,7 +33,7 @@ const AuthorityAndInnovation = () => {
   const foundationalMetrics = [
     {
       title: "Platform Uptime SLA",
-      value: "99.99%",
+      value: "99.9%",
       icon: <Activity className="w-4 h-4" />,
     },
     {
@@ -43,7 +43,7 @@ const AuthorityAndInnovation = () => {
     },
     {
       title: "Deployment Speed",
-      value: "Hours, Not Weeks",
+      value: "A Day, Not Weeks",
       icon: <Zap className="w-4 h-4" />,
     },
   ];
@@ -60,7 +60,7 @@ const AuthorityAndInnovation = () => {
             The Platform You Can Build On.
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            FleetInfinity is not an upgrade; it is a <strong className="font-semibold text-slate-900">complete technological shift</strong>. Our platform is the culmination of years of intensive domain expertise, rigorously engineered to overcome the complexities that bottleneck legacy systems.
+            FleetInfinity is the result of over 15 years of R&D in fleet telematics and tracking infrastructure, built to solve the problems legacy systems never could. Not an upgrade. A complete technological shift.
           </p>
         </div>
 

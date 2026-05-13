@@ -37,8 +37,7 @@ export default function Footer() {
                 </h3>
                 <p className="text-brand-light-blue text-lg leading-relaxed mb-6">
                   Transforming fleet operations worldwide with AI-powered
-                  tracking solutions. Trusted by 500+ companies across 40+
-                  countries.
+                  tracking solutions.
                 </p>
               </div>
 
@@ -48,13 +47,13 @@ export default function Footer() {
                   <div className="bg-brand-green/20 p-2 rounded-lg">
                     <MapPin className="w-4 h-4 text-brand-green" />
                   </div>
-                  <span>Dubai, UAE - Global Operations</span>
+                  <span>Muscat, Oman - Global Operations</span>
                 </div>
                 <div className="flex items-center gap-3 text-brand-light-blue">
                   <div className="bg-brand-green/20 p-2 rounded-lg">
                     <Phone className="w-4 h-4 text-brand-green" />
                   </div>
-                  <span>+971 4 123 4567</span>
+                  <span> </span>
                 </div>
                 <div className="flex items-center gap-3 text-brand-light-blue">
                   <div className="bg-brand-green/20 p-2 rounded-lg">
@@ -65,7 +64,7 @@ export default function Footer() {
               </div>
 
               {/* Trust Badges */}
-              <div className="flex items-center gap-6 pt-4">
+              {/*<div className="flex items-center gap-6 pt-4">
                 <div className="flex items-center gap-2 text-brand-light-blue">
                   <Shield className="w-5 h-5 text-brand-green" />
                   <span className="text-sm">ISO 27001 Certified</span>
@@ -74,7 +73,7 @@ export default function Footer() {
                   <Award className="w-5 h-5 text-brand-green" />
                   <span className="text-sm">SOC 2 Compliant</span>
                 </div>
-              </div>
+              </div>*/}
             </div>
 
             {/* Solutions */}
@@ -83,7 +82,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/platform-overview"
+                    href="/platform"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
                     <span>Platform Overview</span>
@@ -92,34 +91,34 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/fleet-tracking"
+                    href="/video-telematics"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Fleet Tracking</span>
+                    <span>Video Telematics</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/asset-management"
+                    href="/ai"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Asset Management</span>
+                    <span>AI Integration</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/analytics"
+                    href="/maintanance"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>AI Analytics</span>
+                    <span>Maintanance Hub</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/pricing-calculator"
+                    href="/roi-calculator"
                     className="group flex items-center text-brand-green hover:text-white transition-all duration-300 font-medium"
                   >
                     <span>Pricing Calculator</span>
@@ -138,34 +137,26 @@ export default function Footer() {
                     href="/blog"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Blog & Insights</span>
+                    <span>Blog</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/case-studies"
+                    href="/white-papers"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Case Studies</span>
+                    <span>White papers</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
+                
                 <li>
                   <Link
-                    href="/documentation"
+                    href="/supported-devices"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Documentation</span>
-                    <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/support"
-                    className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
-                  >
-                    <span>Support Center</span>
+                    <span>Supported Devices</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
@@ -194,15 +185,7 @@ export default function Footer() {
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/careers"
-                    className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
-                  >
-                    <span>Careers</span>
-                    <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </li>
+                
                 <li>
                   <Link
                     href="/contact"
@@ -217,19 +200,11 @@ export default function Footer() {
                     href="/partners"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Partners</span>
+                    <span>Partner with Us</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/press"
-                    className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
-                  >
-                    <span>Press Kit</span>
-                    <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </Link>
-                </li>
+                
               </ul>
             </div>
           </div>

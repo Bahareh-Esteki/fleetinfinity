@@ -41,9 +41,9 @@ const PartnerProgram = () => {
   ];
 
   const highlights = [
-    "Dedicated Tier-2 Technical Support",
-    "Flexible Volume-Based Pricing",
-    "Bring Your Own Hardware (Agnostic)",
+    "Partner success team included from day one",
+    "Revenue-friendly pricing that scales with your growth",
+    "Works with 151+ devicesm or your existing hardware",
   ];
 
   return (
@@ -57,12 +57,11 @@ const PartnerProgram = () => {
               Whitelabel & Partnership
             </p>
             <h2 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
-              Build Your Business on Our Engine.
+              Your Brand. Your Revenue. Our Platform.
             </h2>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Launch a world-class fleet management and tracking service under
-              your own brand. We provide the robust, enterprise-grade
-              infrastructure; you own the customer relationships and the profits.
+              Stop building from scratch. FleetInfinity gives resellers and operators a fully white-labeled, enterprise-grade fleet platform, deployed under your domain, your logo, and your pricing. We handle the infrastructure. You own the customer.
+
             </p>
 
             <ul className="mt-8 space-y-4">

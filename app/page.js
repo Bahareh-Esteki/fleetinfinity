@@ -35,14 +35,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import AnimatedHeroBackground from "./components/AnimatedHeroBackground"; // Adjust path if needed
 import FaqSection from "./components/FaqSection";
 import BusinessOutcomesFocus from "./components/HighlightsSection";
-import AnimatedStatsPanel from "./components/AnimatedStatsPanel";
 import MorphingPlatformShowcase from "./components/MorphingPlatformShowcase";
 import RealDeviceCompatibilityShowcase from "./components/DeviceCompatibilityShowcase";
 import IndustryCapabilitiesShowcase from "./components/IndustrySolutionsShowcase";
-import ModernHero from "./components/HeroSection";
+import FleetInfinityHero from "./components/HeroSection";
 import AuthorityAndInnovation from "./components/AuthorityAndInnovation";
 import PartnerProgram from "./components/PartnerProgram";
 
@@ -94,7 +92,7 @@ export default function HomePage() {
   return (
     <main className="bg-gray-50 text-gray-800">
       {/* Hero Section */}
-      <ModernHero />
+      <FleetInfinityHero />
       <AuthorityAndInnovation />
       <PartnerProgram />  
       <MorphingPlatformShowcase />

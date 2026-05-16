@@ -38,7 +38,7 @@ const RealDeviceCompatibilityShowcase = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 text-sm font-medium text-emerald-600 mb-6">
+          <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 rounded-full px-4 py-2 text-sm font-medium text-brand-green mb-6">
             <Shield className="w-4 h-4" />
             Hardware Compatibility Database
           </div>
@@ -56,21 +56,21 @@ const RealDeviceCompatibilityShowcase = () => {
           {/* Enhanced Stats */}
           <div className="grid md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-emerald-600">15+</div>
+              <div className="text-2xl font-bold text-brand-green">15+</div>
               <div className="text-sm text-gray-600">Manufacturers</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-emerald-600">
+              <div className="text-2xl font-bold text-brand-green">
                 151+
               </div>
               <div className="text-sm text-gray-600">Devices</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-emerald-600">100%</div>
+              <div className="text-2xl font-bold text-brand-green">100%</div>
               <div className="text-sm text-gray-600">Verified</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-              <div className="text-2xl font-bold text-emerald-600">24/7</div>
+              <div className="text-2xl font-bold text-brand-green">24/7</div>
               <div className="text-sm text-gray-600">Support</div>
             </div>
           </div>
@@ -92,11 +92,11 @@ const RealDeviceCompatibilityShowcase = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearchKeyPress}
-              className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-base"
+              className="w-full pl-12 pr-24 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-transparent text-base"
             />
             <button
               onClick={handleSearchClick}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-emerald-700 transition-colors text-sm"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-green text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-green-dark transition-colors text-sm"
             >
               Search
             </button>
@@ -117,7 +117,7 @@ const RealDeviceCompatibilityShowcase = () => {
             <div className="flex gap-3 justify-center">
               <button
                 onClick={handleSearchClick}
-                className="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                className="bg-brand-green text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-green-dark transition-colors flex items-center gap-2"
               >
                 Browse All Devices
                 <ArrowRight className="w-4 h-4" />
@@ -128,13 +128,13 @@ const RealDeviceCompatibilityShowcase = () => {
 
         {/* Enhanced CTA */}
         <motion.div
-          className="text-center mt-16 p-8 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-xl border border-gray-200"
+          className="text-center mt-16 p-8 bg-gradient-to-r from-brand-green/10 to-brand-light-blue/10 rounded-xl border border-gray-200"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Award className="w-6 h-6 text-emerald-600" />
+            <Award className="w-6 h-6 text-brand-green" />
             <h3 className="text-2xl font-bold text-gray-800">
               Need Device Support?
             </h3>
@@ -148,7 +148,7 @@ const RealDeviceCompatibilityShowcase = () => {
               onClick={() => {
                 window.location.href = "/contact";
               }}
-              className="bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2 group text-base justify-center"
+                className="bg-brand-green text-white px-8 py-3 rounded-lg font-medium hover:bg-brand-green-dark transition-colors flex items-center gap-2 group text-base justify-center"
             >
               Request Integration
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -157,7 +157,7 @@ const RealDeviceCompatibilityShowcase = () => {
               onClick={() => {
                 window.location.href = "/contact";
               }}
-              className="border border-emerald-600 text-emerald-600 px-8 py-3 rounded-lg font-medium hover:bg-emerald-600 hover:text-white transition-colors text-base"
+                className="border border-brand-green text-brand-green px-8 py-3 rounded-lg font-medium hover:bg-brand-green hover:text-white transition-colors text-base"
             >
               Technical Support
             </button>

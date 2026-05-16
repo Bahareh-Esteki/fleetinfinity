@@ -109,10 +109,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/maintanance"
+                    href="/maintenance"
                     className="group flex items-center text-brand-light-blue hover:text-brand-green transition-all duration-300"
                   >
-                    <span>Maintanance Hub</span>
+                    <span>Maintenance Hub</span>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 </li>

@@ -147,12 +147,12 @@ const SolutionsMegaMenu = () => (
   <div
     className={`
       absolute top-full left-1/2 -translate-x-1/2 mt-2
-      w-[700px] max-w-[90vw] p-4
+      w-[740px] max-w-[90vw] p-4
       bg-white rounded-xl shadow-xl border border-gray-100
       z-[200] origin-top animate-dropdown
     `}
   >
-    <div className="grid grid-cols-[220px_1fr_1fr] gap-4">
+    <div className="grid grid-cols-[220px_1fr_200px] gap-4">
       {/* Col 1: Promotional Image */}
       <div className="p-4 rounded-lg bg-gray-50 overflow-hidden flex flex-col">
         <h3 className="text-base font-bold text-gray-900">
@@ -171,17 +171,19 @@ const SolutionsMegaMenu = () => (
             className="transition-transform group-hover:translate-x-1"
           />
         </Link>
-        <Image
-          src="/images/navbar/solutions-promo.png" // Update with your image
-          alt="Fleet vehicles"
-          width={300}
-          height={200}
-          className="w-full h-auto mt-auto -mb-10 -mr-4"
-        />
+        <div className="mt-auto pt-4">
+          <Image
+            src="/images/navbar/solutions-promo.png"
+            alt="Fleet vehicles"
+            width={300}
+            height={200}
+            className="w-full h-auto"
+          />
+        </div>
       </div>
 
       {/* Col 2: By Industry */}
-      <div className="p-2 flex flex-col gap-1">
+      <div className="flex flex-col gap-1">
         <div className="text-xs font-semibold text-gray-400 uppercase px-3 pt-1 pb-2">
           By Industry
         </div>
@@ -224,7 +226,7 @@ const SolutionsMegaMenu = () => (
       </div>
 
       {/* Col 3: By Role */}
-      <div className="p-2 flex flex-col gap-1">
+      <div className="flex flex-col gap-1">
         <div className="text-xs font-semibold text-gray-400 uppercase px-3 pt-1 pb-2">
           By Role
         </div>
@@ -240,6 +242,18 @@ const SolutionsMegaMenu = () => (
           title="For Hardware Suppliers"
           desc="Expand your offerings."
         />
+        <div className="flex-1" />
+        <div className="mt-2 rounded-lg bg-brand-green/5 border border-brand-green/20 p-3 text-center">
+          <p className="text-xs font-semibold text-brand-dark-blue">
+            White-label Partner?
+          </p>
+          <Link
+            href="/partners"
+            className="text-xs font-medium text-brand-green hover:underline inline-flex items-center gap-1 mt-1"
+          >
+            Learn more <ArrowRight size={12} />
+          </Link>
+        </div>
       </div>
     </div>
   </div>

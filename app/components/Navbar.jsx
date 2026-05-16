@@ -201,7 +201,7 @@ const SolutionsMegaMenu = () => (
         />
         <MegaMenuLink
           Icon={Thermometer}
-          href="/solutions/logistics"
+          href="/solutions/healthcare"
           title="Healthcare & Emergency Services"
           desc="Long-haul and last-mile."
         />

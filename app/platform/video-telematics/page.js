@@ -13,8 +13,6 @@ import {
   Bell,
   Car,
   Monitor,
-  Smartphone,
-  Cloud,
   CheckCircle2,
   AlertTriangle,
   Play,
@@ -23,14 +21,11 @@ import {
   BarChart3,
   MapPin,
   ChevronDown,
-  HelpCircle,
   Users,
   Truck,
   Building,
   Fuel,
   Route,
-  Search,
-  ChevronRight,
 } from "lucide-react";
 
 const containerVariants = {
@@ -153,8 +148,8 @@ function HeroSection() {
             >
               {[
                 "Up to 8 Camera Channels per vehicle",
-                "60-Second Instant Replay on any incident",
-                "AI-Powered ADAS & DMS Alerts",
+                "Continuous Recording on SD Card",
+                "Violation Footage Uploaded to Cloud",
               ].map((stat) => (
                 <div
                   key={stat}
@@ -206,7 +201,7 @@ function WhyItMattersSection() {
     {
       problem: "False claims expose your business to liability",
       solution:
-        "Cloud-stored footage provides irrefutable evidence to protect drivers and operators.",
+        "Violation footage is automatically uploaded to the cloud, providing irrefutable evidence to protect drivers and operators.",
       icon: Shield,
     },
   ];
@@ -271,7 +266,7 @@ function HowItWorksSection() {
       title: "Capture",
       icon: Camera,
       description:
-        "Dual-channel dashcams record the road ahead and the driver simultaneously. G-sensor events trigger automatic clip saves. Up to 8 camera channels supported per vehicle for full-surround coverage.",
+        "Dual-channel dashcams record continuously onto the vehicle's SD card — the road ahead and the driver simultaneously. G-sensor events trigger automatic clip saves. Up to 8 camera channels supported per vehicle for full-surround coverage.",
     },
     {
       number: "02",
@@ -285,7 +280,7 @@ function HowItWorksSection() {
       title: "Act",
       icon: MapPin,
       description:
-        "Fleet managers see alerts on the live tracking map the moment they trigger. Clips are automatically tagged, stored, and linked to the relevant trip. Review, download, or share footage directly from the platform.",
+        "Fleet managers see alerts on the live tracking map the moment they trigger. Violation clips are automatically uploaded to the cloud, tagged, and linked to the relevant trip. Review, download, or share footage directly from the platform. Continuous recording remains on the vehicle's SD card for local access.",
     },
   ];
 
@@ -390,12 +385,12 @@ const capabilityModules = [
     id: "incident",
     label: "Incident Management & Playback",
     headline: "Every incident, verified in seconds.",
-    body: "When an event is flagged — whether by an ADAS/DMS alert, a G-sensor impact, or a manual review request — FleetInfinity lets you access the relevant footage instantly. Clips are automatically saved, tagged to the trip, and linked to GPS position and speed data at the time of the event.",
+    body: "When an event is flagged — whether by an ADAS/DMS alert, a G-sensor impact, or a manual review request — FleetInfinity lets you access the relevant footage instantly. Continuous video recording is stored locally on the vehicle's SD card. When a violation or incident is detected, the relevant clip is automatically uploaded to the cloud, tagged to the trip, and linked to GPS position and speed data at the time of the event.",
     points: [
       "60-second instant replay on any flagged event",
+      "Violation clips automatically uploaded to cloud storage",
       "Video playback accessible directly from trip and ignition reports",
       "TF/SD card removal alerts to protect stored footage",
-      "Cloud storage for incident clips (storage duration subject to your plan)",
       "Downloadable clips for legal, insurance, or HR use",
     ],
     icon: Play,
@@ -747,7 +742,7 @@ function FaqSection() {
     },
     {
       q: "How long is footage stored?",
-      a: "Video footage and incident clips are stored in the cloud as part of your FleetInfinity plan. Specific storage duration depends on your subscription tier. Clips can be downloaded at any time for legal, insurance, or HR purposes.",
+      a: "Continuous video recording is stored locally on the vehicle's SD card and can be accessed directly from the device. Violation and incident clips are automatically uploaded to the cloud — storage duration depends on your subscription tier. Clips can be downloaded at any time for legal, insurance, or HR purposes.",
     },
     {
       q: "Can I download incident clips for insurance or legal use?",
@@ -771,7 +766,7 @@ function FaqSection() {
     },
     {
       q: "What happens if a camera goes offline or the SD card is removed?",
-      a: "FleetInfinity monitors camera health in real time. If a camera goes offline, malfunctions, or the storage card is removed, the platform immediately flags the issue on the dashboard and can trigger an alert to the fleet manager.",
+      a: "FleetInfinity monitors camera health in real time. If a camera goes offline, malfunctions, or the storage card is removed, the platform immediately flags the issue on the dashboard and can trigger an alert to the fleet manager. This ensures you're always aware if continuous recording has been interrupted or if critical violation evidence may have been compromised.",
     },
   ];
 

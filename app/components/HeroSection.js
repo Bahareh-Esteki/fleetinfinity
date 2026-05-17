@@ -1,103 +1,139 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { MapPin, ShieldCheck, Satellite, Activity } from "lucide-react";
-import React from "react";
+import Link from "next/link";
+import { ShieldCheck, Satellite, Activity } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+
+const ParallaxLayer = ({ bgImage, speed, priority, overlayOpacity = 0.55, imageClassName = "", className = "", children }) => {
+  const ref = useRef(null);
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setOffsetY(rect.top * speed);
+      }
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [speed]);
+
+  return (
+    <section
+      ref={ref}
+      className={`relative w-full overflow-hidden flex items-center justify-center ${className}`}
+    >
+      <div
+        className="parallax-bg absolute left-0 w-full"
+        style={{
+          top: "-40%",
+          height: "180%",
+          transform: `translate3d(0px, ${offsetY}px, 0px)`,
+        }}
+      >
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          priority={priority}
+          sizes="100vw"
+          className={`object-cover object-center ${imageClassName}`}
+        />
+      </div>
+
+      <div
+        className="absolute inset-0 z-[2]"
+        style={{ background: `rgba(10, 13, 20, ${overlayOpacity})` }}
+      />
+
+      <div className="relative z-[3] max-w-4xl px-4 text-center">
+        {children}
+      </div>
+    </section>
+  );
+};
 
 const FleetInfinityHero = () => {
   return (
-    <header className="relative h-screen w-full overflow-hidden">
-      {/* Background image (full bleed). Replace with your fleet background: logistics hub / highway interchange */}
-      <Image
-        src="/images/hero_bg.png" // e.g., your generated logistics/command image
-        alt="Fleet manager overlooking organized logistics hub at golden hour"
-        fill
+    <div>
+      {/* Layer 1: Highway — main headline */}
+      <ParallaxLayer
+        bgImage="/images/hero_bg_highway.png"
+        speed={0.4}
         priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+        className="h-screen"
+      >
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+          Track. Manage. Optimize.
+        </h1>
+        <p className="text-xl md:text-2xl text-white/80 mt-4">
+          Fleet operations made simple.
+        </p>
+      </ParallaxLayer>
 
-      {/* Dark gradient overlay for readability */}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/15"
-        aria-hidden="true"
-      />
-
-      {/* Content wrapper (left-aligned, left third) */}
-      <div className="relative z-10 h-full">
-        <div className="mx-auto max-w-7xl h-full px-6">
-          <div className="flex h-full">
-            {/* Left column: text area ~35% */}
-            <div className="w-full md:w-5/12 lg:w-4/12 flex items-center">
-              <div className="py-28 md:py-0">
-                {/* Small brand context icon */}
-                <div className="mb-4 inline-flex items-center gap-2 text-white/90">
-                  <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-sm tracking-wide">
-                    GPS Fleet Intelligence
-                  </span>
-                </div>
-
-                {/* Headline */}
-                <h1 className="text-4xl leading-tight md:text-6xl font-extrabold text-white">
-                  Track. Manage. Optimize.
-                  <br className="hidden md:block" />
-                  Fleet operations made simple.
-                </h1>
-
-                {/* Subtitle */}
-                <p className="mt-5 text-base md:text-lg text-white/85 max-w-md">
-                  The advanced, reliable, and API-first platform for fleet operators and service providers. Built for scalable performance.
-                </p>
-
-                {/* Single CTA */}
-                <div className="mt-8 flex items-center gap-3">
-                  <Link
-                    href="/partners"
-                    className="inline-flex items-center justify-center rounded-lg bg-brand-green text-brand-dark-blue font-semibold px-6 py-3 text-base hover:brightness-[1.1] hover:shadow-lg hover:shadow-purple-400/25 transition-all"
-                  >
-                    Become a Partner
-                  </Link>
-                  <Link
-                    href="/solutions"
-                    className="inline-flex items-center justify-center rounded-lg border border-white/30 text-white px-6 py-3 text-base hover:bg-white/10 transition-all"
-                  >
-                    Explore Solutions
-                  </Link>
-                </div>
-
-                {/* Trust indicators (minimal row) */}
-                <div className="mt-6 flex items-center gap-5 text-white/80">
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm">99.9% uptime</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Satellite className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm">hours-scale deployment</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm">151+ devices</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right column left empty for imagery breathing room */}
-            <div className="hidden md:block md:w-7/12 lg:w-8/12" />
+      {/* Layer 2: Dashboard — value proposition + stats */}
+      <ParallaxLayer
+        bgImage="/images/hero_bg_dashboard.png"
+        speed={0.25}
+        overlayOpacity={0.85}
+        imageClassName="blur-sm"
+        className="h-[60vh]"
+      >
+        <p className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto leading-relaxed">
+          The advanced, reliable, and API-first platform for fleet operators
+          and service providers. Built for scalable performance.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/85">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-emerald-300" />
+            <span className="text-sm md:text-base">99.9% uptime</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Satellite className="w-5 h-5 text-emerald-300" />
+            <span className="text-sm md:text-base">hours-scale deployment</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Activity className="w-5 h-5 text-emerald-300" />
+            <span className="text-sm md:text-base">151+ devices</span>
           </div>
         </div>
-      </div>
+      </ParallaxLayer>
 
-      {/* Accessibility: hero label */}
-      <h2 className="sr-only">
-        FleetInfinity GPS fleet management platform hero section
-      </h2>
-    </header>
+      {/* Layer 3: Globe — CTA */}
+      <ParallaxLayer
+        bgImage="/images/hero_bg_globe.png"
+        speed={0.35}
+        className="h-[70vh]"
+      >
+        <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
+          Ready to Transform Your Fleet?
+        </h2>
+        <p className="text-lg md:text-xl text-white/80 mb-8">
+          Join industry leaders who trust our platform.
+        </p>
+        <Link
+          href="/demo"
+          className="inline-block bg-brand-green text-brand-dark-blue font-semibold px-10 py-4 rounded-lg text-lg hover:brightness-[1.1] hover:shadow-lg transition-all"
+        >
+          Request a Live Demo
+        </Link>
+      </ParallaxLayer>
+    </div>
   );
 };
 

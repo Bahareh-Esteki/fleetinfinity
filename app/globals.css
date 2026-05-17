@@ -74,3 +74,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .parallax-bg {
+    will-change: transform;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-bg {
+    transform: none !important;
+  }
+}

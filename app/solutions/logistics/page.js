@@ -47,7 +47,7 @@ function FadeIn({ children, delay = 0, className = "" }) {
 const STEPS = [
   {
     id: "departure", label: "01", title: "Departure", sub: "Loading Bay", Icon: Warehouse,
-    body: "Every trip is documented before the wheels turn. RFID verifies the driver and vehicle, BLE tags register every item of cargo, and the optimised route is pushed to the in-cab tablet. Temperature sensors on reefers start reporting before the truck leaves the yard.",
+    body: "Every trip is documented before the wheels turn. RFID verifies the driver and vehicle, BLE tags register every item of cargo, and the route is pushed to the in-cab tablet. Temperature sensors on reefers start reporting before the truck leaves the yard.",
   },
   {
     id: "transit", label: "02", title: "In Transit", sub: "On the Road", Icon: Route,
@@ -341,7 +341,7 @@ export default function LogisticsPage() {
                   />
                 </div>
                 <p className="px-2 pt-3 text-center text-sm text-slate-300">
-                  Live fleet view with route optimisation
+                  Live fleet tracking view
                 </p>
               </div>
             </motion.div>
@@ -375,12 +375,12 @@ export default function LogisticsPage() {
                   <Navigation className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-extrabold text-slate-950">AI route optimisation and live tracking</h3>
+                  <h3 className="text-lg font-extrabold text-slate-950">Live GPS tracking and visibility</h3>
                   <p className="mt-2 text-base leading-7 text-slate-600">
-                    Build the most efficient multi-stop routes in seconds — factoring in traffic,
-                    delivery windows, vehicle specs, and driver hours. Every vehicle streams its
-                    location to a live map with role-based access so dispatchers see everything,
-                    customers see their deliveries, and drivers see their route.
+                    Every vehicle streams its location to a live map with role-based access so
+                    dispatchers see everything, customers see their deliveries, and drivers see
+                    their route. Real-time position data feeds ETAs, geofence alerts, and journey
+                    timelines — no more phone calls asking "where is the truck?"
                   </p>
                 </div>
               </div>
@@ -505,7 +505,7 @@ export default function LogisticsPage() {
                   <p className="text-3xl font-black text-white">Up to 25%</p>
                   <p className="mt-1 font-bold text-white">Fuel Savings</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                    Smart routing and driver coaching cut consumption across every vehicle, every day.
+                    Driver coaching and behaviour analytics cut consumption across every vehicle, every day.
                   </p>
                 </div>
               </FadeIn>
@@ -522,10 +522,10 @@ export default function LogisticsPage() {
 
               <FadeIn delay={0.2}>
                 <div className="rounded-2xl border p-6 backdrop-blur" style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>
-                  <p className="text-3xl font-black text-white">50% Faster</p>
-                  <p className="mt-1 font-bold text-white">Route Planning</p>
+                  <p className="text-3xl font-black text-white">3× Faster</p>
+                  <p className="mt-1 font-bold text-white">Incident Response</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                    Multi-stop optimisation turns hours of dispatch work into minutes.
+                    AI dashcam alerts reach the safety team within seconds of any event.
                   </p>
                 </div>
               </FadeIn>
@@ -626,8 +626,8 @@ export default function LogisticsPage() {
                 <div>
                   <h3 className="text-base font-extrabold text-slate-950">Long-Haul Trucking</h3>
                   <p className="mt-1 text-base leading-7 text-slate-600">
-                    Fatigue monitoring, HOS compliance across jurisdictions, and multi-day route
-                    planning that factors in border delays and mandatory rest stops.
+                    Fatigue monitoring, HOS compliance across jurisdictions, and border
+                    delay visibility for long-haul operations.
                   </p>
                 </div>
               </div>
@@ -642,7 +642,7 @@ export default function LogisticsPage() {
                   <h3 className="text-base font-extrabold text-slate-950">Last-Mile Delivery</h3>
                   <p className="mt-1 text-base leading-7 text-slate-600">
                     Real-time ETAs, proof-of-delivery capture, and customer tracking links that reduce
-                    "where is my delivery?" calls. Route optimisation for stop density and delivery windows.
+                    "where is my delivery?" calls with real-time ETAs and tracking links.
                   </p>
                 </div>
               </div>
@@ -712,7 +712,7 @@ export default function LogisticsPage() {
                 Offer logistics telematics under your own brand.
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
-                White-label the full FleetInfinity platform — route optimisation, live tracking,
+                White-label the full FleetInfinity platform — live tracking,
                 video telematics, and driver management — under your domain and your logo.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

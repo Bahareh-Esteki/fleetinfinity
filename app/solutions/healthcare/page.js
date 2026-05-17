@@ -174,7 +174,7 @@ export default function HealthcarePage() {
                 Vital Response Hub
               </p>
               <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-                Dispatch, routing, and coordination — unified.
+                Dispatch and coordination — unified.
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
                 When every second matters, your dispatch team needs a single screen that shows vehicle
@@ -183,13 +183,13 @@ export default function HealthcarePage() {
                 every resource, updated in real time.
               </p>
               <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-                Priority routing factors in traffic, road closures, and vehicle capability to deliver
+                Intelligent dispatch factors in traffic, road closures, and vehicle capability to deliver
                 the fastest possible ETA. Dispatchers can assign the closest available unit, monitor
                 its progress on a live map, and share a secure tracking link with the receiving
                 facility — all without leaving the response screen.
               </p>
               <p className="mt-4 text-base leading-8 text-slate-600 sm:text-lg">
-                For non-emergency patient transport, the platform optimises scheduling and routing to
+                For non-emergency patient transport, the platform optimises scheduling and dispatching to
                 minimise wait times and maximise fleet utilisation. Every trip is logged, every ETA
                 is tracked, and every delay is visible to the operations team before the patient feels it.
               </p>

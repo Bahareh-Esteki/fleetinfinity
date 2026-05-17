@@ -207,19 +207,19 @@ const SolutionsMegaMenu = () => (
         />
         <MegaMenuLink
           Icon={Tractor}
-          href="/solutions/construction"
+          href="/solutions/agriculture"
           title="Agriculture & Farming"
           desc="Heavy equipment and assets."
         />
         <MegaMenuLink
           Icon={Users}
-          href="/solutions/logistics"
+          href="/solutions/transportation"
           title="Public Transportation"
           desc="Long-haul and last-mile."
         />
         <MegaMenuLink
           Icon={Plane}
-          href="/solutions/construction"
+          href="/solutions/aviation-maritime"
           title="Aviation & Maritime"
           desc="Heavy equipment and assets."
         />

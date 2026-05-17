@@ -247,7 +247,7 @@ export default function ConstructionPage() {
           className="fixed inset-0 -z-10"
           style={{
             backgroundColor: "#fff7ed",
-            backgroundImage: `url('/images/elements/construction.png')`,
+            backgroundImage: `url('/images/elements/construction.webp')`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "right 2rem bottom 2rem",
             backgroundSize: "clamp(160px, 28vw, 380px)",

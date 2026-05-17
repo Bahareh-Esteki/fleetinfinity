@@ -2,8 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
 import {
   ArrowRight,
   Truck,
@@ -36,167 +42,174 @@ function FadeIn({ children, delay = 0, className = "" }) {
   );
 }
 
-/* ─── Scroll-driven vertical road ─── */
-function JourneySection({ accent }) {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+/* ─── Sophisticated scroll-driven timeline ─── */
 
-  const vehicleTop = useTransform(scrollYProgress, [0, 1], ["-3%", "94%"]);
+const STEPS = [
+  {
+    id: "departure", label: "01", title: "Departure", sub: "Loading Bay", Icon: Warehouse,
+    body: "Every trip is documented before the wheels turn. RFID verifies the driver and vehicle, BLE tags register every item of cargo, and the optimised route is pushed to the in-cab tablet. Temperature sensors on reefers start reporting before the truck leaves the yard.",
+  },
+  {
+    id: "transit", label: "02", title: "In Transit", sub: "On the Road", Icon: Route,
+    body: "Live GPS streams to a customer portal so recipients track shipments without calling your dispatcher. AI dashcams monitor driver fatigue and phone use — delivering in-cab alerts the moment a risk is detected. Fuel consumption is cross-referenced against the planned route.",
+  },
+  {
+    id: "delivery", label: "03", title: "Delivery", sub: "Drop-off Point", Icon: MapPin,
+    body: "The driver captures proof of delivery, performs a BLE scan to confirm cargo integrity matches what left the warehouse, and the recipient signs digitally. The entire transaction — time-stamped, geo-tagged, and photo-verified — syncs to the cloud before the truck pulls away.",
+  },
+  {
+    id: "review", label: "04", title: "Review", sub: "Back Office", Icon: BarChart3,
+    body: "A trip report assembles itself — fuel vs. planned route variance, driver safety events flagged by the dashcam, maintenance needs scheduled into the workshop calendar. The trip data is archived against that vehicle and driver, and the next dispatch starts with full knowledge of the fleet's current state.",
+  },
+];
+
+function StepCard({ step, isActive, accent }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-15% 0px -15% 0px" });
 
   return (
-    <section ref={sectionRef} className="relative py-20 sm:py-24 lg:py-28 overflow-hidden" style={{ background: "#f0f9ff" }}>
-      {/* Road on the right */}
-      <div className="hidden md:block absolute right-0 top-0 bottom-0 w-60 pointer-events-none">
-        <div className="relative h-full w-28 sm:w-32 mx-auto">
-          <div className="absolute inset-0 bg-slate-600 rounded-sm shadow-lg" />
-          <div className="absolute left-[6px] inset-y-0 w-[2px] bg-white/60" />
-          <div className="absolute right-[6px] inset-y-0 w-[2px] bg-white/60" />
-          <div className="absolute left-1/2 -translate-x-1/2 inset-y-0 w-[3px]" style={{
-            background: "repeating-linear-gradient(180deg, #a8a29e 0px, #a8a29e 28px, transparent 28px, transparent 52px)",
-          }} />
-
-          <motion.div
-            className="absolute left-1/3 -translate-x-1/2 z-10"
-            style={{ top: vehicleTop }}
-          >
-            <div className="-translate-y-1/2 w-44 h-44 sm:w-56 sm:h-56">
-              <Image
-                src="/images/elements/logistics.png"
-                alt=""
-                width={224}
-                height={224}
-                className="w-full h-full object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]"
-              />
-            </div>
-          </motion.div>
-        </div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: -18 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+      className="relative pl-10 md:pl-14"
+    >
+      <div
+        className="absolute left-0 top-1 font-mono text-xs font-bold tracking-widest transition-colors duration-500"
+        style={{ color: isActive ? accent : "#94a3b8" }}
+      >
+        {step.label}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:mr-60">
-        <FadeIn>
-          <div className="max-w-3xl">
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em]" style={{ color: accent }}>
-              From Pickup to Delivery
-            </p>
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-              Every stage of the journey, covered.
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
-              One platform tracks every phase — from the moment a truck leaves the yard
-              until the cargo is signed for.
-            </p>
+      <motion.div
+        className="absolute -left-[calc(1.5rem+1px)] top-1.5 h-2.5 w-2.5 rounded-full border-2 bg-white transition-all duration-500"
+        style={{
+          borderColor: isActive ? accent : "#cbd5e1",
+          boxShadow: isActive ? `0 0 0 4px ${accent}22` : "none",
+        }}
+      />
+
+      <div
+        className="rounded-2xl border p-6 transition-all duration-500"
+        style={{
+          borderColor: isActive ? `${accent}40` : "#e2e8f0",
+          background: isActive ? `${accent}06` : "#fff",
+          boxShadow: isActive ? `0 4px 24px 0 ${accent}12` : "0 1px 3px 0 rgba(0,0,0,0.04)",
+        }}
+      >
+        <div className="flex items-start gap-4">
+          <div
+            className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-500"
+            style={{
+              background: isActive ? `${accent}18` : "#f1f5f9",
+              color: isActive ? accent : "#64748b",
+            }}
+          >
+            <step.Icon className="h-4 w-4" />
           </div>
-        </FadeIn>
 
-        <div className="relative mt-16">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 hidden md:block" style={{ background: accent + "33" }} />
-
-          <div className="space-y-12 max-w-4xl mx-auto">
-            <FadeIn delay={0.05}>
-              <div className="relative md:pl-20">
-                <div className="absolute left-0 top-0 hidden md:flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ background: accent }}>
-                  <Warehouse className="h-7 w-7" />
-                </div>
-                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: accent + "22" }}>
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl text-white" style={{ background: accent }}>
-                      <Warehouse className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-extrabold text-slate-950">Departure</h3>
-                      <p className="text-sm font-medium" style={{ color: accent }}>Loading Bay</p>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-base leading-7 text-slate-600">
-                    Every trip is documented before the wheels turn. RFID verifies the driver and vehicle,
-                    BLE tags register every item of cargo, and the optimised route is pushed to the in-cab
-                    tablet. Temperature sensors on reefers start reporting before the truck leaves the yard.
-                    The system knows exactly what left, on which truck, driven by whom, and where it is going.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <div className="relative md:pl-20">
-                <div className="absolute left-0 top-0 hidden md:flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ background: accent }}>
-                  <Route className="h-7 w-7" />
-                </div>
-                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: accent + "22" }}>
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl text-white" style={{ background: accent }}>
-                      <Route className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-extrabold text-slate-950">In Transit</h3>
-                      <p className="text-sm font-medium" style={{ color: accent }}>On the Road</p>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-base leading-7 text-slate-600">
-                    Live GPS streams to a customer portal so recipients track shipments without calling
-                    your dispatcher. AI dashcams monitor driver fatigue and phone use — delivering in-cab
-                    alerts the moment a risk is detected. Fuel consumption is cross-referenced against the
-                    planned route, and geofences at waypoints trigger alerts when a truck is early, late,
-                    or off-route.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.15}>
-              <div className="relative md:pl-20">
-                <div className="absolute left-0 top-0 hidden md:flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ background: accent }}>
-                  <MapPin className="h-7 w-7" />
-                </div>
-                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: accent + "22" }}>
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl text-white" style={{ background: accent }}>
-                      <MapPin className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-extrabold text-slate-950">Delivery</h3>
-                      <p className="text-sm font-medium" style={{ color: accent }}>Drop-off Point</p>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-base leading-7 text-slate-600">
-                    The driver captures proof of delivery in the FleetInfinity app, performs a BLE scan to
-                    confirm cargo integrity matches what left the warehouse, and the recipient signs
-                    digitally. The entire transaction — time-stamped, geo-tagged, and photo-verified —
-                    syncs to the cloud before the truck pulls away.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="relative md:pl-20">
-                <div className="absolute left-0 top-0 hidden md:flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg" style={{ background: accent }}>
-                  <BarChart3 className="h-7 w-7" />
-                </div>
-                <div className="rounded-2xl border bg-white p-6 shadow-sm" style={{ borderColor: accent + "22" }}>
-                  <div className="mb-1 flex items-center gap-3">
-                    <span className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl text-white" style={{ background: accent }}>
-                      <BarChart3 className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-extrabold text-slate-950">Review</h3>
-                      <p className="text-sm font-medium" style={{ color: accent }}>Back Office</p>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-base leading-7 text-slate-600">
-                    A trip report assembles itself — fuel vs. planned route variance, driver safety
-                    events flagged by the dashcam, maintenance needs scheduled into the workshop calendar.
-                    The trip data is archived against that vehicle and driver, and the next dispatch
-                    starts with full knowledge of the fleet's current state.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-baseline gap-2.5">
+              <h3 className="text-base font-bold text-slate-900">{step.title}</h3>
+              <span className="text-xs font-medium text-slate-400">{step.sub}</span>
+            </div>
+            <p className="mt-2.5 text-sm leading-relaxed text-slate-500">{step.body}</p>
           </div>
         </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function JourneySection({ accent }) {
+  const sectionRef = useRef(null);
+  const lineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 0.8", "end 0.3"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60, damping: 20, restDelta: 0.001,
+  });
+
+  const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    return smoothProgress.on("change", (v) => {
+      const idx = Math.floor(v * STEPS.length);
+      setActiveIndex(Math.min(idx, STEPS.length - 1));
+    });
+  }, [smoothProgress]);
+
+  return (
+    <section ref={sectionRef} className="relative py-24 sm:py-32 lg:py-36" style={{ clipPath: "inset(0)" }}>
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          backgroundColor: "#f8fafc",
+          backgroundImage: "url('/images/elements/logistics.webp')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "right 2rem bottom 2rem",
+          backgroundSize: "clamp(160px, 28vw, 380px)",
+        }}
+      />
+      <div className="max-w-4xl px-6 lg:px-8">
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16"
+        >
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em]" style={{ color: accent }}>
+            From Pickup to Delivery
+          </p>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Every stage of the journey, covered.
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-slate-500 max-w-xl">
+            One platform tracks every phase — from the moment a truck leaves the yard until the cargo is signed for.
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-px" aria-hidden="true">
+            <div className="absolute inset-0 w-px bg-slate-200" />
+            <svg ref={lineRef} className="absolute inset-0 w-px overflow-visible" style={{ height: "100%" }} preserveAspectRatio="none">
+              <motion.line x1="0.5" y1="0" x2="0.5" y2="100%" stroke={accent} strokeWidth="1.5" style={{ pathLength }} strokeLinecap="round" />
+            </svg>
+          </div>
+
+          <div className="ml-6 md:ml-10 space-y-8">
+            {STEPS.map((step, i) => (
+              <StepCard key={step.id} step={step} isActive={i <= activeIndex} accent={accent} />
+            ))}
+          </div>
+        </div>
+
+        <motion.div
+          className="mt-14 ml-6 md:ml-10 flex items-center gap-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
+          {STEPS.map((s, i) => (
+            <div
+              key={s.id}
+              className="h-0.5 flex-1 rounded-full transition-all duration-700"
+              style={{ background: i <= activeIndex ? accent : "#e2e8f0" }}
+            />
+          ))}
+          <span className="font-mono text-xs font-bold tabular-nums" style={{ color: accent }}>
+            {String(Math.max(0, activeIndex + 1)).padStart(2, "0")}/{String(STEPS.length).padStart(2, "0")}
+          </span>
+        </motion.div>
+
       </div>
     </section>
   );
